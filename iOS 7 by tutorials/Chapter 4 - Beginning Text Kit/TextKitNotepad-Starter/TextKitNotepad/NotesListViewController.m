@@ -34,6 +34,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification
+                                               object:nil];
+
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Table view data source
@@ -43,6 +52,17 @@
     return [self notes].count;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static UILabel* label; if (!label) {
+        label = [[UILabel alloc]
+                 initWithFrame:CGRectMake(0, 0, FLT_MAX, FLT_MAX)];
+        label.text = @"test"; }
+    label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    [label sizeToFit];
+    return ceilf(label.frame.size.height * 1.7);
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -50,6 +70,7 @@
     
     Note* note = [self notes][indexPath.row];
     cell.textLabel.text = note.title;
+    cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     return cell;
 }
 
@@ -74,5 +95,9 @@
     }
 }
 
+-(void)preferredContentSizeChanged:(NSNotification *)notification
+{
+    [self.tableView reloadData];
+}
 
 @end
