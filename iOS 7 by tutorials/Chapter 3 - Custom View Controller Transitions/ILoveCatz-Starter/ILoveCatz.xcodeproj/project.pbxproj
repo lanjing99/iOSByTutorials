@@ -37,6 +37,8 @@
 		72F4B06217C6A3B60029ADB9 /* YawningCat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72F4B05C17C6A3B60029ADB9 /* YawningCat.jpg */; };
 		72F4B06417C6A9370029ADB9 /* FluffyKitten.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 72F4B06317C6A9370029ADB9 /* FluffyKitten.jpg */; };
 		A086DCCD1B4349B0001481D3 /* ShrinkDismissAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A086DCCC1B4349B0001481D3 /* ShrinkDismissAnimationController.m */; };
+		A086DCE41B440E7B001481D3 /* SwipeInteractionController.m in Sources */ = {isa = PBXBuildFile; fileRef = A086DCE31B440E7B001481D3 /* SwipeInteractionController.m */; };
+		A086DCE71B441160001481D3 /* FlipAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A086DCE61B441160001481D3 /* FlipAnimationController.m */; };
 		A0E6187E1B41FC6A00CCD0B2 /* BouncePresentAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E6187D1B41FC6A00CCD0B2 /* BouncePresentAnimationController.m */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +91,10 @@
 		72F4B06317C6A9370029ADB9 /* FluffyKitten.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = FluffyKitten.jpg; path = Assets/FluffyKitten.jpg; sourceTree = "<group>"; };
 		A086DCCB1B4349B0001481D3 /* ShrinkDismissAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShrinkDismissAnimationController.h; sourceTree = "<group>"; };
 		A086DCCC1B4349B0001481D3 /* ShrinkDismissAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShrinkDismissAnimationController.m; sourceTree = "<group>"; };
+		A086DCE21B440E7B001481D3 /* SwipeInteractionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeInteractionController.h; sourceTree = "<group>"; };
+		A086DCE31B440E7B001481D3 /* SwipeInteractionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeInteractionController.m; sourceTree = "<group>"; };
+		A086DCE51B441160001481D3 /* FlipAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipAnimationController.h; sourceTree = "<group>"; };
+		A086DCE61B441160001481D3 /* FlipAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipAnimationController.m; sourceTree = "<group>"; };
 		A0E6187C1B41FC6A00CCD0B2 /* BouncePresentAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BouncePresentAnimationController.h; sourceTree = "<group>"; };
 		A0E6187D1B41FC6A00CCD0B2 /* BouncePresentAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BouncePresentAnimationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,6 +171,10 @@
 				A0E6187D1B41FC6A00CCD0B2 /* BouncePresentAnimationController.m */,
 				A086DCCB1B4349B0001481D3 /* ShrinkDismissAnimationController.h */,
 				A086DCCC1B4349B0001481D3 /* ShrinkDismissAnimationController.m */,
+				A086DCE21B440E7B001481D3 /* SwipeInteractionController.h */,
+				A086DCE31B440E7B001481D3 /* SwipeInteractionController.m */,
+				A086DCE51B441160001481D3 /* FlipAnimationController.h */,
+				A086DCE61B441160001481D3 /* FlipAnimationController.m */,
 				72A50CD017C65A1A009EF8D2 /* Images.xcassets */,
 				72A50CB917C65A1A009EF8D2 /* Supporting Files */,
 				72A50CEE17C65D63009EF8D2 /* AboutViewController.h */,
@@ -330,6 +340,8 @@
 			files = (
 				72A50CF617C66EA6009EF8D2 /* Cat.m in Sources */,
 				72A50CCF17C65A1A009EF8D2 /* DetailViewController.m in Sources */,
+				A086DCE41B440E7B001481D3 /* SwipeInteractionController.m in Sources */,
+				A086DCE71B441160001481D3 /* FlipAnimationController.m in Sources */,
 				A0E6187E1B41FC6A00CCD0B2 /* BouncePresentAnimationController.m in Sources */,
 				72A50CF017C65D63009EF8D2 /* AboutViewController.m in Sources */,
 				A086DCCD1B4349B0001481D3 /* ShrinkDismissAnimationController.m in Sources */,

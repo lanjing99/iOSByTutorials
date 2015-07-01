@@ -12,12 +12,15 @@
 #import "Cat.h"
 #import "BouncePresentAnimationController.h"
 #import "ShrinkDismissAnimationController.h"
+#import "FlipAnimationController.h"
+#import "SwipeInteractionController.h"
 
-@interface MasterViewController ()<UIViewControllerTransitioningDelegate>
+@interface MasterViewController ()<UIViewControllerTransitioningDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) BouncePresentAnimationController *bounceAnimationController;
 @property (nonatomic, strong) ShrinkDismissAnimationController *shrinkDismissAnimationController;
-
+@property (nonatomic, strong) FlipAnimationController *flipAnimationController;
+@property (nonatomic, strong) SwipeInteractionController *swipeInteractionController;
 @end
 
 @implementation MasterViewController
@@ -35,6 +38,7 @@
     // see a cat image as a title
     UIImageView* imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cat"]];
     self.navigationItem.titleView = imageView;
+    self.navigationController.delegate = self;
 }
 
 
@@ -70,6 +74,19 @@
 }
 
 
+-(id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
+{
+    if (operation == UINavigationControllerOperationPush) {
+        [_swipeInteractionController wireToViewController:toVC];
+    }
+    self.flipAnimationController.reverse = operation == UINavigationControllerOperationPop;
+    return self.flipAnimationController;
+}
+
+-(id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController
+{
+    return self.swipeInteractionController.interactionInProgress ? self.swipeInteractionController : nil;
+}
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -107,6 +124,26 @@
     }
     return _shrinkDismissAnimationController;
 }
+
+-(FlipAnimationController *)flipAnimationController
+{
+    if(!_flipAnimationController)
+    {
+        _flipAnimationController = [FlipAnimationController new];
+    }
+    return _flipAnimationController;
+}
+
+-(SwipeInteractionController *)swipeInteractionController
+{
+    if(!_swipeInteractionController)
+    {
+        _swipeInteractionController = [SwipeInteractionController new];
+    }
+    return _swipeInteractionController;
+}
+
+
 @end
        
        
