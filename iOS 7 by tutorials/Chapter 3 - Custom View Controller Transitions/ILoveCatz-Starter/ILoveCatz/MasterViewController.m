@@ -14,6 +14,7 @@
 #import "ShrinkDismissAnimationController.h"
 #import "FlipAnimationController.h"
 #import "SwipeInteractionController.h"
+#import "PinchInteractionController.h"
 
 @interface MasterViewController ()<UIViewControllerTransitioningDelegate, UINavigationControllerDelegate>
 
@@ -21,6 +22,7 @@
 @property (nonatomic, strong) ShrinkDismissAnimationController *shrinkDismissAnimationController;
 @property (nonatomic, strong) FlipAnimationController *flipAnimationController;
 @property (nonatomic, strong) SwipeInteractionController *swipeInteractionController;
+@property (nonatomic, strong) PinchInteractionController *pinchInteractionController;
 @end
 
 @implementation MasterViewController
@@ -73,6 +75,10 @@
     return self.shrinkDismissAnimationController;
 }
 
+- (id <UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning>)animator
+{
+    return self.pinchInteractionController.interactionInProgress ? self.pinchInteractionController : nil;
+}
 
 -(id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
 {
@@ -100,10 +106,12 @@
         
         // provide this to the detail view
         [[segue destinationViewController] setCat:cat];
+        
     }
     
     if ([segue.identifier isEqualToString:@"ShowAbout"]) {
         UIViewController *toVC = segue.destinationViewController;
+        [self.pinchInteractionController wireToViewController:toVC];
         toVC.transitioningDelegate = self;
     }
 }
@@ -145,6 +153,14 @@
     return _swipeInteractionController;
 }
 
+-(PinchInteractionController *)pinchInteractionController
+{
+    if(!_pinchInteractionController)
+    {
+        _pinchInteractionController = [PinchInteractionController new];
+    }
+    return _pinchInteractionController;
+}
 
 @end
        
