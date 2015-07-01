@@ -81,6 +81,8 @@
     }
     self.flipAnimationController.reverse = operation == UINavigationControllerOperationPop;
     return self.flipAnimationController;
+    //换成下面这个动画就会卡住
+//    return self.shrinkDismissAnimationController;
 }
 
 -(id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController
