@@ -11,11 +11,15 @@
 #import "Note.h"
 #import "NoteEditorViewController.h"
 
+
+
 @interface NotesListViewController ()
 
 @end
 
 @implementation NotesListViewController
+{
+}
 
 - (NSMutableArray*) notes
 {
@@ -37,7 +41,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification
                                                object:nil];
-
+    
 }
 
 -(void)dealloc
