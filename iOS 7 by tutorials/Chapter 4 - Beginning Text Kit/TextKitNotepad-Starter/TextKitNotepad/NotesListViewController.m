@@ -70,7 +70,20 @@
     
     Note* note = [self notes][indexPath.row];
     cell.textLabel.text = note.title;
-    cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    UIFont* font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    
+    UIColor* textColor = [UIColor colorWithRed:0.175f green:0.458f blue:0.831f alpha:1.0f];
+    NSDictionary *attrs =
+        @{
+          NSForegroundColorAttributeName : textColor,
+         NSFontAttributeName : font,
+         NSTextEffectAttributeName : NSTextEffectLetterpressStyle
+        };
+    
+    NSAttributedString* attrString = [[NSAttributedString alloc] initWithString:note.title
+                                                                     attributes:attrs];
+    cell.textLabel.attributedText = attrString;
+    
     return cell;
 }
 
