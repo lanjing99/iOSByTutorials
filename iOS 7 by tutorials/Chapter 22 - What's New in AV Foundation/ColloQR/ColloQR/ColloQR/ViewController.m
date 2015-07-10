@@ -9,6 +9,17 @@
 #import "ViewController.h"
 @import AVFoundation;
 
+
+@interface Barcode : NSObject
+@property (nonatomic, strong) AVMetadataMachineReadableCodeObject *metadataObject;
+@property (nonatomic, strong) UIBezierPath *cornersPath;
+@property (nonatomic, strong) UIBezierPath *boundingBoxPath;
+@end
+
+@implementation Barcode
+
+@end
+
 @interface ViewController ()<AVCaptureMetadataOutputObjectsDelegate>
 
 @end
@@ -21,6 +32,7 @@
     AVCaptureVideoPreviewLayer *_previewLayer;
     AVCaptureMetadataOutput *_metadataOutput;
     BOOL _running;
+    NSMutableDictionary *_barcodes;
 }
 
 #pragma mark - lift cycle
@@ -88,8 +100,32 @@
     if(!_running) return;
     [_captureSession stopRunning];
     
-
     _running = NO;
+}
+
+
+- (Barcode*)processMetadataObject: (AVMetadataMachineReadableCodeObject*)code
+{
+    Barcode *barcode = _barcodes[code.stringValue];
+    if (!barcode) {
+        barcode = [Barcode new];
+        _barcodes[code.stringValue] = barcode;
+    }
+    barcode.metadataObject = code;
+    CGMutablePathRef cornersPath = CGPathCreateMutable();
+    CGPoint point;
+    CGPointMakeWithDictionaryRepresentation((CFDictionaryRef)code.corners[0], &point);
+    CGPathMoveToPoint(cornersPath, nil, point.x, point.y);
+    for (int i = 1; i < code.corners.count; i++) {
+        CGPointMakeWithDictionaryRepresentation((CFDictionaryRef)code.corners[i], &point);
+        CGPathAddLineToPoint(cornersPath, nil,point.x, point.y);
+    }
+    CGPathCloseSubpath(cornersPath);
+    barcode.cornersPath = [UIBezierPath bezierPathWithCGPath:cornersPath];
+    CGPathRelease(cornersPath);
+
+    barcode.boundingBoxPath = [UIBezierPath bezierPathWithRect:code.bounds];
+    return barcode;
 }
 
 #pragma mark - AVCaptureMetadataOutputObjectsDelegate
@@ -98,13 +134,54 @@
        fromConnection:(AVCaptureConnection *)connection
 {
     
-    [metadataObjects enumerateObjectsUsingBlock:^(AVMetadataObject *obj, NSUInteger idx,
-                                  BOOL *stop)
+//    [metadataObjects enumerateObjectsUsingBlock:^(AVMetadataObject *obj, NSUInteger idx,
+//                                  BOOL *stop)
+//        {
+//            static int i = 0;
+//            NSLog(@" at index : %d, Metadata: %@", i++, obj);
+//        }
+//     ];
+    
+    // 1
+    NSMutableSet *foundBarcodes = [NSMutableSet new];
+    [metadataObjects enumerateObjectsUsingBlock: ^(AVMetadataObject *obj, NSUInteger idx, BOOL *stop) {
+        NSLog(@"Metadata: %@", obj); // 2
+        if ([obj isKindOfClass:[AVMetadataMachineReadableCodeObject class]])
         {
-            static int i = 0;
-            NSLog(@" at index : %d, Metadata: %@", i++, obj);
-        }
-     ];
+            // 3
+            AVMetadataMachineReadableCodeObject *code = (AVMetadataMachineReadableCodeObject*)
+            [_previewLayer transformedMetadataObjectForMetadataObject:obj];
+            // 4
+            Barcode *barcode = [self processMetadataObject:code];
+            [foundBarcodes addObject:barcode]; }
+    }];
+    
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        // Remove all old layers
+        // 5
+        NSArray *allSublayers = [self.view.layer.sublayers copy];
+        [allSublayers enumerateObjectsUsingBlock:^(CALayer *layer, NSUInteger idx, BOOL *stop) {
+            if (layer != _previewLayer) {
+            [layer removeFromSuperlayer]; }
+            }
+         ];
+        // Add new layers
+        // 6
+        [foundBarcodes enumerateObjectsUsingBlock: ^(Barcode *barcode, BOOL *stop) {
+            CAShapeLayer *boundingBoxLayer = [CAShapeLayer new];
+            boundingBoxLayer.path = barcode.boundingBoxPath.CGPath;
+            boundingBoxLayer.lineWidth = 2.0f;
+            boundingBoxLayer.strokeColor = [UIColor greenColor].CGColor;
+            boundingBoxLayer.fillColor = [UIColor colorWithRed:0.0f green:1.0f blue:0.0f alpha:0.5f].CGColor;
+            [self.view.layer addSublayer:boundingBoxLayer];
+            
+            CAShapeLayer *cornersPathLayer = [CAShapeLayer new];
+            cornersPathLayer.path = barcode.cornersPath.CGPath;
+            cornersPathLayer.lineWidth = 2.0f;
+            cornersPathLayer.strokeColor = [UIColor blueColor].CGColor;
+            cornersPathLayer.fillColor = [UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.5f].CGColor;
+            [self.view.layer addSublayer:cornersPathLayer];
+        }]; });
 }
 
 @end
