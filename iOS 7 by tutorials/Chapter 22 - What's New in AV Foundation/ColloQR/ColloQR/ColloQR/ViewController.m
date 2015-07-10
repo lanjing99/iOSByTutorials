@@ -33,6 +33,7 @@
     AVCaptureMetadataOutput *_metadataOutput;
     BOOL _running;
     NSMutableDictionary *_barcodes;
+    AVSpeechSynthesizer *_speechSynthesizer;
 }
 
 #pragma mark - lift cycle
@@ -85,6 +86,8 @@
     if ([_captureSession canAddOutput:_metadataOutput]) {
         [_captureSession addOutput:_metadataOutput];
     }
+    
+    _speechSynthesizer = [[AVSpeechSynthesizer alloc] init];
 }
 
 -(void)startRunning
@@ -92,6 +95,9 @@
     if(_running) return;
     [_captureSession startRunning];
     _metadataOutput.metadataObjectTypes = _metadataOutput.availableMetadataObjectTypes;
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback withOptions:0
+                                           error:nil];
+    [[AVAudioSession sharedInstance] setActive:YES error:nil];
     _running = YES;
 }
 
@@ -99,6 +105,7 @@
 {
     if(!_running) return;
     [_captureSession stopRunning];
+    [[AVAudioSession sharedInstance] setActive:NO error:nil];
     
     _running = NO;
 }
@@ -142,6 +149,7 @@
 //        }
 //     ];
     
+    NSSet *originalBarcodes = [NSSet setWithArray:_barcodes.allValues];
     // 1
     NSMutableSet *foundBarcodes = [NSMutableSet new];
     [metadataObjects enumerateObjectsUsingBlock: ^(AVMetadataObject *obj, NSUInteger idx, BOOL *stop) {
@@ -154,6 +162,12 @@
             // 4
             Barcode *barcode = [self processMetadataObject:code];
             [foundBarcodes addObject:barcode]; }
+    }];
+    NSMutableSet *newBarcodes = [foundBarcodes mutableCopy];
+    [newBarcodes minusSet:originalBarcodes];
+    NSMutableSet *goneBarcodes = [originalBarcodes mutableCopy]; [goneBarcodes minusSet:foundBarcodes];
+    [goneBarcodes enumerateObjectsUsingBlock: ^(Barcode *barcode, BOOL *stop) {
+        [_barcodes removeObjectForKey:barcode.metadataObject.stringValue];
     }];
     
     dispatch_sync(dispatch_get_main_queue(), ^{
@@ -181,7 +195,19 @@
             cornersPathLayer.strokeColor = [UIColor blueColor].CGColor;
             cornersPathLayer.fillColor = [UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.5f].CGColor;
             [self.view.layer addSublayer:cornersPathLayer];
-        }]; });
+        }];
+    
+        [newBarcodes enumerateObjectsUsingBlock: ^(Barcode *barcode, BOOL *stop) {
+//            AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:barcode.metadataObject.stringValue];
+            AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:@"明月皎皎照我床,星汉西流夜未央 的意思_全诗赏析"];
+            
+            utterance.rate = AVSpeechUtteranceMinimumSpeechRate;
+//            AVSpeechUtteranceMinimumSpeechRate + ((AVSpeechUtteranceMaximumSpeechRate -
+//                                                   AVSpeechUtteranceMinimumSpeechRate) * 0.5f); utterance.volume = 1.0f;
+            utterance.pitchMultiplier = 1.2f; [_speechSynthesizer speakUtterance:utterance];
+        }];
+    
+    });
 }
 
 @end
