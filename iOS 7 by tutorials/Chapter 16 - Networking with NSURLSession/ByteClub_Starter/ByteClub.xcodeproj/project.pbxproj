@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A03A6B391B53259300910C93 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A03A6B381B53259300910C93 /* Launch Screen.xib */; };
 		CB63AF6517A3446300DEBCD7 /* Dropbox.m in Sources */ = {isa = PBXBuildFile; fileRef = CB63AF6417A3446300DEBCD7 /* Dropbox.m */; };
 		CB63AF6817A3452700DEBCD7 /* OAuthLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB63AF6717A3452700DEBCD7 /* OAuthLoginViewController.m */; };
 		CB6A0DA317A5D43400E226E7 /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6A0DA217A5D43400E226E7 /* NotesViewController.m */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A03A6B381B53259300910C93 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		CB63AF6317A3446300DEBCD7 /* Dropbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dropbox.h; sourceTree = "<group>"; };
 		CB63AF6417A3446300DEBCD7 /* Dropbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dropbox.m; sourceTree = "<group>"; };
 		CB63AF6617A3452700DEBCD7 /* OAuthLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthLoginViewController.h; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				CBCBAF8C17A5E5540090674C /* DBFile.h */,
 				CBCBAF8D17A5E5540090674C /* DBFile.m */,
 				CBC908B417A09FD8001A0777 /* Main.storyboard */,
+				A03A6B381B53259300910C93 /* Launch Screen.xib */,
 				CBC908BA17A09FD8001A0777 /* Images.xcassets */,
 				CBC908A917A09FD8001A0777 /* Supporting Files */,
 			);
@@ -283,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBC908BB17A09FD8001A0777 /* Images.xcassets in Resources */,
+				A03A6B391B53259300910C93 /* Launch Screen.xib in Resources */,
 				CBC908AD17A09FD8001A0777 /* InfoPlist.strings in Resources */,
 				CBC908B617A09FD8001A0777 /* Main.storyboard in Resources */,
 			);
