@@ -128,6 +128,7 @@
 			buildPhases = (
 				A0E0ACFD1B4F9FA000B2A3B0 /* Sources */,
 				A0E0ACFE1B4F9FA000B2A3B0 /* Frameworks */,
+				A03A6B371B52026800910C93 /* Bump Build Number */,
 				A0E0ACFF1B4F9FA000B2A3B0 /* Resources */,
 			);
 			buildRules = (
@@ -213,6 +214,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A03A6B371B52026800910C93 /* Bump Build Number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bump Build Number";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "￼￼if [[ \"$CONFIGURATION\" == \"Release\" ]] && [[ \"$USER\" == \"_teamsserver\" ]]\nthen\necho \"Bumping build number\"\nagvtool bump -increment-minor-version\nNEW_BUILD_NUMBER=$(agvtool what-version -terse) /usr/libexec/Plistbuddy -c \"Set CFBundleVersion ${NEW_BUILD_NUMBER}\"\n${PROJECT_DIR}/${INFOPLIST_FILE}\ngit commit -a -m \"Bump to build $NEW_BUILD_NUMBER\" git config push.default simple\ngit push\nelse\necho \"Setting build number to DEV\" /usr/libexec/Plistbuddy -c \"Set CFBundleVersion DEV\"\n${PROJECT_DIR}/${INFOPLIST_FILE} fi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A0E0ACFD1B4F9FA000B2A3B0 /* Sources */ = {
@@ -347,10 +365,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = ColloQR/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -358,10 +378,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = ColloQR/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -418,6 +440,7 @@
 				A0E0AD261B4F9FA000B2A3B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A0E0AD271B4F9FA000B2A3B0 /* Build configuration list for PBXNativeTarget "ColloQRTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +449,7 @@
 				A0E0AD291B4F9FA000B2A3B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
