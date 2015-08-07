@@ -14,6 +14,8 @@
 		A03A5EB61B5C7E2500023DA1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A03A5EB51B5C7E2500023DA1 /* Images.xcassets */; };
 		A03A5EB91B5C7E2500023DA1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A03A5EB71B5C7E2500023DA1 /* LaunchScreen.xib */; };
 		A03A5EC51B5C7E2500023DA1 /* SpeechSynthesizerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A03A5EC41B5C7E2500023DA1 /* SpeechSynthesizerDemoTests.m */; };
+		A03A5ED01B5C7E4B00023DA1 /* HLSpeechSynthesizerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A03A5ECF1B5C7E4B00023DA1 /* HLSpeechSynthesizerManager.m */; };
+		A05BFAF21B5C96C200B6A9A6 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A05BFAF11B5C96C200B6A9A6 /* TestViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 		A03A5EBE1B5C7E2500023DA1 /* SpeechSynthesizerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeechSynthesizerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A03A5EC31B5C7E2500023DA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A03A5EC41B5C7E2500023DA1 /* SpeechSynthesizerDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpeechSynthesizerDemoTests.m; sourceTree = "<group>"; };
+		A03A5ECE1B5C7E4B00023DA1 /* HLSpeechSynthesizerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLSpeechSynthesizerManager.h; sourceTree = "<group>"; };
+		A03A5ECF1B5C7E4B00023DA1 /* HLSpeechSynthesizerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLSpeechSynthesizerManager.m; sourceTree = "<group>"; };
+		A05BFAF01B5C96C200B6A9A6 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		A05BFAF11B5C96C200B6A9A6 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +91,10 @@
 				A03A5EAD1B5C7E2500023DA1 /* AppDelegate.m */,
 				A03A5EAF1B5C7E2500023DA1 /* ViewController.h */,
 				A03A5EB01B5C7E2500023DA1 /* ViewController.m */,
+				A05BFAF01B5C96C200B6A9A6 /* TestViewController.h */,
+				A05BFAF11B5C96C200B6A9A6 /* TestViewController.m */,
+				A03A5ECE1B5C7E4B00023DA1 /* HLSpeechSynthesizerManager.h */,
+				A03A5ECF1B5C7E4B00023DA1 /* HLSpeechSynthesizerManager.m */,
 				A03A5EB21B5C7E2500023DA1 /* Main.storyboard */,
 				A03A5EB51B5C7E2500023DA1 /* Images.xcassets */,
 				A03A5EB71B5C7E2500023DA1 /* LaunchScreen.xib */,
@@ -221,7 +231,9 @@
 			files = (
 				A03A5EB11B5C7E2500023DA1 /* ViewController.m in Sources */,
 				A03A5EAE1B5C7E2500023DA1 /* AppDelegate.m in Sources */,
+				A03A5ED01B5C7E4B00023DA1 /* HLSpeechSynthesizerManager.m in Sources */,
 				A03A5EAB1B5C7E2500023DA1 /* main.m in Sources */,
+				A05BFAF21B5C96C200B6A9A6 /* TestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +428,7 @@
 				A03A5ECA1B5C7E2500023DA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A03A5ECB1B5C7E2500023DA1 /* Build configuration list for PBXNativeTarget "SpeechSynthesizerDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +437,7 @@
 				A03A5ECD1B5C7E2500023DA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

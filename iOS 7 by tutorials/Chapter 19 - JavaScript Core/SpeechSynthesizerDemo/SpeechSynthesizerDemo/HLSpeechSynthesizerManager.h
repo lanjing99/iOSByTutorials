@@ -10,4 +10,8 @@
 
 @interface HLSpeechSynthesizerManager : NSObject
 
+-(void)addVoiceSegmentWithString:(NSString *)string;
+-(void)stopAllVoiceSegments;
+
+
 @end

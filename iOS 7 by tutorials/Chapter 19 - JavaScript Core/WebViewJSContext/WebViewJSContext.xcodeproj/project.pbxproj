@@ -14,6 +14,8 @@
 		A028B5BE1B55083000ADDE46 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A028B5BD1B55083000ADDE46 /* Images.xcassets */; };
 		A028B5C11B55083000ADDE46 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A028B5BF1B55083000ADDE46 /* LaunchScreen.xib */; };
 		A028B5CD1B55083100ADDE46 /* WebViewJSContextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A028B5CC1B55083100ADDE46 /* WebViewJSContextTests.m */; };
+		A028B5D81B55087E00ADDE46 /* UIWebView+TS_JavaScriptContext.m in Sources */ = {isa = PBXBuildFile; fileRef = A028B5D71B55087E00ADDE46 /* UIWebView+TS_JavaScriptContext.m */; };
+		A028B5DA1B550BCD00ADDE46 /* hello.js in Resources */ = {isa = PBXBuildFile; fileRef = A028B5D91B550BB000ADDE46 /* hello.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,9 @@
 		A028B5C61B55083100ADDE46 /* WebViewJSContextTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebViewJSContextTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A028B5CB1B55083100ADDE46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A028B5CC1B55083100ADDE46 /* WebViewJSContextTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewJSContextTests.m; sourceTree = "<group>"; };
+		A028B5D61B55087E00ADDE46 /* UIWebView+TS_JavaScriptContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+TS_JavaScriptContext.h"; sourceTree = "<group>"; };
+		A028B5D71B55087E00ADDE46 /* UIWebView+TS_JavaScriptContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+TS_JavaScriptContext.m"; sourceTree = "<group>"; };
+		A028B5D91B550BB000ADDE46 /* hello.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = hello.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +90,9 @@
 				A028B5B51B55083000ADDE46 /* AppDelegate.m */,
 				A028B5B71B55083000ADDE46 /* ViewController.h */,
 				A028B5B81B55083000ADDE46 /* ViewController.m */,
+				A028B5D91B550BB000ADDE46 /* hello.js */,
+				A028B5D61B55087E00ADDE46 /* UIWebView+TS_JavaScriptContext.h */,
+				A028B5D71B55087E00ADDE46 /* UIWebView+TS_JavaScriptContext.m */,
 				A028B5BA1B55083000ADDE46 /* Main.storyboard */,
 				A028B5BD1B55083000ADDE46 /* Images.xcassets */,
 				A028B5BF1B55083000ADDE46 /* LaunchScreen.xib */,
@@ -199,6 +207,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A028B5DA1B550BCD00ADDE46 /* hello.js in Resources */,
 				A028B5BC1B55083000ADDE46 /* Main.storyboard in Resources */,
 				A028B5C11B55083000ADDE46 /* LaunchScreen.xib in Resources */,
 				A028B5BE1B55083000ADDE46 /* Images.xcassets in Resources */,
@@ -221,6 +230,7 @@
 			files = (
 				A028B5B91B55083000ADDE46 /* ViewController.m in Sources */,
 				A028B5B61B55083000ADDE46 /* AppDelegate.m in Sources */,
+				A028B5D81B55087E00ADDE46 /* UIWebView+TS_JavaScriptContext.m in Sources */,
 				A028B5B31B55083000ADDE46 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
