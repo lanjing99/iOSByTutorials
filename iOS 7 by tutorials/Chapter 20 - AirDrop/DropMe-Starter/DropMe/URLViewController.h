@@ -7,12 +7,12 @@
 //
 
 @import UIKit;
-
+#import "BaseViewController.h"
 /*
  * The purpose of this class is to let user browse the internet 
  * and share a link to a web page via AirDrop.
  */
 
-@interface URLViewController : UIViewController
+@interface URLViewController : BaseViewController
 
 @end

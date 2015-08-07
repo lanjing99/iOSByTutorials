@@ -25,6 +25,7 @@
     UIColor *backgroundBlueTint = RGBColor(35.0, 141.0, 207.0);
     self.textField.tintColor = backgroundBlueTint;
     
+    
     [super viewDidLoad];
 }
 
@@ -57,6 +58,7 @@
 {
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     [self.webView loadRequest:request];
+    self.objectsToShare = @[URL];
 }
 
 /*
@@ -101,6 +103,8 @@
 {
     if (navigationType == UIWebViewNavigationTypeLinkClicked)
     {
+        self.textField.text = request.URL.absoluteString;
+        self.objectsToShare = @[request.URL];
     }
     
     return YES;
