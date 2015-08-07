@@ -29,6 +29,8 @@
     // add text color to it.
     self.textView.attributedText = [self evaluatedAttributedStringWithAttributedString:self.textView.attributedText];
     
+    self.objectsToShare = @[self.textView.attributedText];
+    
     [super viewDidLoad];
 }
 
@@ -66,6 +68,7 @@
 {
     // Display the 'Done' button.
     [self showDoneButton];
+    self.objectsToShare = @[self.textView.attributedText];
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
@@ -75,6 +78,8 @@
     NSAttributedString *attrStr = [self evaluatedAttributedStringWithAttributedString:textView.attributedText];
     textView.attributedText = attrStr;
     
+    self.objectsToShare = @[attrStr];
+    
     return YES;
 }
 
@@ -82,6 +87,7 @@
 {
     // Hide the 'Done' button.
     [self hideDoneButton];
+    self.objectsToShare = @[self.textView.attributedText];
 }
 
 #pragma mark
