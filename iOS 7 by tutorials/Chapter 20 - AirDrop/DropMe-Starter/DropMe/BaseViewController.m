@@ -19,19 +19,43 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+-(void)displayActionButton
+{
+    UIBarButtonItem *actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonTapped:)];
+    [self.navigationItem setLeftBarButtonItem:actionButton animated:YES];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)hideActionButton
+{
+    [self.navigationItem setLeftBarButtonItem:nil animated:YES];
 }
-*/
 
+-(void)setObjectsToShare:(NSArray *)objectsToShare
+{
+    _objectsToShare = [objectsToShare copy];
+    if([objectsToShare count])
+    {
+        [self displayActionButton];
+    }
+    else
+    {
+        [self hideActionButton];
+    }
+}
+
+-(void)presentActivityViewControllerWithObjects:(NSArray *)objects
+{
+    UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:objects applicationActivities:nil];
+    NSArray *excludedActivities = @[UIActivityTypePostToFacebook, UIActivityTypePostToFlickr, UIActivityTypePostToTencentWeibo];
+    controller.excludedActivityTypes = excludedActivities;
+    
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+-(void)actionButtonTapped:(id)sender
+{
+    [self presentActivityViewControllerWithObjects:self.objectsToShare];
+}
 @end

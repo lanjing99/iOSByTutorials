@@ -25,6 +25,8 @@
     self.textView.tintColor = backgroundBlueTint;
     
     [super viewDidLoad];
+    
+    self.objectsToShare = @[self.textView.text];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -61,16 +63,19 @@
 {
     // Display the 'Done' button.
     [self showDoneButton];
+    self.objectsToShare = @[self.textView.text];
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
+    self.objectsToShare = @[self.textView.text];
     return YES;
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
     // Hide the 'Done' button.
+    self.objectsToShare = @[self.textView.text];
     [self hideDoneButton];
 }
 

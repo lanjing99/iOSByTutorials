@@ -7,12 +7,14 @@
 //
 
 @import UIKit;
+#import "BaseViewController.h"
 
 /*
  * The purpose of this class is to let user type in some text as a note
  * in plain text format and share it via AirDrop.
  */
 
-@interface StringViewController : UIViewController
+@interface StringViewController : BaseViewController
+
 
 @end

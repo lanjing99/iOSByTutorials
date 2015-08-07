@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4488.2" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ca8-GJ-nRj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ca8-GJ-nRj">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3715.3"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller - String-->
+        <!--String-->
         <scene sceneID="xat-xI-Zgv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LnU-9U-e6t" customClass="NavigationController" sceneMemberID="viewController">
@@ -40,7 +41,6 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jtb-un-fCa">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">AirDrop
 
@@ -94,7 +94,7 @@ Share photos, documents, URLs and other types of data with multiple devices near
             </objects>
             <point key="canvasLocation" x="-173" y="1015"/>
         </scene>
-        <!--Navigation Controller - Attributed-->
+        <!--Attributed-->
         <scene sceneID="Wcl-T8-ujU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cxk-cA-qhn" customClass="NavigationController" sceneMemberID="viewController">
@@ -128,7 +128,6 @@ Share photos, documents, URLs and other types of data with multiple devices near
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L2l-ll-A0H">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -178,7 +177,7 @@ Rainbows are colorful. There is blue and red. There is purple and brown. Green! 
             </objects>
             <point key="canvasLocation" x="1252" y="307"/>
         </scene>
-        <!--Navigation Controller - Link-->
+        <!--Link-->
         <scene sceneID="Fxr-00-XLm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JnV-FN-J5v" customClass="NavigationController" sceneMemberID="viewController">
@@ -212,7 +211,6 @@ Rainbows are colorful. There is blue and red. There is purple and brown. Green! 
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://www.raywenderlich.com" placeholder="http://www.raywenderlich.com" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Igt-PM-3cz">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="go"/>
                                 <connections>
@@ -221,7 +219,6 @@ Rainbows are colorful. There is blue and red. There is purple and brown. Green! 
                             </textField>
                             <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rk2-pB-4jh">
                                 <rect key="frame" x="0.0" y="30" width="320" height="425"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="PSC-x5-V18" id="n4a-L4-Q45"/>
@@ -229,11 +226,9 @@ Rainbows are colorful. There is blue and red. There is purple and brown. Green! 
                             </webView>
                             <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Te2-BV-rOE">
                                 <rect key="frame" x="0.0" y="30" width="320" height="425"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="JmZ-al-hsB">
                                         <rect key="frame" x="142" y="194" width="37" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -253,7 +248,7 @@ Rainbows are colorful. There is blue and red. There is purple and brown. Green! 
             </objects>
             <point key="canvasLocation" x="1259" y="1015"/>
         </scene>
-        <!--Navigation Controller - Image-->
+        <!--Image-->
         <scene sceneID="Jcz-ax-PBH">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hyO-x6-hK0" customClass="NavigationController" sceneMemberID="viewController">
@@ -287,11 +282,9 @@ Rainbows are colorful. There is blue and red. There is purple and brown. Green! 
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eY4-Mh-R8c">
                                 <rect key="frame" x="43" y="179" width="235" height="235"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMa-Zk-42Z">
                                 <rect key="frame" x="20" y="103" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Photo Albums">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -306,7 +299,6 @@ Rainbows are colorful. There is blue and red. There is purple and brown. Green! 
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JR5-LF-M7T">
                                 <rect key="frame" x="20" y="141" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Camera">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -321,8 +313,7 @@ Rainbows are colorful. There is blue and red. There is purple and brown. Green! 
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Import image or movie from your photo library or take a new picture or record a video!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="rSx-oB-P9p">
                                 <rect key="frame" x="20" y="20" width="280" height="75"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead1"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -338,7 +329,7 @@ Rainbows are colorful. There is blue and red. There is purple and brown. Green! 
             </objects>
             <point key="canvasLocation" x="1252" y="1719"/>
         </scene>
-        <!--Navigation Controller - Documents-->
+        <!--Documents-->
         <scene sceneID="yjm-1h-H7T">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lw5-TQ-P6F" customClass="NavigationController" sceneMemberID="viewController">
@@ -358,7 +349,7 @@ Rainbows are colorful. There is blue and red. There is purple and brown. Green! 
             </objects>
             <point key="canvasLocation" x="711" y="2433"/>
         </scene>
-        <!--Documents View Controller - Documents-->
+        <!--Documents-->
         <scene sceneID="6cw-Gb-Vms">
             <objects>
                 <viewController title="Documents" id="7Fi-w0-8d2" customClass="DocumentsViewController" sceneMemberID="viewController">
@@ -370,23 +361,22 @@ Rainbows are colorful. There is blue and red. There is purple and brown. Green! 
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="JLX-Gu-705">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="JLX-Gu-705">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell identifier" textLabel="WeE-uo-jig" style="IBUITableViewCellStyleDefault" id="nB8-n3-8bp">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell identifier" textLabel="WeE-uo-jig" style="IBUITableViewCellStyleDefault" id="nB8-n3-8bp">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="nB8-n3-8bp" id="ble-G7-5Js">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nB8-n3-8bp" id="ble-G7-5Js">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" text="Title" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="WeE-uo-jig">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="WeE-uo-jig">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>

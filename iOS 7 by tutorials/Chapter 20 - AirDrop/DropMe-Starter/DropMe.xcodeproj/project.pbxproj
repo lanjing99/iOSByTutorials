@@ -30,6 +30,8 @@
 		6DD383E0177A94B4002C8606 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DD383DF177A94B4002C8606 /* ImageViewController.m */; };
 		6DD383E3177A9CE0002C8606 /* URLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DD383E2177A9CE0002C8606 /* URLViewController.m */; };
 		6DDC08A51794A65F00CFC768 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDC08A41794A65F00CFC768 /* NavigationController.m */; };
+		A09159391B756BB300407B81 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A09159381B756BB300407B81 /* BaseViewController.m */; };
+		A091593B1B7575C700407B81 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A091593A1B7575C700407B81 /* Launch Screen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,9 @@
 		6DD383E2177A9CE0002C8606 /* URLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = URLViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6DDC08A31794A65F00CFC768 /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
 		6DDC08A41794A65F00CFC768 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
+		A09159371B756BB300407B81 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		A09159381B756BB300407B81 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		A091593A1B7575C700407B81 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				6DD383D0177A609F002C8606 /* Storyboard.storyboard */,
+				A091593A1B7575C700407B81 /* Launch Screen.xib */,
 				6DD383AE177A6043002C8606 /* AppDelegate.h */,
 				6DD383AF177A6043002C8606 /* AppDelegate.m */,
 				6DDC08A31794A65F00CFC768 /* NavigationController.h */,
@@ -163,6 +169,8 @@
 				6DD383DF177A94B4002C8606 /* ImageViewController.m */,
 				6D4573DE177D3CF6007AB440 /* DocumentsViewController.h */,
 				6D4573DF177D3CF6007AB440 /* DocumentsViewController.m */,
+				A09159371B756BB300407B81 /* BaseViewController.h */,
+				A09159381B756BB300407B81 /* BaseViewController.m */,
 				6D991DA217BC780900982A78 /* Sample DropMe Files */,
 				6D39F9CC177F27320006E65A /* Images.xcassets */,
 				6DD383A6177A6043002C8606 /* Supporting Files */,
@@ -250,7 +258,7 @@
 				ORGANIZATIONNAME = "Razeware LLC";
 				TargetAttributes = {
 					6DD3839B177A6043002C8606 = {
-						DevelopmentTeam = 2X468FT7VV;
+						DevelopmentTeam = 36NR94V75M;
 					};
 					6DD383B6177A6043002C8606 = {
 						TestTargetID = 6DD3839B177A6043002C8606;
@@ -285,6 +293,7 @@
 				6DD383AA177A6043002C8606 /* InfoPlist.strings in Resources */,
 				6D39F9CD177F27320006E65A /* Images.xcassets in Resources */,
 				6D003C0517C8813C00A78F98 /* fileIcon@2x.png in Resources */,
+				A091593B1B7575C700407B81 /* Launch Screen.xib in Resources */,
 				6DD383D1177A609F002C8606 /* Storyboard.storyboard in Resources */,
 				6D588BBB17BC6949008056D1 /* Water.dm in Resources */,
 			);
@@ -306,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DD383E3177A9CE0002C8606 /* URLViewController.m in Sources */,
+				A09159391B756BB300407B81 /* BaseViewController.m in Sources */,
 				6DD383DA177A68A9002C8606 /* StringViewController.m in Sources */,
 				6DDC08A51794A65F00CFC768 /* NavigationController.m in Sources */,
 				6D4573E0177D3CF6007AB440 /* DocumentsViewController.m in Sources */,
@@ -427,13 +437,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: wenjing chenwj (R75Q96GCE4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: wenjing chenwj (R75Q96GCE4)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DropMe/DropMe-Prefix.pch";
 				INFOPLIST_FILE = "DropMe/DropMe-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ceb4688f-789a-4c52-8234-dc4911f408a4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -443,13 +454,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: wenjing chenwj (R75Q96GCE4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: wenjing chenwj (R75Q96GCE4)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DropMe/DropMe-Prefix.pch";
 				INFOPLIST_FILE = "DropMe/DropMe-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ceb4688f-789a-4c52-8234-dc4911f408a4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -458,6 +470,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DropMe.app/DropMe";
+				CODE_SIGN_IDENTITY = "iPhone Developer: wenjing chenwj (R75Q96GCE4)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -471,6 +484,7 @@
 				);
 				INFOPLIST_FILE = "DropMeTests/DropMeTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ceb4688f-789a-4c52-8234-dc4911f408a4";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -489,6 +503,7 @@
 				GCC_PREFIX_HEADER = "DropMe/DropMe-Prefix.pch";
 				INFOPLIST_FILE = "DropMeTests/DropMeTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ceb4688f-789a-4c52-8234-dc4911f408a4";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
