@@ -7,8 +7,13 @@
 //
 
 #import "AppDelegate.h"
+NSString *const kServiceType = @"rw-cardshare";
+NSString *const DataReceivedNotification = @"com.razeware.apps.CardShare:DataReceivedNotification";
+
 
 @interface AppDelegate ()
+
+@property (nonatomic, strong) MCAdvertiserAssistant *advertiserAssistant;
 
 @end
 
@@ -27,6 +32,7 @@
     [[UIToolbar appearance] setBarStyle:UIBarStyleBlackOpaque];
     [[UIToolbar appearance] setBarTintColor:[self mainColor]];
     
+    
     // Initialize properties
     self.cards = [@[] mutableCopy];
     
@@ -42,6 +48,16 @@
         NSData *otherCardsData = [defaults objectForKey:@"otherCards"];
         self.otherCards = (NSMutableArray *)[NSKeyedUnarchiver unarchiveObjectWithData:otherCardsData];
     }
+    
+    
+    
+    
+    NSString *peerName = self.myCard.firstName ? : [UIDevice currentDevice].name;
+    self.peerID = [[MCPeerID alloc] initWithDisplayName:peerName];
+    self.session = [[MCSession alloc] initWithPeer:self.peerID];
+    self.advertiserAssistant = [[MCAdvertiserAssistant alloc] initWithServiceType:kServiceType discoveryInfo:nil session:self.session];
+    [self.advertiserAssistant start];
+    
     
     return YES;
 }
@@ -83,6 +99,13 @@
     NSMutableSet *cardsSet = [NSMutableSet setWithArray:self.cards];
     [cardsSet removeObject:card];
     self.cards = [[cardsSet allObjects] mutableCopy];
+}
+
+
+-(void)sendCardToPeer
+{
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.myCard];
+    [self.session sendData:data toPeers:[self.session connectedPeers] withMode:MCSessionSendDataReliable error:nil];
 }
 
 @end

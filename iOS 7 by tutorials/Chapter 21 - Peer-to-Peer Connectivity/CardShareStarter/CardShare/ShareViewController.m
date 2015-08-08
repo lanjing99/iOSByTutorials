@@ -11,9 +11,10 @@
 #import "MyBrowserViewController.h"
 #import "Card.h"
 #import "SingleCardViewController.h"
+#import <MultipeerConnectivity/MultipeerConnectivity.h>
 
 @interface ShareViewController ()
-<UITableViewDataSource, UITableViewDelegate>
+<UITableViewDataSource, UITableViewDelegate, MCBrowserViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *emptyAddButton;
@@ -30,7 +31,21 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(dataReceived:) name:DataReceivedNotification
+                                               object:nil];
 
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)dataReceived:(NSNotification *)notification
+{
+    [self showHideNoDataView];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,6 +72,14 @@
                           cancelButtonTitle:@"OK"
                           otherButtonTitles:nil]
          show];
+    }
+    else if([delegate.session connectedPeers].count == 0){
+        MCBrowserViewController *browerViewController = [[MCBrowserViewController alloc] initWithServiceType:kServiceType session:delegate.session];
+        browerViewController.delegate = self;
+        [self presentViewController:browerViewController animated:YES completion:nil];
+    }
+    else{
+        [self sendCard];
     }
 }
 
@@ -151,6 +174,26 @@
                       cancelButtonTitle:@"OK"
                       otherButtonTitles:nil]
      show];
+}
+
+-(void)browserViewControllerDidFinish:(MCBrowserViewController *)browserViewController
+{
+    [browserViewController dismissViewControllerAnimated:YES completion:^{
+        [self sendCard];
+    }];
+}
+
+-(void)browserViewControllerWasCancelled:(MCBrowserViewController *)browserViewController
+{
+    [browserViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)sendCard
+{
+    AppDelegate *delegate =
+    (AppDelegate *) [[UIApplication sharedApplication]
+                     delegate]; [delegate sendCardToPeer];
+    [self showMessage:@"Card sent to nearby device"];
 }
 
 @end
