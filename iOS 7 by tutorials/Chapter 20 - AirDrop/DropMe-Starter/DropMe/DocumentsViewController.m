@@ -197,6 +197,7 @@
     {
         [self.toShare addObject:document];
     }
+    self.objectsToShare = [self.toShare copy];
 }
 
 /*
@@ -205,6 +206,7 @@
 - (void)updateViewWithNotification:(NSNotification *)notification
 {
     self.toShare = nil;
+    self.objectsToShare = nil;
     self.documents = nil;
     [self.tableView reloadData];
 }

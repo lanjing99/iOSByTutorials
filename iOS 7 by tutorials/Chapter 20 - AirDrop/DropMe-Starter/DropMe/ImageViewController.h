@@ -7,6 +7,7 @@
 //
 
 @import UIKit;
+#import "BaseViewController.h"
 
 /*
  * The purpose of this class is to generate let user pick
@@ -14,6 +15,6 @@
  * or record a video with device camera and share it via AirDrop.
  */
 
-@interface ImageViewController : UIViewController
+@interface ImageViewController : BaseViewController
 
 @end

@@ -7,7 +7,8 @@
 //
 
 @import UIKit;
+#import "BaseViewController.h"
 
-@interface DocumentsViewController : UIViewController
+@interface DocumentsViewController : BaseViewController
 
 @end
