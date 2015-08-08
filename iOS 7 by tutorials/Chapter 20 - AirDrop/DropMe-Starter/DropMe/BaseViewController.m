@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+@import AVFoundation;
 
 @interface BaseViewController ()
 
@@ -50,6 +51,10 @@
     UIActivityViewController *controller = [[UIActivityViewController alloc] initWithActivityItems:objects applicationActivities:nil];
     NSArray *excludedActivities = @[UIActivityTypePostToFacebook, UIActivityTypePostToFlickr, UIActivityTypePostToTencentWeibo];
     controller.excludedActivityTypes = excludedActivities;
+    controller.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError)
+    {
+        AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+    };
     
     [self presentViewController:controller animated:YES completion:nil];
 }

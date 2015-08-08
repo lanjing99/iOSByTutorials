@@ -30,7 +30,7 @@
 		6DD383E0177A94B4002C8606 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DD383DF177A94B4002C8606 /* ImageViewController.m */; };
 		6DD383E3177A9CE0002C8606 /* URLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DD383E2177A9CE0002C8606 /* URLViewController.m */; };
 		6DDC08A51794A65F00CFC768 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDC08A41794A65F00CFC768 /* NavigationController.m */; };
-		A09159391B756BB300407B81 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A09159381B756BB300407B81 /* BaseViewController.m */; };
+		A074FB321B75925F003BE5DB /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A074FB311B75925F003BE5DB /* BaseViewController.m */; };
 		A091593B1B7575C700407B81 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A091593A1B7575C700407B81 /* Launch Screen.xib */; };
 /* End PBXBuildFile section */
 
@@ -80,8 +80,8 @@
 		6DD383E2177A9CE0002C8606 /* URLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = URLViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6DDC08A31794A65F00CFC768 /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
 		6DDC08A41794A65F00CFC768 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
+		A074FB311B75925F003BE5DB /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		A09159371B756BB300407B81 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
-		A09159381B756BB300407B81 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		A091593A1B7575C700407B81 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,7 +170,7 @@
 				6D4573DE177D3CF6007AB440 /* DocumentsViewController.h */,
 				6D4573DF177D3CF6007AB440 /* DocumentsViewController.m */,
 				A09159371B756BB300407B81 /* BaseViewController.h */,
-				A09159381B756BB300407B81 /* BaseViewController.m */,
+				A074FB311B75925F003BE5DB /* BaseViewController.m */,
 				6D991DA217BC780900982A78 /* Sample DropMe Files */,
 				6D39F9CC177F27320006E65A /* Images.xcassets */,
 				6DD383A6177A6043002C8606 /* Supporting Files */,
@@ -315,7 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DD383E3177A9CE0002C8606 /* URLViewController.m in Sources */,
-				A09159391B756BB300407B81 /* BaseViewController.m in Sources */,
+				A074FB321B75925F003BE5DB /* BaseViewController.m in Sources */,
 				6DD383DA177A68A9002C8606 /* StringViewController.m in Sources */,
 				6DDC08A51794A65F00CFC768 /* NavigationController.m in Sources */,
 				6D4573E0177D3CF6007AB440 /* DocumentsViewController.m in Sources */,
