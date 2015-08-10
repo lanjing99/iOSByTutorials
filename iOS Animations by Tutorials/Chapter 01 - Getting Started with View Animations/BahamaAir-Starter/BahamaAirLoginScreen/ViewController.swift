@@ -80,11 +80,37 @@ class ViewController: UIViewController {
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     
+    cloud1.alpha = 0
+    cloud2.alpha = 0
+    cloud3.alpha = 0
+    cloud4.alpha = 0
+    
+    heading.center.x -= view.bounds.width
+    username.center.x -= view.bounds.width
+    password.center.x -= view.bounds.width
   }
   
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
     
+    UIView.animateWithDuration(0.5, animations: {
+        self.heading.center.x += self.view.bounds.width
+        
+        }
+    )
+    
+    //try .Repeat | .Autoreverse for options
+    UIView.animateWithDuration(0.5, delay: 0.3, options: nil, animations: {
+        self.username.center.x += self.view.bounds.width
+        }, completion: nil
+    )
+    
+    UIView.animateWithDuration(1, delay: 0.3, options: .Repeat | .Autoreverse | .CurveEaseInOut, animations: {
+            self.cloud1.alpha = 1
+            self.cloud2.alpha = 1
+            self.cloud3.alpha = 1
+            self.cloud4.alpha = 1
+        }, completion: nil)
   }
   
   // MARK: further methods
