@@ -88,6 +88,9 @@ class ViewController: UIViewController {
     heading.center.x -= view.bounds.width
     username.center.x -= view.bounds.width
     password.center.x -= view.bounds.width
+    
+    loginButton.center.y += 30;
+    loginButton.alpha = 0
   }
   
   override func viewDidAppear(animated: Bool) {
@@ -100,10 +103,16 @@ class ViewController: UIViewController {
     )
     
     //try .Repeat | .Autoreverse for options
-    UIView.animateWithDuration(0.5, delay: 0.3, options: nil, animations: {
+//    UIView.animateWithDuration(0.5, delay: 0.3, options: nil, animations: {
+//        self.username.center.x += self.view.bounds.width
+//        self.password.center.x += self.view.bounds.width
+//        }, completion: nil
+//    )
+    
+    UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: nil, animations: { () -> Void in
         self.username.center.x += self.view.bounds.width
-        }, completion: nil
-    )
+        self.password.center.x += self.view.bounds.width
+    }, completion: nil)
     
     UIView.animateWithDuration(1, delay: 0.3, options: .Repeat | .Autoreverse | .CurveEaseInOut, animations: {
             self.cloud1.alpha = 1
@@ -111,11 +120,27 @@ class ViewController: UIViewController {
             self.cloud3.alpha = 1
             self.cloud4.alpha = 1
         }, completion: nil)
+    
+    
+    UIView.animateWithDuration(1, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 1.0, options: nil, animations: {
+        self.loginButton.center.y -= 30.0
+        self.loginButton.alpha = 1.0 }, completion: nil)
   }
   
   // MARK: further methods
   
   @IBAction func login() {
+    
+    UIView.animateWithDuration(1.5, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.0, options: nil, animations: {
+    
+        self.loginButton.bounds.size.width += 80.0
+        self.loginButton.backgroundColor = UIColor(red: 0.85, green: 0.83, blue: 0.45, alpha: 1.0)
+        self.spinner.center = CGPoint(x: 40.0, y: self.loginButton.frame.size.height/2)
+        self.spinner.alpha = 1.0
+    
+    }, completion: nil)
+    
+    
     
   }
   
