@@ -51,6 +51,7 @@ class ViewController: UIViewController {
   let status = UIImageView(image: UIImage(named: "banner"))
   let label = UILabel()
   let messages = ["Connecting ...", "Authorizing ...", "Sending credentials ...", "Failed"]
+  var statusPosition = CGPoint.zeroPoint
   
   // MARK: view controller methods
   
@@ -75,6 +76,8 @@ class ViewController: UIViewController {
     label.textColor = UIColor(red: 0.89, green: 0.38, blue: 0.0, alpha: 1.0)
     label.textAlignment = .Center
     status.addSubview(label)
+    
+    statusPosition = status.center
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -134,15 +137,40 @@ class ViewController: UIViewController {
     UIView.animateWithDuration(1.5, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.0, options: nil, animations: {
     
         self.loginButton.bounds.size.width += 80.0
+        self.loginButton.frame.origin.y += 80.0
         self.loginButton.backgroundColor = UIColor(red: 0.85, green: 0.83, blue: 0.45, alpha: 1.0)
         self.spinner.center = CGPoint(x: 40.0, y: self.loginButton.frame.size.height/2)
         self.spinner.alpha = 1.0
     
-    }, completion: nil)
-    
+        },
+        completion: {_ in
+            self.showMessage(index: 0)
+    })
     
     
   }
+    
+    func showMessage(#index: Int) {
+        label.text = messages[index]
+        UIView.transitionWithView(status, duration: 0.33, options: .CurveEaseOut | .TransitionCrossDissolve, animations: {
+        self.status.hidden = false }, completion: {_ in
+        //transition completion
+            delay(seconds: 2.0) {
+                if index < self.messages.count-1 {
+                self.removeMessage(index: index) } else {
+                //reset form
+                } }
+        })
+    }
   
+    func removeMessage(#index: Int){
+        UIView.animateWithDuration(0.33, delay: 0.0, options: nil, animations:
+        {
+        self.status.center.x += self.view.frame.size.width
+        }, completion: {_ in
+        self.status.hidden = true
+        self.status.center = self.statusPosition
+        self.showMessage(index: index+1) })
+    }
 }
 
