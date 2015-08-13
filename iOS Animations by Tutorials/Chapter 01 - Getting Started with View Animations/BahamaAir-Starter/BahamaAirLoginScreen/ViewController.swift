@@ -51,6 +51,7 @@ class ViewController: UIViewController {
   let status = UIImageView(image: UIImage(named: "banner"))
   let label = UILabel()
   let messages = ["Connecting ...", "Authorizing ...", "Sending credentials ...", "Failed"]
+    let cloudAnimatedDuration : CGFloat = 60.0
   var statusPosition = CGPoint.zeroPoint
   
   // MARK: view controller methods
@@ -117,7 +118,7 @@ class ViewController: UIViewController {
         self.password.center.x += self.view.bounds.width
     }, completion: nil)
     
-    UIView.animateWithDuration(1, delay: 0.3, options: .Repeat | .Autoreverse | .CurveEaseInOut, animations: {
+    UIView.animateWithDuration(1, delay: 0.3, options: .CurveEaseInOut, animations: {
             self.cloud1.alpha = 1
             self.cloud2.alpha = 1
             self.cloud3.alpha = 1
@@ -128,6 +129,11 @@ class ViewController: UIViewController {
     UIView.animateWithDuration(1, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 1.0, options: nil, animations: {
         self.loginButton.center.y -= 30.0
         self.loginButton.alpha = 1.0 }, completion: nil)
+    
+    animateCloud(cloud1)
+    animateCloud(cloud2)
+    animateCloud(cloud3)
+    animateCloud(cloud4)
   }
   
   // MARK: further methods
@@ -171,6 +177,19 @@ class ViewController: UIViewController {
         self.status.hidden = true
         self.status.center = self.statusPosition
         self.showMessage(index: index+1) })
+    }
+    
+    func animateCloud(cloud: UIImageView){
+    
+    let cloudSpeed = view.frame.size.width / cloudAnimatedDuration
+    let duration = (view.frame.size.width - cloud.frame.origin.x) / cloudSpeed
+    UIView.animateWithDuration(NSTimeInterval(duration), delay: 0.0, options: .CurveLinear, animations: {
+            cloud.frame.origin.x = self.view.frame.size.width
+            }, completion: {_ in
+            cloud.frame.origin.x = -cloud.frame.size.width
+            self.animateCloud(cloud)
+            })
+    
     }
 }
 
