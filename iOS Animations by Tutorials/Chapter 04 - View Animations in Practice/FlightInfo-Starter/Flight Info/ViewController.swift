@@ -69,28 +69,50 @@ class ViewController: UIViewController {
     view.addSubview(snowClipView)
     
     //start rotating the flights
-    changeFlightDataTo(londonToParis)
+    changeFlightDataTo(londonToParis, animated:true)
   }
   
   //MARK: custom methods
   
-  func changeFlightDataTo(data: FlightData) {
+    func changeFlightDataTo(data: FlightData, animated: Bool = false) {
     
     // populate the UI with the next flight's data
-    summary.text = data.summary
-    flightNr.text = data.flightNr
-    gateNr.text = data.gateNr
-    departingFrom.text = data.departingFrom
-    arrivingTo.text = data.arrivingTo
-    flightStatus.text = data.flightStatus
-    bgImageView.image = UIImage(named: data.weatherImageName)
+    summary.text = data.summary as String
+    flightNr.text = data.flightNr as String
+    gateNr.text = data.gateNr as String
+    departingFrom.text = data.departingFrom as String
+    arrivingTo.text = data.arrivingTo as String
+    flightStatus.text = data.flightStatus as String
+    bgImageView.image = UIImage(named: data.weatherImageName as String)
     snowView.hidden = !data.showWeatherEffects
     
-    // schedule next flight
-    delay(seconds: 3.0) {
-      self.changeFlightDataTo(data.isTakingOff ? parisToRome : londonToParis)
+    if(animated)
+    {
+        [self.fadeImageView(bgImageView, toImage: UIImage(named: data.weatherImageName as! String)!, showEffects: true)]
     }
-  }
+    else
+    {
+        bgImageView.image = UIImage(named: data.weatherImageName as! String)
+        snowView.hidden = !data.showWeatherEffects;
+    }
+    
+    // schedule next flight
+//    delay(seconds: 3.0) {
+//      self.changeFlightDataTo(data.isTakingOff ? parisToRome : londonToParis)
+//        }
+        
+        delay(seconds: 3.0, nil)
+    }
+    
+    func fadeImageView(imageView: UIImageView, toImage: UIImage, showEffects: Bool)
+    {
+        UIView.animateWithDuration(3.0, animations: { () -> Void in
+            
+            self.snowView.alpha = showEffects ? 1.0 : 0
+            imageView.alpha = showEffects ? 0 : 1.0
+            
+        }, completion: nil)
+    }
   
   
 }

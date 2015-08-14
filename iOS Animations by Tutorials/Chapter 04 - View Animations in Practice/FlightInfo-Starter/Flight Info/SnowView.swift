@@ -28,7 +28,7 @@ class SnowView: UIView {
   override init(frame: CGRect) {
     super.init(frame: frame)
     
-    let emitter = layer as CAEmitterLayer
+    let emitter = layer as! CAEmitterLayer
     emitter.emitterPosition = CGPoint(x: bounds.size.width / 2, y: 0)
     emitter.emitterSize = bounds.size
     emitter.emitterShape = kCAEmitterLayerRectangle
