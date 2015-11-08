@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ChecklistItem: NSObject {
+class ChecklistItem : NSObject {
     
-    var text = ""
+    var text:String? = ""
     var checked = false
 
 }
