@@ -26,14 +26,14 @@
                                             <rect key="frame" x="50" y="11" width="509" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="✅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5b-zQ-yt4">
                                             <rect key="frame" x="20" y="11" width="22" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -84,12 +84,12 @@
         <!--Add Item-->
         <scene sceneID="htK-Uf-CMT">
             <objects>
-                <tableViewController id="MED-Xe-sa5" customClass="AddItemViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="MED-Xe-sa5" customClass="ItemDetailViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="44p-Md-erC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="0p2-Xz-3Zk">
                                 <cells>
@@ -126,12 +126,12 @@
                     <navigationItem key="navigationItem" title="Add Item" id="tQD-0m-gIP">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="i5I-gB-Jsl">
                             <connections>
-                                <action selector="cancel:" destination="MED-Xe-sa5" id="zIU-th-rij"/>
+                                <action selector="cancel" destination="MED-Xe-sa5" id="UZz-yN-zKn"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="zKf-Wb-hs4">
                             <connections>
-                                <action selector="add:" destination="MED-Xe-sa5" id="sTQ-M3-zuf"/>
+                                <action selector="done" destination="MED-Xe-sa5" id="cLw-fI-Ojj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

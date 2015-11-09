@@ -2,15 +2,17 @@
 //  ChecklistItem.swift
 //  Checklists
 //
-//  Created by lanjing on 11/8/15.
-//  Copyright © 2015 lanjing. All rights reserved.
+//  Created by M.I. Hollemans on 27/07/15.
+//  Copyright © 2015 Razeware. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-class ChecklistItem : NSObject {
-    
-    var text:String? = ""
-    var checked = false
-
+class ChecklistItem:NSObject {
+  var text = ""
+  var checked = false
+  
+  func toggleChecked() {
+    checked = !checked
+  }
 }
