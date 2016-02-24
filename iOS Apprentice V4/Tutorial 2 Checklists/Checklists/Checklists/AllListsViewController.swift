@@ -15,14 +15,7 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     required init?(coder aDecoder: NSCoder) {
         lists = [Checklist]()
         super.init(coder: aDecoder)
-        var list = Checklist(name: "Birthdays")
-        lists.append(list)
-        list = Checklist(name: "Groceries")
-        lists.append(list)
-        list = Checklist(name: "Cool Apps")
-        lists.append(list)
-        list = Checklist(name: "To Do")
-        lists.append(list)
+        configData()
     }
     
     override func viewDidLoad() {
@@ -151,6 +144,66 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
         }
         return lists[indexPath.row]
     }
+    
+    
+    
+    //MARK: - private methods
+    private func configData(){
+        
+        var list = Checklist(name: "Birthdays")
+        lists.append(list)
+        list = Checklist(name: "Groceries")
+        lists.append(list)
+        list = Checklist(name: "Cool Apps")
+        lists.append(list)
+        list = Checklist(name: "To Do")
+        lists.append(list)
+        
+        for list in lists {
+            let item = ChecklistItem()
+            item.text = "item for \(list.name)"
+            list.items.append(item)
+        }
+    }
+    
+    
+    
+    
+    
+    func documentDirectory()->String{
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        return paths[0]
+    }
+    
+    func dataFilePath() -> String{
+        return (documentDirectory() as NSString).stringByAppendingPathComponent("Checklist.plist")
+    }
+    
+    func saveChecklistItem(){
+        let data = NSMutableData()
+        let archiver = NSKeyedArchiver(forWritingWithMutableData: data)
+        archiver.encodeObject(lists, forKey: "lists")
+        archiver.finishEncoding()
+        data.writeToFile(dataFilePath(), atomically: true)
+    }
+    
+    func loadChecklistItems(){
+        let path = dataFilePath()
+        //        if NSFileManager.defaultManager().fileExistsAtPath(path){
+        if let data = NSData(contentsOfFile: path){
+            let unarchiver = NSKeyedUnarchiver(forReadingWithData: data)
+            lists = unarchiver.decodeObjectForKey("lists") as! [Checklist]
+            unarchiver.finishDecoding()
+        }
+        //        }的
+    }
+    
+    
+    
+    
+    
+    
+    
 
     // MARK: - ListDetailViewController delegate
     func listDetailViewControllerDidCancel(controller: ListDetailViewController) {
