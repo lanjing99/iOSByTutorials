@@ -40,7 +40,8 @@ class MasterViewController: UITableViewController {
     // Do any additional setup after loading the view, typically from a nib.
     if let split = self.splitViewController {
       let controllers = split.viewControllers
-      detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
+//      detailViewController = controllers[controllers.count-1].navigationController!.topViewController as? DetailViewController
+      detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
       if let detailViewController = detailViewController {
         detailViewController.cityWeather = weatherData.cities[0]
       }
@@ -52,8 +53,8 @@ class MasterViewController: UITableViewController {
   // MARK: - Segues
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "showDetail" {
-      if let indexPath = self.tableView.indexPathForSelectedRow() {
-        let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
+      if let indexPath = self.tableView.indexPathForSelectedRow {
+        let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
         controller.cityWeather = weatherData.cities[indexPath.row]
         controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
       }
@@ -73,7 +74,7 @@ class MasterViewController: UITableViewController {
     let cell = tableView.dequeueReusableCellWithIdentifier("CityCell", forIndexPath: indexPath) as UITableViewCell
     
     let city = weatherData.cities[indexPath.row]
-    cell.textLabel.text = city.name
+    cell.textLabel!.text = city.name
     return cell
   }
   

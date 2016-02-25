@@ -23,7 +23,7 @@
 import Foundation
 import UIKit
 
-@objc class CityWeather {
+class CityWeather {
   private(set) var name: String
   private(set) var weather: [DailyWeather]
   var cityImage: UIImage {

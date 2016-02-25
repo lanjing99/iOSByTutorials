@@ -24,7 +24,7 @@ import Foundation
 
 let dayNameDateFormatter = NSDateFormatter()
 
-@objc class DailyWeather {
+class DailyWeather {
   private(set) var date: NSDate
   private(set) var status: WeatherStatus
   var dayName: String {

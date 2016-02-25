@@ -28,7 +28,7 @@ class DailyWeatherCollectionViewController: UICollectionViewController {
 
   var dailyWeather: [DailyWeather] = [DailyWeather]() {
   didSet {
-    collectionView.reloadData()
+    collectionView!.reloadData()
   }
   }
   
@@ -42,7 +42,7 @@ class DailyWeatherCollectionViewController: UICollectionViewController {
   }
   
   override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as DailyWeatherCollectionViewCell
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! DailyWeatherCollectionViewCell
     
     // Configure the cell
     cell.dailyWeather = dailyWeather[indexPath.item]

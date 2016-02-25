@@ -22,7 +22,7 @@
 
 import UIKit
 
-@objc protocol CityWeatherContainer {
+protocol CityWeatherContainer : class {
   var cityWeather: CityWeather? { get set }
 }
 
