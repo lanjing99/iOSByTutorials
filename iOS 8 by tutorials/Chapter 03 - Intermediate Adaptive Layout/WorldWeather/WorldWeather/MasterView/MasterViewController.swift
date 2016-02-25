@@ -37,6 +37,8 @@ class MasterViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.estimatedRowHeight = 100
     // Do any additional setup after loading the view, typically from a nib.
     if let split = self.splitViewController {
       let controllers = split.viewControllers
@@ -71,10 +73,11 @@ class MasterViewController: UITableViewController {
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("CityCell", forIndexPath: indexPath) as UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("CityCell", forIndexPath: indexPath) as! CityTableViewCell
     
     let city = weatherData.cities[indexPath.row]
-    cell.textLabel!.text = city.name
+    cell.cityWeather = city
+    cell.cityNameLabel.text = city.name
     return cell
   }
   
