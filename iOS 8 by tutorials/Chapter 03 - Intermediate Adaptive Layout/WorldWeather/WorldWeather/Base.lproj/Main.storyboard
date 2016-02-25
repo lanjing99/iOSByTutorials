@@ -97,7 +97,7 @@
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">
             <objects>
-                <navigationController id="vC3-pB-5Vb" sceneMemberID="viewController">
+                <navigationController hidesBarsOnTap="YES" hidesBarsWhenVerticallyCompact="YES" id="vC3-pB-5Vb" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="DjV-YW-jjY">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -356,7 +356,7 @@
     </scenes>
     <resources>
         <image name="Bangkok" width="599" height="200"/>
-        <image name="cloud" width="300" height="197"/>
+        <image name="cloud" width="500" height="322"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6S0-TO-JiA"/>
