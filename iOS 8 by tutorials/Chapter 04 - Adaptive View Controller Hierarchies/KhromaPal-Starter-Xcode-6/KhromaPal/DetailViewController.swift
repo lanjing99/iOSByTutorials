@@ -63,6 +63,9 @@ class DetailViewController: UIViewController {
         titleLabel.textColor = middleColor.blackOrWhiteContrastingColor().colorWithAlphaComponent(0.6)
       }
     } else {
+//        if let empty = storyboard?.instantiateViewControllerWithIdentifier("NoPaletteSelected") as? UIViewController {
+                showViewController(storyboard!.instantiateViewControllerWithIdentifier("NoPaletteSelected"), sender: self)
+//        }
       makeAllContentHidden(true)
     }
   }
