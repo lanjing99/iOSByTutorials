@@ -23,7 +23,7 @@
 import Foundation
 import UIKit
 
-@objc class ColorPalette: PaletteTreeNode, Equatable {
+class ColorPalette: PaletteTreeNode, Equatable {
   var name: String
   var colors: [UIColor]
   

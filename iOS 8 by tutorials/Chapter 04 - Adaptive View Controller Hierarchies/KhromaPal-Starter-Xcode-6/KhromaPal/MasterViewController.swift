@@ -38,7 +38,7 @@ class MasterViewController: UITableViewController {
     // Do any additional setup after loading the view, typically from a nib.
     if let split = self.splitViewController {
       let controllers = split.viewControllers
-      self.detailViewController = controllers.last?.topViewController as? DetailViewController
+      self.detailViewController = (controllers.last! as! UINavigationController).topViewController as? DetailViewController
     }
   }
 
@@ -56,7 +56,7 @@ class MasterViewController: UITableViewController {
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
     let object = paletteCollection.children[indexPath.row]
-    cell.textLabel.text = object.name
+    cell.textLabel!.text = object.name
     return cell
   }
   
@@ -74,8 +74,8 @@ class MasterViewController: UITableViewController {
   
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     if(rowHasChildrenAtIndex(indexPath)) {
-      let childCollection = paletteCollection.children[indexPath.row] as ColorPaletteCollection
-      let newTable = storyboard?.instantiateViewControllerWithIdentifier("MasterVC") as MasterViewController
+      let childCollection = paletteCollection.children[indexPath.row] as! ColorPaletteCollection
+      let newTable = storyboard?.instantiateViewControllerWithIdentifier("MasterVC") as! MasterViewController
       newTable.paletteCollection = childCollection
       newTable.title = childCollection.name
       navigationController?.pushViewController(newTable, animated: true)
@@ -86,17 +86,17 @@ class MasterViewController: UITableViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "showDetail" {
-      if let indexPath = self.tableView.indexPathForSelectedRow() {
-        let detailNav = segue.destinationViewController as UINavigationController
-        let detailVC  = detailNav.topViewController as DetailViewController
-        let palette   = paletteCollection.children[indexPath.row] as ColorPalette
+      if let indexPath = self.tableView.indexPathForSelectedRow {
+        let detailNav = segue.destinationViewController as! UINavigationController
+        let detailVC  = detailNav.topViewController as! DetailViewController
+        let palette   = paletteCollection.children[indexPath.row] as! ColorPalette
         detailVC.colorPalette = palette
       }
     }
   }
   
-  override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
-    if let selectedIndexPath = tableView.indexPathForSelectedRow() {
+  override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+    if let selectedIndexPath = tableView.indexPathForSelectedRow {
       return !rowHasChildrenAtIndex(selectedIndexPath)
     }
     return false

@@ -47,7 +47,7 @@ class DetailViewController: UIViewController, UISplitViewControllerDelegate {
       makeAllContentHidden(false)
       if (colorLabels != nil) {
         // Update the color panels
-        for (color, label) in Zip2(palette.colors, colorLabels!) {
+        for (color, label) in Zip2Sequence(palette.colors, colorLabels!) {
           label.backgroundColor = color
           label.text = color.hexString()
           label.textColor = color.blackOrWhiteContrastingColor().colorWithAlphaComponent(0.6)

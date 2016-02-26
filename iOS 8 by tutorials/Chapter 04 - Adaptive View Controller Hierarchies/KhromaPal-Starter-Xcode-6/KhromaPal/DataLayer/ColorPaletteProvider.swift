@@ -38,7 +38,7 @@ class ColorPaletterProvider {
   // Private methods
   private func parsePlistWithName(name: String) -> ColorPaletteCollection {
     let plistRoot = NSArray(contentsOfFile: NSBundle.mainBundle().pathForResource(name, ofType: "plist")!)
-    let parsedItems = parseArrayIntoTreeItems(plistRoot as [NSDictionary])
+    let parsedItems = parseArrayIntoTreeItems(plistRoot as! [NSDictionary])
     return ColorPaletteCollection(name: "root", children: parsedItems)
   }
   
@@ -52,19 +52,19 @@ class ColorPaletterProvider {
   }
   
   private func parseDictionaryIntoTreeItem(dict: NSDictionary) -> PaletteTreeNode {
-    let name = dict["name"] as String
+    let name = dict["name"] as! String
     if (dict["children"] != nil) {
-      let parsedChildren = parseArrayIntoTreeItems(dict["children"] as [NSDictionary])
+      let parsedChildren = parseArrayIntoTreeItems(dict["children"] as! [NSDictionary])
       return ColorPaletteCollection(name: name, children: parsedChildren)
     } else if (dict["colors"] != nil) {
       var colorScheme = [UIColor]()
-      for hexString in dict["colors"] as [String] {
+      for hexString in dict["colors"] as! [String] {
         colorScheme.append(UIColor(fromHexString: hexString))
       }
       return ColorPalette(name: name, colors: colorScheme)
     } else {
-      let baseColor = UIColor(fromHexString: dict["color"] as String)
-      var scheme = baseColor.colorSchemeOfType(.Analagous) as [UIColor]
+      let baseColor = UIColor(fromHexString: dict["color"] as! String)
+      var scheme = baseColor.colorSchemeOfType(.Analagous) as! [UIColor]
       scheme.insert(baseColor, atIndex: 2)
       return ColorPalette(name: name, colors: scheme)
     }
