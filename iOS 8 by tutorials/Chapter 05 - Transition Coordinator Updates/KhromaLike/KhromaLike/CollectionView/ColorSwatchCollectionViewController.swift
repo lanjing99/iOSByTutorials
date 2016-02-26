@@ -127,5 +127,18 @@ class ColorSwatchCollectionViewController: UICollectionViewController, ColorSwat
     override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         cell.contentView.transform = currentCellContentTransform
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if let flowlayout = collectionViewLayout as? UICollectionViewFlowLayout {
+            let minDemension = min(CGRectGetHeight(view.bounds), CGRectGetWidth(view.bounds))
+            let newSize = CGSizeMake(minDemension, minDemension)
+            if flowlayout.itemSize != newSize {
+                flowlayout.itemSize = newSize
+                flowlayout.invalidateLayout()
+            }
+            
+        }
+    }
 }
 
