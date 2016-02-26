@@ -23,7 +23,7 @@
 import Foundation
 
 
-@objc class ColorSwatch {
+class ColorSwatch {
   
   var name: String
   var color: UIColor
@@ -40,32 +40,32 @@ import Foundation
   }
   
   var rgbString: String {
-    let rgbArray = color.rgbaArray() as [Double]
+    let rgbArray = color.rgbaArray() as! [Double]
     return "(\(rgbArray[0].rw_format(formatString)), \(rgbArray[1].rw_format(formatString)), " +
       "\(rgbArray[2].rw_format(formatString)))"
   }
   
   var cmykString: String {
-    let cmykArray = color.cmykArray() as [Double]
+    let cmykArray = color.cmykArray() as! [Double]
     return "(\(cmykArray[0].rw_format(formatString)), \(cmykArray[1].rw_format(formatString)), " +
       "\(cmykArray[2].rw_format(formatString)), \(cmykArray[3].rw_format(formatString)))"
   }
   
   var hsbString: String {
-    let hsbArray = color.hsbaArray() as [Double]
+    let hsbArray = color.hsbaArray() as! [Double]
     return "(\(hsbArray[0].rw_format(formatString)), \(hsbArray[1].rw_format(formatString)), " +
       "\(hsbArray[2].rw_format(formatString)))"
   }
   
   var cielabString: String {
-    let cielabArray = color.CIE_LabArray() as [Double]
+    let cielabArray = color.CIE_LabArray() as! [Double]
     return "(\(cielabArray[0].rw_format(formatString)), \(cielabArray[1].rw_format(formatString)), " +
       "\(cielabArray[2].rw_format(formatString)))"
   }
   
   // Color scheme array function
   func relatedColors() -> [UIColor] {
-    return self.color.colorSchemeOfType(ColorScheme.Analagous) as [UIColor]
+    return self.color.colorSchemeOfType(ColorScheme.Analagous) as! [UIColor]
   }
   
 }

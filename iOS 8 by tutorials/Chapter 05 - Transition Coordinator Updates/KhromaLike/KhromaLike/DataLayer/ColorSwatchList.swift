@@ -48,7 +48,7 @@ class ColorSwatchList {
 
     var swatchList = [ColorSwatch]()
     
-    for (colorName, hexString) in colorList as Dictionary<String, String> {
+    for (colorName, hexString) in colorList as! Dictionary<String, String> {
       let color = UIColor(fromHexString: hexString)
       let swatch = ColorSwatch(name: colorName, color: color)
       swatchList.append(swatch)

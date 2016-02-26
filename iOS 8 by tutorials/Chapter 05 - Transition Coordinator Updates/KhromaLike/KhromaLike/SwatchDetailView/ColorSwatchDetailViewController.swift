@@ -63,7 +63,7 @@ class ColorSwatchDetailViewController: UIViewController, ColorSwatchSelectable {
       
       // Update the swatch tiles
       if let tiles = swatchTiles {
-        for (color, tile) in Zip2(swatch.relatedColors(), tiles) {
+        for (color, tile) in Zip2Sequence(swatch.relatedColors(), tiles) {
           tile.backgroundColor = color
         }
       }

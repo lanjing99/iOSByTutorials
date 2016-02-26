@@ -22,14 +22,14 @@
 
 import Foundation
 
-@objc protocol ColorSwatchSelectionDelegate {
+protocol ColorSwatchSelectionDelegate : class {
   func didSelect(swatch: ColorSwatch, sender: AnyObject?)
 }
 
-@objc protocol ColorSwatchSelector {
+protocol ColorSwatchSelector : class {
   var swatchSelectionDelegate: ColorSwatchSelectionDelegate? { get set }
 }
 
-@objc protocol ColorSwatchSelectable {
+protocol ColorSwatchSelectable: class  {
   var colorSwatch: ColorSwatch? { get set }
 }

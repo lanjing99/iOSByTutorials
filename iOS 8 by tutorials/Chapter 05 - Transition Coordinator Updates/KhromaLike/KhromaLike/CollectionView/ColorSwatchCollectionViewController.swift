@@ -40,7 +40,7 @@ class ColorSwatchCollectionViewController: UICollectionViewController, ColorSwat
   override func viewWillAppear(animated: Bool) {
     if swatchList == nil {
       swatchList = ColorSwatchList()
-      collectionView(collectionView, didSelectItemAtIndexPath: NSIndexPath(forItem: 0, inSection: 0))
+      collectionView(collectionView!, didSelectItemAtIndexPath: NSIndexPath(forItem: 0, inSection: 0))
     }
   }
   

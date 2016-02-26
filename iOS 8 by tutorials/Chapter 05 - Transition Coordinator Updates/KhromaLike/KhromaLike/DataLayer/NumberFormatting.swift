@@ -24,6 +24,6 @@ import Foundation
 
 extension Double {
   func rw_format(formatString: String) -> String {
-    return NSString(format: "%\(formatString)f", self)
+    return NSString(format: "%\(formatString)f", self) as String
   }
 }
