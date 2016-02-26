@@ -75,18 +75,29 @@ class ColorSwatchCollectionViewController: UICollectionViewController, ColorSwat
   }
   
   // UIViewController
-  override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-    // The orientation only makes a difference on an iphone
-    if(UIDevice.currentDevice().userInterfaceIdiom == .Phone) {
-      let newOrientation = UIApplication.sharedApplication().statusBarOrientation
-      if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
-        if newOrientation.isPortrait {
-          flowLayout.scrollDirection = .Horizontal
-        } else {
-          flowLayout.scrollDirection = .Vertical
+//  override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+//    // The orientation only makes a difference on an iphone
+//    if(UIDevice.currentDevice().userInterfaceIdiom == .Phone) {
+//      let newOrientation = UIApplication.sharedApplication().statusBarOrientation
+//      if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
+//        if newOrientation.isPortrait {
+//          flowLayout.scrollDirection = .Horizontal
+//        } else {
+//          flowLayout.scrollDirection = .Vertical
+//        }
+//      }
+//    }
+//  }
+    
+    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
+        if let flowlayout = collectionViewLayout as? UICollectionViewFlowLayout {
+            if newCollection.verticalSizeClass == .Compact {
+                flowlayout.scrollDirection = .Vertical
+            } else {
+                flowlayout.scrollDirection = .Horizontal
+            }
         }
-      }
     }
-  }
 }
 
