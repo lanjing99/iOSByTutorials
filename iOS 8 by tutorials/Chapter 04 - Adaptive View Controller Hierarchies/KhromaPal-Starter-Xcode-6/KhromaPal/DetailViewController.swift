@@ -22,7 +22,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, PaletteDisplayContainer{
 
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet var colorLabels: [UILabel]!
@@ -98,5 +98,9 @@ class DetailViewController: UIViewController {
       title = ""
     }
   }
+    
+    func rwt_currentlyDisplayedPalette() -> ColorPalette? {
+        return colorPalette;
+    }
 
 }

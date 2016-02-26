@@ -38,7 +38,7 @@ class MasterViewController: UITableViewController {
     // Do any additional setup after loading the view, typically from a nib.
     if let split = self.splitViewController {
       let controllers = split.viewControllers
-      self.detailViewController = (controllers.last! as! UINavigationController).topViewController as? DetailViewController
+      self.detailViewController = (controllers.first! as! UINavigationController).topViewController as? DetailViewController
     }
   }
 

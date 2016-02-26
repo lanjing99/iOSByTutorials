@@ -30,6 +30,7 @@
 		22D21E3719C896030090A99A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22D21E3619C896030090A99A /* LaunchScreen.xib */; };
 		A02C10EC1C7FDF72009C368C /* TraitOverrideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C10EB1C7FDF72009C368C /* TraitOverrideViewController.swift */; };
 		A02C10EE1C7FE0FD009C368C /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C10ED1C7FE0FD009C368C /* SplitViewController.swift */; };
+		A02C10F01C8023F1009C368C /* PaletteContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02C10EF1C8023F1009C368C /* PaletteContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		22D21E3619C896030090A99A /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		A02C10EB1C7FDF72009C368C /* TraitOverrideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraitOverrideViewController.swift; sourceTree = "<group>"; };
 		A02C10ED1C7FE0FD009C368C /* SplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		A02C10EF1C8023F1009C368C /* PaletteContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 		22B5FFB319C4908C000936D2 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				A02C10EF1C8023F1009C368C /* PaletteContainer.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -259,6 +262,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = RayWenderlich;
 				TargetAttributes = {
+					222064581967336E00BD4FBC = {
+						DevelopmentTeam = 5E58DW2PMK;
+					};
 					2220647F1967336E00BD4FBC = {
 						TestTargetID = 222064581967336E00BD4FBC;
 					};
@@ -321,6 +327,7 @@
 				22BE30351967521700772605 /* Colours.m in Sources */,
 				A02C10EC1C7FDF72009C368C /* TraitOverrideViewController.swift in Sources */,
 				22BE302D19674C8D00772605 /* PaletteTreeNode.swift in Sources */,
+				A02C10F01C8023F1009C368C /* PaletteContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,9 +454,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "KhromaPal/KhromaPal-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.waterwood.KhromaPal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "KhromaPal/3rdParty/KhromaPal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -462,9 +471,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "KhromaPal/KhromaPal-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.waterwood.KhromaPal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "KhromaPal/3rdParty/KhromaPal-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
