@@ -69,7 +69,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XWS-E0-K8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1178" y="315"/>
+            <point key="canvasLocation" x="1212" y="340.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -132,9 +132,28 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outletCollection property="tallLayoutContrains" destination="IwV-s5-PfO" collectionClass="NSMutableArray" id="G8Z-hk-hWO"/>
+                        <outletCollection property="tallLayoutContrains" destination="Nni-A4-PEu" collectionClass="NSMutableArray" id="9cJ-hn-eqO"/>
+                        <outletCollection property="tallLayoutContrains" destination="TbC-Z1-KG6" collectionClass="NSMutableArray" id="ISz-Qk-jX9"/>
+                        <outletCollection property="tallLayoutContrains" destination="lGK-Z1-8lC" collectionClass="NSMutableArray" id="0FE-Sv-ejr"/>
+                        <outletCollection property="tallLayoutContrains" destination="31K-m8-FpD" collectionClass="NSMutableArray" id="CfZ-yE-j2G"/>
+                        <outletCollection property="tallLayoutContrains" destination="8Rf-80-5yG" collectionClass="NSMutableArray" id="CcG-2f-huv"/>
+                        <outletCollection property="tallLayoutContrains" destination="x3A-Ko-eTj" collectionClass="NSMutableArray" id="hKz-Eb-bMJ"/>
+                        <outletCollection property="tallLayoutContrains" destination="RbG-Hg-dYN" collectionClass="NSMutableArray" id="a1x-hM-LSG"/>
+                        <outletCollection property="wideLayoutContrains" destination="Nni-A4-PEu" collectionClass="NSMutableArray" id="5Gq-AT-Hfc"/>
+                        <outletCollection property="wideLayoutContrains" destination="TbC-Z1-KG6" collectionClass="NSMutableArray" id="jIN-AN-1Ue"/>
+                        <outletCollection property="wideLayoutContrains" destination="llf-4W-YxM" collectionClass="NSMutableArray" id="UBg-mv-0Ei"/>
+                        <outletCollection property="wideLayoutContrains" destination="BA5-FU-AZ0" collectionClass="NSMutableArray" id="aSU-t5-bhi"/>
+                        <outletCollection property="wideLayoutContrains" destination="KEu-IV-W7J" collectionClass="NSMutableArray" id="Qex-U9-c7B"/>
+                        <outletCollection property="wideLayoutContrains" destination="x3A-Ko-eTj" collectionClass="NSMutableArray" id="oQW-EA-cqv"/>
+                        <outletCollection property="wideLayoutContrains" destination="RbG-Hg-dYN" collectionClass="NSMutableArray" id="yVt-hL-52t"/>
+                        <outletCollection property="wideLayoutContrains" destination="d07-v1-eKe" collectionClass="NSMutableArray" id="K1d-Lz-VPF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="467" y="181.5"/>
         </scene>
         <!--Color Swatch Detail View Controller-->
         <scene sceneID="UYN-vf-I6w">
@@ -151,18 +170,30 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DEO-e4-m2j" userLabel="swatch1">
                                 <rect key="frame" x="0.0" y="337" width="150" height="112.5"/>
                                 <color key="backgroundColor" red="0.79655653510000002" green="1" blue="0.53338526100000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="heightClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="299" width="112.5" height="100"/>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f3e-iD-Szg" userLabel="swatch2">
                                 <rect key="frame" x="150" y="337" width="150" height="112.5"/>
                                 <color key="backgroundColor" red="1" green="0.29934685170000003" blue="0.6203950641" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="heightClass=compact" misplaced="YES">
+                                    <rect key="frame" x="112" y="299" width="112.5" height="100"/>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="huK-u2-fOx" userLabel="swatch3">
                                 <rect key="frame" x="300" y="337" width="150" height="112.5"/>
                                 <color key="backgroundColor" red="0.316555319" green="0.73633128039999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="heightClass=compact" misplaced="YES">
+                                    <rect key="frame" x="225" y="299" width="112.5" height="100"/>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LWR-0E-QR3" userLabel="swatch4">
                                 <rect key="frame" x="450" y="337" width="150" height="112.5"/>
                                 <color key="backgroundColor" red="1" green="0.86195106580000003" blue="0.15694230179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="heightClass=compact" misplaced="YES">
+                                    <rect key="frame" x="337" y="299" width="112.5" height="100"/>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEB-tw-dqs">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="337.5"/>
@@ -267,7 +298,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4R-hw-gFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1178" y="790"/>
+            <point key="canvasLocation" x="1212" y="1284"/>
         </scene>
     </scenes>
 </document>

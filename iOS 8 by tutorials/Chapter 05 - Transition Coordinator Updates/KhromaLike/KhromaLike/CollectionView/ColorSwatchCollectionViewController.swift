@@ -102,28 +102,52 @@ class ColorSwatchCollectionViewController: UICollectionViewController, ColorSwat
 //        }
 //    }
     
-    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
-//        // 1
+//    override func willTransitionToTraitCollection(newCollection: UITraitCollection, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+//        super.willTransitionToTraitCollection(newCollection, withTransitionCoordinator: coordinator)
+////        // 1
+//        let targetTForm = coordinator.targetTransform()
+//        let inverseTForm = CGAffineTransformInvert(targetTForm) // 2
+//        coordinator.animateAlongsideTransition({ _ in
+//        // Empty
+//        }, completion: { _ in // 3
+//        self.view.layer.transform = CATransform3DConcat(self.view.layer.transform, CATransform3DMakeAffineTransform(inverseTForm))
+////        // 4
+//        if abs(atan2(Double(targetTForm.b), Double(targetTForm.a)) / M_PI) < 0.9 {
+//        self.view.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.size.height, height: self.view.bounds.size.width) }
+////        // 5
+//        self.currentCellContentTransform = CGAffineTransformConcat(self.currentCellContentTransform, targetTForm)
+//        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 1, options: .CurveEaseInOut, animations: {
+//            for cell in self.collectionView!.visibleCells() as [UICollectionViewCell] {
+//            cell.contentView.transform = self.currentCellContentTransform
+//            }
+//            }, completion: nil)
+//        })
+//    }
+    
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+       
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        // 1
         let targetTForm = coordinator.targetTransform()
         let inverseTForm = CGAffineTransformInvert(targetTForm) // 2
         coordinator.animateAlongsideTransition({ _ in
-        // Empty
-        }, completion: { _ in // 3
-        self.view.layer.transform = CATransform3DConcat(self.view.layer.transform, CATransform3DMakeAffineTransform(inverseTForm))
-//        // 4
-        if abs(atan2(Double(targetTForm.b), Double(targetTForm.a)) / M_PI) < 0.9 {
-        self.view.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.size.height, height: self.view.bounds.size.width) }
-//        // 5
-        self.currentCellContentTransform = CGAffineTransformConcat(self.currentCellContentTransform, targetTForm)
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 1, options: .CurveEaseInOut, animations: {
-            for cell in self.collectionView!.visibleCells() as [UICollectionViewCell] {
-            cell.contentView.transform = self.currentCellContentTransform
-            }
-            }, completion: nil)
+            // Empty
+            }, completion: { _ in // 3
+                self.view.layer.transform = CATransform3DConcat(self.view.layer.transform, CATransform3DMakeAffineTransform(inverseTForm))
+                //        // 4
+                if abs(atan2(Double(targetTForm.b), Double(targetTForm.a)) / M_PI) < 0.9 {
+                    self.view.bounds = CGRect(x: 0, y: 0, width: self.view.bounds.size.height, height: self.view.bounds.size.width) }
+                //        // 5
+                self.currentCellContentTransform = CGAffineTransformConcat(self.currentCellContentTransform, targetTForm)
+                UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 1, options: .CurveEaseInOut, animations: {
+                    for cell in self.collectionView!.visibleCells() as [UICollectionViewCell] {
+                        cell.contentView.transform = self.currentCellContentTransform
+                    }
+                    }, completion: nil)
         })
     }
-
+    
     override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         cell.contentView.transform = currentCellContentTransform
     }

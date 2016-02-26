@@ -24,26 +24,46 @@ import UIKit
 
 class ViewController: UIViewController, ColorSwatchSelectionDelegate {
                             
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+    @IBOutlet var tallLayoutContrains: [NSLayoutConstraint]!
     
-    // Wire up any swatch selectors we can find as VC children
-    for viewController in childViewControllers as [UIViewController] {
-      if let selector = viewController as? ColorSwatchSelector {
-        selector.swatchSelectionDelegate = self
+    @IBOutlet var wideLayoutContrains: [NSLayoutConstraint]!
+    
+      override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        // Wire up any swatch selectors we can find as VC children
+        for viewController in childViewControllers as [UIViewController] {
+          if let selector = viewController as? ColorSwatchSelector {
+            selector.swatchSelectionDelegate = self
+          }
+        }
       }
-    }
-  }
-  
-  // #pragma mark <ColorSwatchSelectionDelegate>
-  func didSelect(swatch: ColorSwatch, sender: AnyObject?) {
-    for viewController in childViewControllers as [UIViewController] {
-      if let selectable = viewController as? ColorSwatchSelectable {
-        selectable.colorSwatch = swatch
+    
+      // #pragma mark <ColorSwatchSelectionDelegate>
+      func didSelect(swatch: ColorSwatch, sender: AnyObject?) {
+        for viewController in childViewControllers as [UIViewController] {
+          if let selectable = viewController as? ColorSwatchSelectable {
+            selectable.colorSwatch = swatch
+          }
+        }
       }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        
+        let transitionToWide = size.width > size.height
+        let constraintsToUninstall = transitionToWide ? tallLayoutContrains : wideLayoutContrains
+        let constraintsToInstall = transitionToWide ? wideLayoutContrains : tallLayoutContrains
+        // Ask Auto Layout to commit any outstanding changes
+        view.layoutIfNeeded()
+        // Animate to the new layout alongside the transition 
+        coordinator.animateAlongsideTransition({    _ in
+        NSLayoutConstraint.deactivateConstraints(constraintsToUninstall)
+            NSLayoutConstraint.activateConstraints(constraintsToInstall)
+            self.view.layoutIfNeeded()
+    }, completion: nil)
     }
-  }
 
 }
 
