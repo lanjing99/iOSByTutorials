@@ -24,8 +24,7 @@
 
 import UIKit
 
-class RWTCountryDetailViewController: UIViewController,
-UISplitViewControllerDelegate {
+class RWTCountryDetailViewController: UIViewController, UISplitViewControllerDelegate, UIPopoverPresentationControllerDelegate {
   
   @IBOutlet var flagImageView: UIImageView!
   @IBOutlet var quizQuestionLabel: UILabel!
@@ -42,9 +41,13 @@ UISplitViewControllerDelegate {
       if masterPopoverController != nil {
         masterPopoverController!.dismissPopoverAnimated(true)
       }
+        
+        let detailButton = UIBarButtonItem(title: "Facts", style: .Plain, target: self, action: "displayFacts:")
+        navigationItem.rightBarButtonItem = detailButton
     }
   }
   
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -69,6 +72,20 @@ UISplitViewControllerDelegate {
     }
   }
   
+    func displayFacts(sender: UIBarButtonItem){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let contentViewController = storyboard.instantiateViewControllerWithIdentifier("RWTCountryPopoverViewController")  as! RWTCountryPopoverViewController
+        contentViewController.country = country
+        contentViewController.modalPresentationStyle = .Popover
+        
+        let detailPopover = contentViewController.popoverPresentationController!
+        detailPopover.barButtonItem = sender
+        detailPopover.permittedArrowDirections = .Any
+        detailPopover.delegate = self
+        presentViewController(contentViewController, animated: true, completion: nil)
+    }
+    
+    
 func configureView() {
     if country != nil {
       self.title = country!.countryName;
@@ -108,26 +125,39 @@ func configureView() {
   
   @IBAction func quizAnswerButtonPressed(sender: UIButton) {
     
-    let buttonTitle = sender.titleLabel?.text
-    var message = ""
-    if buttonTitle == country!.correctAnswer {
-        message = "you answered correctly"
-    }else{
-        message = "The answer is incorrect, please try again"
-    }
+        let buttonTitle = sender.titleLabel?.text
+        var message = ""
+        if buttonTitle == country!.correctAnswer {
+            message = "you answered correctly"
+        }else{
+            message = "The answer is incorrect, please try again"
+        }
+        
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .ActionSheet)
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (alert:UIAlertAction!) -> Void in
+            print("you tapped OK")
+        }))
+        
+        alert.popoverPresentationController?.sourceView = view
+        alert.popoverPresentationController?.sourceRect = sender.frame
     
-    let alert = UIAlertController(title: nil, message: message, preferredStyle: .ActionSheet)
-    alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (alert:UIAlertAction!) -> Void in
-        print("you tapped OK")
-    }))
-    
-    alert.popoverPresentationController?.sourceView = view
-    alert.popoverPresentationController?.sourceRect = sender.frame
-    
-    presentViewController(alert, animated: true, completion: nil)
+//    presentViewController(alert, animated: true, completion: nil)
+//    showViewController(alert, sender: sender)
     
   }
   
+    
+    // #pragma mark - UIPopoverPresentationControllerDelegate
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .FullScreen
+    }
+    
+    func presentationController(controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
+        let navController = UINavigationController(rootViewController: controller.presentedViewController)
+        return navController
+    }
+    
+    
   // #pragma mark - Split view
   
   func splitViewController(svc: UISplitViewController!,
