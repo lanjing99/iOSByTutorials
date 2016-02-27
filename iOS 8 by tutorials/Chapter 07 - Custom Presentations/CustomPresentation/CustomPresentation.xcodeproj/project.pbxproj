@@ -17,6 +17,7 @@
 		0199933F197EEAE70097E0FD /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0199933E197EEAE70097E0FD /* Country.swift */; };
 		01999341197EEFF90097E0FD /* CountryData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01999340197EEFF90097E0FD /* CountryData.plist */; };
 		01999343197EF0EC0097E0FD /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01999342197EF0EC0097E0FD /* CollectionViewLayout.swift */; };
+		A080F1C91C82597400A864EA /* SimplePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A080F1C81C82597400A864EA /* SimplePresentationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		0199933E197EEAE70097E0FD /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		01999340197EEFF90097E0FD /* CountryData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CountryData.plist; sourceTree = "<group>"; };
 		01999342197EF0EC0097E0FD /* CollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
+		A080F1C81C82597400A864EA /* SimplePresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimplePresentationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		018B7D791980652B00C62AE7 /* PresentationControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A080F1C81C82597400A864EA /* SimplePresentationController.swift */,
 			);
 			name = PresentationControllers;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				TargetAttributes = {
 					01999319197EE65D0097E0FD = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 5E58DW2PMK;
 					};
 					0199932B197EE65E0097E0FD = {
 						CreatedOnToolsVersion = 6.0;
@@ -247,6 +251,7 @@
 				01999320197EE65D0097E0FD /* AppDelegate.swift in Sources */,
 				018B7D7719805C1D00C62AE7 /* OverlayViewController.swift in Sources */,
 				01999343197EF0EC0097E0FD /* CollectionViewLayout.swift in Sources */,
+				A080F1C91C82597400A864EA /* SimplePresentationController.swift in Sources */,
 				0199933D197EE7500097E0FD /* CollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,8 +370,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CustomPresentation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.waterwood.CustomPresentation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -376,8 +383,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CustomPresentation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.waterwood.CustomPresentation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
