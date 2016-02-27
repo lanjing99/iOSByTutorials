@@ -22,10 +22,12 @@
 
 import UIKit
 
-class RWTCountryListViewController: UITableViewController {
+class RWTCountryListViewController: UITableViewController, RWTCountryResultsControllerDelegate {
   
   var countryDetailViewController: RWTCountryDetailViewController? = nil
   var countries = RWTCountry.countries()
+    var searchController: UISearchController? = nil
+    
   
   
   override func awakeFromNib() {
@@ -49,16 +51,42 @@ class RWTCountryListViewController: UITableViewController {
     // first country in the array
     let country = countries[0] as! RWTCountry
     countryDetailViewController?.country = country
+    
+    addSearchBar()
   }
   
+    func addSearchBar(){
+        let resultController = RWTCountryResultsController()
+        resultController.countries = countries
+        resultController.delegate = self
+        
+        searchController = UISearchController(searchResultsController: resultController)
+        searchController!.searchResultsUpdater = resultController
+        searchController!.searchBar.frame = CGRect(
+            x: searchController!.searchBar.frame.origin.x,
+            y: searchController!.searchBar.frame.origin.y, width: searchController!.searchBar.frame.size.width, height: 44.0)
+        
+        tableView.tableHeaderView = searchController?.searchBar
+        
+        self.definesPresentationContext = true
+        
+    }
   // #pragma mark - Segues
   
   override func prepareForSegue(segue: UIStoryboardSegue,
     sender: AnyObject?) {
       
       if segue.identifier == "showDetail" {
-        let indexPath = self.tableView.indexPathForSelectedRow
-        let country = countries[indexPath!.row] as! RWTCountry
+        var country: RWTCountry!
+        if searchController!.active {
+            let resultController = searchController!.searchResultsController as! RWTCountryResultsController
+            let indexPath = resultController.tableView.indexPathForSelectedRow!
+            country = resultController.filteredCountries[indexPath.row] as! RWTCountry
+        }else{
+            let indexPath = self.tableView.indexPathForSelectedRow
+            country = countries[indexPath!.row] as! RWTCountry
+        }
+        
         ((segue.destinationViewController as!
           UINavigationController).topViewController
           as! RWTCountryDetailViewController).country = country
@@ -83,8 +111,7 @@ class RWTCountryListViewController: UITableViewController {
     cellForRowAtIndexPath indexPath: NSIndexPath)
     -> UITableViewCell {
       
-      var cell =
-      tableView.dequeueReusableCellWithIdentifier("Cell",
+      let cell = tableView.dequeueReusableCellWithIdentifier("Cell",
         forIndexPath: indexPath) as! RWTCountryTableViewCell
       
       let country = countries[indexPath.row] as! RWTCountry
@@ -98,4 +125,8 @@ class RWTCountryListViewController: UITableViewController {
       let country = countries[indexPath.row] as! RWTCountry
       countryDetailViewController?.country = country
   }
+    
+    func searchCountrySelected() {
+        performSegueWithIdentifier("showDetail", sender: nil)
+    }
 }
