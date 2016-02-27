@@ -19,6 +19,7 @@
 		0159D5B719F97E890020651D /* RWTCountryResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0159D5B619F97E890020651D /* RWTCountryResultsController.swift */; };
 		0159D5B919F97F040020651D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0159D5B819F97F040020651D /* Main.storyboard */; };
 		01D47D1219783638008D6FD3 /* RWTCountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D47D1119783638008D6FD3 /* RWTCountryTableViewCell.swift */; };
+		A080F1C71C813F3F00A864EA /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A080F1C61C813F3F00A864EA /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		0159D5B619F97E890020651D /* RWTCountryResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RWTCountryResultsController.swift; sourceTree = "<group>"; };
 		0159D5B819F97F040020651D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		01D47D1119783638008D6FD3 /* RWTCountryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RWTCountryTableViewCell.swift; sourceTree = "<group>"; };
+		A080F1C61C813F3F00A864EA /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				0105429B1978387600DF1159 /* RWTCountryTableViewCell.xib */,
 				0124B79819772D590015DE95 /* CountryData.plist */,
 				0124B77819771DD00015DE95 /* Images.xcassets */,
+				A080F1C61C813F3F00A864EA /* Launch Screen.storyboard */,
 				0124B76D19771DD00015DE95 /* Supporting Files */,
 			);
 			path = CountryFunFacts;
@@ -181,6 +184,7 @@
 				TargetAttributes = {
 					0124B76919771DD00015DE95 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 5E58DW2PMK;
 					};
 					0124B77D19771DD00015DE95 = {
 						CreatedOnToolsVersion = 6.0;
@@ -215,6 +219,7 @@
 				0105429C1978387600DF1159 /* RWTCountryTableViewCell.xib in Resources */,
 				0124B79919772D590015DE95 /* CountryData.plist in Resources */,
 				0124B77919771DD00015DE95 /* Images.xcassets in Resources */,
+				A080F1C71C813F3F00A864EA /* Launch Screen.storyboard in Resources */,
 				0159D5B919F97F040020651D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,11 +350,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CountryFunFacts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.waterwood.CountryFunFacts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -357,11 +364,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CountryFunFacts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.waterwood.CountryFunFacts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
