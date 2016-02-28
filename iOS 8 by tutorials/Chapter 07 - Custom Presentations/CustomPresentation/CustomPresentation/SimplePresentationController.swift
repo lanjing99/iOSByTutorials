@@ -54,5 +54,6 @@ class SimplePresentationController: UIPresentationController, UIAdaptivePresenta
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return .OverFullScreen
+//        return .FullScreen
     }
 }
