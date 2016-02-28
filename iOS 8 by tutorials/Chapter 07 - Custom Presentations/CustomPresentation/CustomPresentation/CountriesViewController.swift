@@ -22,6 +22,10 @@
 
 import UIKit
 
+let simpleTransitionDelegate = SimpleTransitioningDelegate()
+
+
+
 class CountriesViewController: UIViewController {
   
   @IBOutlet var collectionView: UICollectionView!
@@ -84,13 +88,13 @@ class CountriesViewController: UIViewController {
     cellForItemAtIndexPath indexPath: NSIndexPath!) ->
     UICollectionViewCell! {
       
-      var cell: CollectionViewCell =
+      let cell: CollectionViewCell =
       collectionView.dequeueReusableCellWithReuseIdentifier(
         "CollectionViewCell", forIndexPath: indexPath)
         as! CollectionViewCell;
       
       let country = countries[indexPath.row] as! Country
-      var image: UIImage = UIImage(named: country.imageName)!;
+      let image: UIImage = UIImage(named: country.imageName)!;
       cell.imageView.image = image;
       cell.imageView.layer.cornerRadius = 4.0
       
@@ -102,11 +106,19 @@ class CountriesViewController: UIViewController {
   
   func collectionView(collectionView: UICollectionView!,
     didSelectItemAtIndexPath indexPath: NSIndexPath!) {
-      
+      showSimpleOverlayForIndexPath(indexPath)
 
   }
   
   
+    func showSimpleOverlayForIndexPath(indexPath: NSIndexPath){
+        let country = countries[indexPath.row] as! Country
+        transitioningDelegate = simpleTransitionDelegate
+        let overlay = OverlayViewController(country: country)
+        overlay.transitioningDelegate = simpleTransitionDelegate
+        presentViewController(overlay, animated: true, completion: nil)
+    }
+    
   
 }
 

@@ -19,6 +19,7 @@
 		01999343197EF0EC0097E0FD /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01999342197EF0EC0097E0FD /* CollectionViewLayout.swift */; };
 		A080F1C91C82597400A864EA /* SimplePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A080F1C81C82597400A864EA /* SimplePresentationController.swift */; };
 		A080F1CB1C82931E00A864EA /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A080F1CA1C82931E00A864EA /* Launch Screen.storyboard */; };
+		A080F1CD1C82C6E800A864EA /* SimpleAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = A080F1CC1C82C6E800A864EA /* SimpleAnimatedTransitioning.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		01999342197EF0EC0097E0FD /* CollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
 		A080F1C81C82597400A864EA /* SimplePresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimplePresentationController.swift; sourceTree = "<group>"; };
 		A080F1CA1C82931E00A864EA /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		A080F1CC1C82C6E800A864EA /* SimpleAnimatedTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleAnimatedTransitioning.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		018B7D781980652100C62AE7 /* Transitioners */ = {
 			isa = PBXGroup;
 			children = (
+				A080F1CC1C82C6E800A864EA /* SimpleAnimatedTransitioning.swift */,
 			);
 			name = Transitioners;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				018B7D7719805C1D00C62AE7 /* OverlayViewController.swift in Sources */,
 				01999343197EF0EC0097E0FD /* CollectionViewLayout.swift in Sources */,
 				A080F1C91C82597400A864EA /* SimplePresentationController.swift in Sources */,
+				A080F1CD1C82C6E800A864EA /* SimpleAnimatedTransitioning.swift in Sources */,
 				0199933D197EE7500097E0FD /* CollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
