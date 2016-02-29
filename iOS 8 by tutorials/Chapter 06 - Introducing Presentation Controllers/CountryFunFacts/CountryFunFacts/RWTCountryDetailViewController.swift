@@ -141,7 +141,7 @@ func configureView() {
         alert.popoverPresentationController?.sourceView = view
         alert.popoverPresentationController?.sourceRect = sender.frame
     
-//    presentViewController(alert, animated: true, completion: nil)
+        presentViewController(alert, animated: true, completion: nil)
 //    showViewController(alert, sender: sender)
     
   }
