@@ -87,13 +87,17 @@ class RWTCountryResultsController: UITableViewController, UISearchResultsUpdatin
   func filterContentForSearchText(searchText: String) {
     filteredCountries.removeAllObjects()
     
+//    if NSString(UTF8String: searchText)?.length > 0 {
+    
+    
     let predicate = NSPredicate(format:
     "SELF.countryName contains[c] %@", searchText)
     
-    let tempArray =
-    self.countries.filteredArrayUsingPredicate(predicate)
+    let tempArray = self.countries.filteredArrayUsingPredicate(predicate)
     
     filteredCountries = NSMutableArray(array: tempArray)
+        
+//    }
     
     tableView.reloadData()
   }
