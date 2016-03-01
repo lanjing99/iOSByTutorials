@@ -41,6 +41,7 @@
 		83E3B3A11969C8FD00204054 /* HotGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E3B3A01969C8FD00204054 /* HotGalleryViewController.swift */; };
 		83E3B3A31969CAA700204054 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E3B3A21969CAA700204054 /* ImageViewController.swift */; };
 		83E3B3A51969CB9300204054 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E3B3A41969CB9300204054 /* ImageCollectionViewCell.swift */; };
+		A080F1E41C864A6000A864EA /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A080F1E31C864A6000A864EA /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +146,8 @@
 		83E3B3A01969C8FD00204054 /* HotGalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotGalleryViewController.swift; sourceTree = "<group>"; };
 		83E3B3A21969CAA700204054 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		83E3B3A41969CB9300204054 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		A080F1E31C864A6000A864EA /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		A080F1E51C864DB100A864EA /* Imgvue.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Imgvue.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,12 +218,14 @@
 		839575B5196925690033B974 /* Imgvue */ = {
 			isa = PBXGroup;
 			children = (
+				A080F1E51C864DB100A864EA /* Imgvue.entitlements */,
 				833FDE6819C2B504003EB25E /* Third Party */,
 				839575B8196925690033B974 /* AppDelegate.swift */,
 				83BE9943196A6134001E6999 /* Controllers */,
 				83BE9944196A613D001E6999 /* Views */,
 				839575C1196925690033B974 /* Images.xcassets */,
 				839575BE196925690033B974 /* Main.storyboard */,
+				A080F1E31C864A6000A864EA /* Launch Screen.storyboard */,
 				839575B6196925690033B974 /* Supporting Files */,
 				838FB6BF1984744C00835BF8 /* ImgvueColors.swift */,
 				833FDE6919C2B5A7003EB25E /* Imgvue-Bridging-Header.h */,
@@ -489,10 +494,10 @@
 				TargetAttributes = {
 					839575B2196925690033B974 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = X28LAA5D4H;
+						DevelopmentTeam = 5E58DW2PMK;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -538,6 +543,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A080F1E41C864A6000A864EA /* Launch Screen.storyboard in Resources */,
 				839575C0196925690033B974 /* Main.storyboard in Resources */,
 				839575C2196925690033B974 /* Images.xcassets in Resources */,
 			);
@@ -743,11 +749,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Imgvue/Imgvue.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Imgvue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.waterwood.swift.Imgvue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Imgvue/Imgvue-Bridging-Header.h";
@@ -758,11 +765,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = Imgvue/Imgvue.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Imgvue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.waterwood.swift.Imgvue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Imgvue/Imgvue-Bridging-Header.h";

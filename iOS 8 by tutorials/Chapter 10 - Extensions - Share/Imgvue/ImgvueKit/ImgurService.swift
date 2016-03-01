@@ -25,7 +25,7 @@ import UIKit
 
 public class ImgurService: NSObject, NSURLSessionDataDelegate, NSURLSessionTaskDelegate {
   
-  private let imgurClientId = "YOUR_CLIENT_ID"
+  private let imgurClientId = "cf8ebb15772fef5"
   private let imgurAPIBaseUrlString = "https://api.imgur.com/3/"
   
   public var session: NSURLSession!
@@ -56,7 +56,7 @@ public class ImgurService: NSObject, NSURLSessionDataDelegate, NSURLSessionTaskD
       let task = session.dataTaskWithRequest(request) { data, response, error in
         if error == nil {
           var images: [ImgurImage] = []
-          let jsonResponse = JSON(data!)
+          let jsonResponse = JSON(data: data!, options: .AllowFragments, error: nil)
           let imagesArray = jsonResponse["data"].array ?? []
           for imageJSON in imagesArray {
             if !imageJSON["is_album"].bool! { // no album support

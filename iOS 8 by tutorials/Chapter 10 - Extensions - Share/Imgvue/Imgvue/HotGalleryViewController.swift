@@ -119,6 +119,7 @@ class HotGalleryViewController: UIViewController, UICollectionViewDataSource, UI
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ImageCell", forIndexPath: indexPath) as! ImageCollectionViewCell
     cell.imgurImage = images[indexPath.row]
+
     
     return cell
   }
