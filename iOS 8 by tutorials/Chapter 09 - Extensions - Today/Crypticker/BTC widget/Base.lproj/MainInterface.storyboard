@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="BTC_widget" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ft6-oW-KC0"/>
+                        <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$292.12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuu-je-bZd">
+                                <rect key="frame" x="24" y="0.0" width="62.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.25882352941176467" green="0.56862745098039214" blue="0.82745098039215681" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H2L-Ai-0aG">
+                                <rect key="frame" x="252" y="-1" width="44" height="22.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="CAP-E8-NYG"/>
+                                </constraints>
+                                <state key="normal" image="caret-notification-center"/>
+                                <connections>
+                                    <action selector="toggleLineChart:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="v7Y-ts-B9C"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yua-YL-RFQ" customClass="JBLineChartView">
+                                <rect key="frame" x="8" y="28.5" width="304" height="113.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="113.5" id="Gu2-cm-0Qx"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="+1.23" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gap-yv-EwD">
+                                <rect key="frame" x="94" y="0.0" width="150" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.52156862745098043" green="0.74901960784313726" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Yua-YL-RFQ" secondAttribute="trailing" constant="8" id="9jI-sU-iAe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="H2L-Ai-0aG" secondAttribute="trailing" constant="8" id="AX5-ee-AB8"/>
+                            <constraint firstItem="H2L-Ai-0aG" firstAttribute="leading" secondItem="gap-yv-EwD" secondAttribute="trailing" constant="8" id="AZY-2t-oOQ"/>
+                            <constraint firstItem="wuu-je-bZd" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="DFi-ZM-quP"/>
+                            <constraint firstItem="Yua-YL-RFQ" firstAttribute="top" secondItem="gap-yv-EwD" secondAttribute="bottom" constant="8" id="VHb-wA-YWK"/>
+                            <constraint firstItem="gap-yv-EwD" firstAttribute="leading" secondItem="wuu-je-bZd" secondAttribute="trailing" constant="8" id="gUa-4b-oel"/>
+                            <constraint firstItem="wuu-je-bZd" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="8" id="jIb-vh-2ca"/>
+                            <constraint firstItem="Yua-YL-RFQ" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="8" id="kEC-ug-HR2"/>
+                            <constraint firstItem="H2L-Ai-0aG" firstAttribute="centerY" secondItem="wuu-je-bZd" secondAttribute="centerY" id="qrE-Rf-zcq"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="Yua-YL-RFQ" secondAttribute="bottom" constant="8" id="vGU-02-jdM"/>
+                            <constraint firstItem="gap-yv-EwD" firstAttribute="centerY" secondItem="wuu-je-bZd" secondAttribute="centerY" id="zX1-Qw-8Ju"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="150"/>
+                    <connections>
+                        <outlet property="lineChartHeightConstraint" destination="Gu2-cm-0Qx" id="kHN-EA-eq7"/>
+                        <outlet property="lineChartView" destination="Yua-YL-RFQ" id="cVK-Pg-rUC"/>
+                        <outlet property="priceChangeLabel" destination="gap-yv-EwD" id="Z5c-T1-nGF"/>
+                        <outlet property="priceLabel" destination="wuu-je-bZd" id="WQF-q1-mb7"/>
+                        <outlet property="toggleLineChartButton" destination="H2L-Ai-0aG" id="UCv-Zh-7X7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="390" y="195"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="caret-notification-center" width="14" height="9"/>
+    </resources>
+</document>
