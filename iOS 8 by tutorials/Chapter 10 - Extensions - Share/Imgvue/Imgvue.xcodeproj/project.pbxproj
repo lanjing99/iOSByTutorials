@@ -42,6 +42,10 @@
 		83E3B3A31969CAA700204054 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E3B3A21969CAA700204054 /* ImageViewController.swift */; };
 		83E3B3A51969CB9300204054 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E3B3A41969CB9300204054 /* ImageCollectionViewCell.swift */; };
 		A080F1E41C864A6000A864EA /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A080F1E31C864A6000A864EA /* Launch Screen.storyboard */; };
+		A080F1ED1C865CAD00A864EA /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A080F1EC1C865CAD00A864EA /* ShareViewController.swift */; };
+		A080F1F01C865CAD00A864EA /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A080F1EE1C865CAD00A864EA /* MainInterface.storyboard */; };
+		A080F1F41C865CAD00A864EA /* Imgvue Upload.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A080F1EA1C865CAD00A864EA /* Imgvue Upload.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A080F1FA1C865D0A00A864EA /* ImgvueKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 839576491969275D0033B974 /* ImgvueKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +77,13 @@
 			remoteGlobalIDString = 839576481969275D0033B974;
 			remoteInfo = ImgvueKit;
 		};
+		A080F1F21C865CAD00A864EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 839575AB196925690033B974 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A080F1E91C865CAD00A864EA;
+			remoteInfo = "Imgvue Upload";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -85,6 +96,17 @@
 				8395765F1969275D0033B974 /* ImgvueKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A080F1F81C865CAD00A864EA /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A080F1F41C865CAD00A864EA /* Imgvue Upload.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -148,6 +170,11 @@
 		83E3B3A41969CB9300204054 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		A080F1E31C864A6000A864EA /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A080F1E51C864DB100A864EA /* Imgvue.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Imgvue.entitlements; sourceTree = "<group>"; };
+		A080F1EA1C865CAD00A864EA /* Imgvue Upload.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Imgvue Upload.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A080F1EC1C865CAD00A864EA /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		A080F1EF1C865CAD00A864EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		A080F1F11C865CAD00A864EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A080F1F91C865CE300A864EA /* Imgvue Upload.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Imgvue Upload.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +208,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A080F1E71C865CAD00A864EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A080F1FA1C865D0A00A864EA /* ImgvueKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -200,6 +235,7 @@
 				839575EA1969260A0033B974 /* ImgvueKitTests */,
 				8395764A1969275D0033B974 /* ImgvueKit */,
 				839576571969275D0033B974 /* ImgvueKitTests */,
+				A080F1EB1C865CAD00A864EA /* Imgvue Upload */,
 				839575B4196925690033B974 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -211,6 +247,7 @@
 				839575C7196925690033B974 /* ImgvueTests.xctest */,
 				839576491969275D0033B974 /* ImgvueKit.framework */,
 				839576531969275D0033B974 /* ImgvueKitTests.xctest */,
+				A080F1EA1C865CAD00A864EA /* Imgvue Upload.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -393,6 +430,17 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
+		A080F1EB1C865CAD00A864EA /* Imgvue Upload */ = {
+			isa = PBXGroup;
+			children = (
+				A080F1F91C865CE300A864EA /* Imgvue Upload.entitlements */,
+				A080F1EC1C865CAD00A864EA /* ShareViewController.swift */,
+				A080F1EE1C865CAD00A864EA /* MainInterface.storyboard */,
+				A080F1F11C865CAD00A864EA /* Info.plist */,
+			);
+			path = "Imgvue Upload";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -415,12 +463,14 @@
 				839575B0196925690033B974 /* Frameworks */,
 				839575B1196925690033B974 /* Resources */,
 				839575FA1969260A0033B974 /* Embed Frameworks */,
+				A080F1F81C865CAD00A864EA /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				8395765D1969275D0033B974 /* PBXTargetDependency */,
 				839576611969275D0033B974 /* PBXTargetDependency */,
+				A080F1F31C865CAD00A864EA /* PBXTargetDependency */,
 			);
 			name = Imgvue;
 			productName = Imgvue;
@@ -481,6 +531,23 @@
 			productReference = 839576531969275D0033B974 /* ImgvueKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		A080F1E91C865CAD00A864EA /* Imgvue Upload */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A080F1F51C865CAD00A864EA /* Build configuration list for PBXNativeTarget "Imgvue Upload" */;
+			buildPhases = (
+				A080F1E61C865CAD00A864EA /* Sources */,
+				A080F1E71C865CAD00A864EA /* Frameworks */,
+				A080F1E81C865CAD00A864EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Imgvue Upload";
+			productName = "Imgvue Upload";
+			productReference = A080F1EA1C865CAD00A864EA /* Imgvue Upload.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -515,6 +582,15 @@
 						CreatedOnToolsVersion = 6.0;
 						TestTargetID = 839576481969275D0033B974;
 					};
+					A080F1E91C865CAD00A864EA = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 5E58DW2PMK;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 				};
 			};
 			buildConfigurationList = 839575AE196925690033B974 /* Build configuration list for PBXProject "Imgvue" */;
@@ -534,6 +610,7 @@
 				839575C6196925690033B974 /* ImgvueTests */,
 				839576481969275D0033B974 /* ImgvueKit */,
 				839576521969275D0033B974 /* ImgvueKitTests */,
+				A080F1E91C865CAD00A864EA /* Imgvue Upload */,
 			);
 		};
 /* End PBXProject section */
@@ -567,6 +644,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A080F1E81C865CAD00A864EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A080F1F01C865CAD00A864EA /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,6 +714,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A080F1E61C865CAD00A864EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A080F1ED1C865CAD00A864EA /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -652,6 +745,11 @@
 			target = 839576481969275D0033B974 /* ImgvueKit */;
 			targetProxy = 839576601969275D0033B974 /* PBXContainerItemProxy */;
 		};
+		A080F1F31C865CAD00A864EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A080F1E91C865CAD00A864EA /* Imgvue Upload */;
+			targetProxy = A080F1F21C865CAD00A864EA /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -661,6 +759,14 @@
 				839575BF196925690033B974 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A080F1EE1C865CAD00A864EA /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A080F1EF1C865CAD00A864EA /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -752,6 +858,7 @@
 				CODE_SIGN_ENTITLEMENTS = Imgvue/Imgvue.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Imgvue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.waterwood.swift.Imgvue;
@@ -768,6 +875,7 @@
 				CODE_SIGN_ENTITLEMENTS = Imgvue/Imgvue.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Imgvue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.waterwood.swift.Imgvue;
@@ -892,6 +1000,46 @@
 			};
 			name = Release;
 		};
+		A080F1F61C865CAD00A864EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Imgvue Upload/Imgvue Upload.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Imgvue Upload/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.waterwood.swift.Imgvue.Imgvue-Upload";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A080F1F71C865CAD00A864EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Imgvue Upload/Imgvue Upload.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Imgvue Upload/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.waterwood.swift.Imgvue.Imgvue-Upload";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -939,6 +1087,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		A080F1F51C865CAD00A864EA /* Build configuration list for PBXNativeTarget "Imgvue Upload" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A080F1F61C865CAD00A864EA /* Debug */,
+				A080F1F71C865CAD00A864EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
