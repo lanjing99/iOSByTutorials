@@ -43,7 +43,7 @@ class ViewController: UIViewController {
   var shortenedUrl: BitlyShortenedUrlModel!
   
   required init(coder aDecoder: NSCoder)  {
-    bitlyService = BitlyService(accessToken: "YOUR_ACCESS_TOKEN")
+    bitlyService = BitlyService(accessToken: "19febc3999253ad2227019c933a224bb0d6f8480")
     
     super.init(coder: aDecoder)!
     
@@ -172,10 +172,10 @@ class ViewController: UIViewController {
   }
   
   func resetView() {
-    longUrlTextField.text = ""
+    longUrlTextField?.text = ""
     actionButtonState = .Shorten
-    actionButton.setTitle("Shorten", forState: .Normal)
-    copiedLabel.hidden = true
+    actionButton?.setTitle("Shorten", forState: .Normal)
+    copiedLabel?.hidden = true
   }
   
 }

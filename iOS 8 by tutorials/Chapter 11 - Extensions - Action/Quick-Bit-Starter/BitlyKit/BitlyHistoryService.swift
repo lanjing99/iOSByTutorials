@@ -97,7 +97,7 @@ public class BitlyHistoryService {
   }
   
   func savedItemsFileUrl() -> NSURL {
-    if let containerUrl = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.com.raywenderlich.swift.quickbit") {
+    if let containerUrl = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.com.waterwood.swift.quickbit") {
       return containerUrl.URLByAppendingPathComponent("RWTBitlyHistoryServiceItems.dat")
     } else {
       fatalError("Unable to obtain shared container URL, verify that you've configured your App Group correctly.")
