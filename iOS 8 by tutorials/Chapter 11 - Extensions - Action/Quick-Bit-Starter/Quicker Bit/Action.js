@@ -17,27 +17,52 @@ Action.prototype = {
         // We will not modify anything, but will pass the body's background
         // style to the native code.
         
-        arguments.completionFunction({ "currentBackgroundColor" : document.body.style.backgroundColor })
+//        arguments.completionFunction({ "currentBackgroundColor" : document.body.style.backgroundColor })
+        arguments.completionFunction({ "currentUrl" : document.URL })
     },
     
     finalize: function(arguments) {
-        // This method is run after the native code completes.
-        
-        // We'll see if the native code has passed us a new background style,
-        // and set it on the body.
-        
-        var newBackgroundColor = arguments["newBackgroundColor"]
-        if (newBackgroundColor) {
-            // We'll set document.body.style.background, to override any
-            // existing background.
-            document.body.style.background = newBackgroundColor
+//        // This method is run after the native code completes.
+//        
+//        // We'll see if the native code has passed us a new background style,
+//        // and set it on the body.
+//        
+//        var newBackgroundColor = arguments["newBackgroundColor"]
+//        if (newBackgroundColor) {
+//            // We'll set document.body.style.background, to override any
+//            // existing background.
+//            document.body.style.background = newBackgroundColor
+//        } else {
+//            // If nothing's been returned to us, we'll set the background to
+//            // blue.
+//            document.body.style.background= "blue"
+//        }
+        var error = arguments["error"];
+        if (error) {
+            alert('There was an error creating your bit.ly link');
         } else {
-            // If nothing's been returned to us, we'll set the background to
-            // blue.
-            document.body.style.background= "blue"
+            var shortUrl = arguments["shortUrl"];
+            alert('Your bit.ly link is now on your clipboard\n\n' + shortUrl);
         }
     }
     
 };
     
 var ExtensionPreprocessingJS = new Action
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
