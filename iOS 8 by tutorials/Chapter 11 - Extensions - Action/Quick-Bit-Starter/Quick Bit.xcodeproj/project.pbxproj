@@ -22,6 +22,11 @@
 		83FB8DE819687944009C4242 /* BitlyHistoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FB8DE719687943009C4242 /* BitlyHistoryService.swift */; };
 		83FB8DEA1968794F009C4242 /* BitlyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FB8DE91968794F009C4242 /* BitlyService.swift */; };
 		83FB8DEF1968AC6F009C4242 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FB8DEE1968AC6F009C4242 /* HistoryViewController.swift */; };
+		A080F2161C86FA5000A864EA /* ActionRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A080F2151C86FA5000A864EA /* ActionRequestHandler.swift */; };
+		A080F2181C86FA5000A864EA /* Action.js in Resources */ = {isa = PBXBuildFile; fileRef = A080F2171C86FA5000A864EA /* Action.js */; };
+		A080F21C1C86FA5000A864EA /* Quicker Bit.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A080F2131C86FA5000A864EA /* Quicker Bit.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A080F2211C86FA7200A864EA /* BitlyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83FB8DBD19687909009C4242 /* BitlyKit.framework */; };
+		A080F2231C86FB7700A864EA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A080F2221C86FB7700A864EA /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +100,13 @@
 			remoteGlobalIDString = 83FB8DBC19687909009C4242;
 			remoteInfo = BitlyKit;
 		};
+		A080F21A1C86FA5000A864EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83FB8D8E196878C2009C4242 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A080F2121C86FA5000A864EA;
+			remoteInfo = "Quicker Bit";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -115,6 +127,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				A080F21C1C86FA5000A864EA /* Quicker Bit.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,6 +156,12 @@
 		83FB8DE91968794F009C4242 /* BitlyService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitlyService.swift; sourceTree = "<group>"; };
 		83FB8DEE1968AC6F009C4242 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		83FB8DF21968CAD6009C4242 /* Quick Bit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Quick Bit.entitlements"; sourceTree = "<group>"; };
+		A080F2131C86FA5000A864EA /* Quicker Bit.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Quicker Bit.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A080F2151C86FA5000A864EA /* ActionRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionRequestHandler.swift; sourceTree = "<group>"; };
+		A080F2171C86FA5000A864EA /* Action.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Action.js; sourceTree = "<group>"; };
+		A080F2191C86FA5000A864EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A080F2201C86FA6700A864EA /* Quicker Bit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Quicker Bit.entitlements"; sourceTree = "<group>"; };
+		A080F2221C86FB7700A864EA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +195,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A080F2101C86FA5000A864EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A080F2211C86FA7200A864EA /* BitlyKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -186,6 +213,7 @@
 				83FB8DAB196878C2009C4242 /* Quick BitTests */,
 				83FB8DBE19687909009C4242 /* BitlyKit */,
 				83FB8DCB1968790A009C4242 /* BitlyKitTests */,
+				A080F2141C86FA5000A864EA /* Quicker Bit */,
 				83FB8D97196878C2009C4242 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -197,6 +225,7 @@
 				83FB8DA8196878C2009C4242 /* Quick BitTests.xctest */,
 				83FB8DBD19687909009C4242 /* BitlyKit.framework */,
 				83FB8DC71968790A009C4242 /* BitlyKitTests.xctest */,
+				A080F2131C86FA5000A864EA /* Quicker Bit.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -286,6 +315,18 @@
 			name = ThirdParty;
 			sourceTree = "<group>";
 		};
+		A080F2141C86FA5000A864EA /* Quicker Bit */ = {
+			isa = PBXGroup;
+			children = (
+				A080F2201C86FA6700A864EA /* Quicker Bit.entitlements */,
+				A080F2151C86FA5000A864EA /* ActionRequestHandler.swift */,
+				A080F2171C86FA5000A864EA /* Action.js */,
+				A080F2191C86FA5000A864EA /* Info.plist */,
+				A080F2221C86FB7700A864EA /* Images.xcassets */,
+			);
+			path = "Quicker Bit";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -315,6 +356,7 @@
 			dependencies = (
 				83FB8DD11968790A009C4242 /* PBXTargetDependency */,
 				83FB8DD51968790A009C4242 /* PBXTargetDependency */,
+				A080F21B1C86FA5000A864EA /* PBXTargetDependency */,
 			);
 			name = "Quick Bit";
 			productName = "Quick Bit";
@@ -381,6 +423,23 @@
 			productReference = 83FB8DC71968790A009C4242 /* BitlyKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		A080F2121C86FA5000A864EA /* Quicker Bit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A080F21D1C86FA5000A864EA /* Build configuration list for PBXNativeTarget "Quicker Bit" */;
+			buildPhases = (
+				A080F20F1C86FA5000A864EA /* Sources */,
+				A080F2101C86FA5000A864EA /* Frameworks */,
+				A080F2111C86FA5000A864EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Quicker Bit";
+			productName = "Quicker Bit";
+			productReference = A080F2131C86FA5000A864EA /* Quicker Bit.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -412,6 +471,15 @@
 						CreatedOnToolsVersion = 6.0;
 						TestTargetID = 83FB8DBC19687909009C4242;
 					};
+					A080F2121C86FA5000A864EA = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 5E58DW2PMK;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 				};
 			};
 			buildConfigurationList = 83FB8D91196878C2009C4242 /* Build configuration list for PBXProject "Quick Bit" */;
@@ -431,6 +499,7 @@
 				83FB8DA7196878C2009C4242 /* Quick BitTests */,
 				83FB8DBC19687909009C4242 /* BitlyKit */,
 				83FB8DC61968790A009C4242 /* BitlyKitTests */,
+				A080F2121C86FA5000A864EA /* Quicker Bit */,
 			);
 		};
 /* End PBXProject section */
@@ -463,6 +532,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A080F2111C86FA5000A864EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A080F2181C86FA5000A864EA /* Action.js in Resources */,
+				A080F2231C86FB7700A864EA /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +581,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				83FB8DCF1968790A009C4242 /* BitlyKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A080F20F1C86FA5000A864EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A080F2161C86FA5000A864EA /* ActionRequestHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +644,11 @@
 			isa = PBXTargetDependency;
 			target = 83FB8DBC19687909009C4242 /* BitlyKit */;
 			targetProxy = 83FB8DF01968CAB1009C4242 /* PBXContainerItemProxy */;
+		};
+		A080F21B1C86FA5000A864EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A080F2121C86FA5000A864EA /* Quicker Bit */;
+			targetProxy = A080F21A1C86FA5000A864EA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -659,6 +750,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Quick Bit/Quick Bit.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Quick Bit/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.waterwood.swift.Quick-Bit";
@@ -674,6 +766,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Quick Bit/Quick Bit.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = "Quick Bit/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.waterwood.swift.Quick-Bit";
@@ -797,6 +890,46 @@
 			};
 			name = Release;
 		};
+		A080F21E1C86FA5000A864EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Quicker Bit/Quicker Bit.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Quicker Bit/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.waterwood.swift.Quick-Bit.Quicker-Bit";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		A080F21F1C86FA5000A864EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Quicker Bit/Quicker Bit.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Quicker Bit/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.waterwood.swift.Quick-Bit.Quicker-Bit";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -844,6 +977,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		A080F21D1C86FA5000A864EA /* Build configuration list for PBXNativeTarget "Quicker Bit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A080F21E1C86FA5000A864EA /* Debug */,
+				A080F21F1C86FA5000A864EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

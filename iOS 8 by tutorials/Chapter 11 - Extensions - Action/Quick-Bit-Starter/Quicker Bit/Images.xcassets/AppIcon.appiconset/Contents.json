@@ -23,13 +23,13 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "app-icon-120@2x.png",
+      "filename" : "quicker-bit-template-icon-iphone@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "app-icon-120@3x.png",
+      "filename" : "quicker-bit-template-icon-iphone@3x.png",
       "scale" : "3x"
     },
     {
@@ -53,20 +53,20 @@
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
       "size" : "76x76",
+      "idiom" : "ipad",
+      "filename" : "quickerbit-template-icon-ipad.png",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "app-icon-152.png",
+      "filename" : "quickerbit-template-icon-ipad@2x.png",
       "scale" : "2x"
     },
     {
-      "size" : "83.5x83.5",
       "idiom" : "ipad",
-      "filename" : "app-icon-152@2x.png",
+      "size" : "83.5x83.5",
       "scale" : "2x"
     }
   ],
