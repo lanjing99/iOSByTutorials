@@ -56,7 +56,7 @@ class AssetCollectionsViewController: UITableViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
     let destination = segue.destinationViewController
-      as AssetsViewController
+      as! AssetsViewController
     // Set up AssetCollectionViewController
   }
   

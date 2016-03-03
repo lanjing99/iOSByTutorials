@@ -34,7 +34,7 @@ class AssetsViewController: UICollectionViewController, UICollectionViewDelegate
   // MARK: UIViewController
   override func viewDidLoad() {
     super.viewDidLoad()
-    collectionView.allowsMultipleSelection = true
+    collectionView!.allowsMultipleSelection = true
   }
 
   override func viewWillAppear(animated: Bool)  {
@@ -42,23 +42,23 @@ class AssetsViewController: UICollectionViewController, UICollectionViewDelegate
     
     // Calculate Thumbnail Size
     let scale = UIScreen.mainScreen().scale
-    let cellSize = (collectionViewLayout as UICollectionViewFlowLayout).itemSize
+    let cellSize = (collectionViewLayout as! UICollectionViewFlowLayout).itemSize
     assetThumbnailSize = CGSize(width: cellSize.width * scale, height: cellSize.height * scale)
     
-    collectionView.reloadData()
+    collectionView!.reloadData()
     updateSelectedItems()
   }
   
   override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
     super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-    collectionView.reloadData()
+    collectionView!.reloadData()
     updateSelectedItems()
   }
   
   // MARK: Private
   func currentAssetAtIndex(index:NSInteger) -> PHAsset {
     if let fetchResult = assetsFetchResults {
-      return fetchResult[index] as PHAsset
+      return fetchResult[index] as! PHAsset
     } else {
       return selectedAssets.assets[index]
     }
@@ -89,7 +89,7 @@ class AssetsViewController: UICollectionViewController, UICollectionViewDelegate
   }
   
   override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier(AssetCollectionViewCellReuseIdentifier, forIndexPath: indexPath) as AssetCell
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier(AssetCollectionViewCellReuseIdentifier, forIndexPath: indexPath) as! AssetCell
     
     // Populate Cell
     
