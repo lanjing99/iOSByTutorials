@@ -24,7 +24,7 @@ import Foundation
 import CloudKit
 import MapKit
 
-struct ChangingTableLocation : RawOptionSetType, BooleanType {
+struct ChangingTableLocation : OptionSetType, BooleanType {
   var rawValue: UInt = 0
   var boolValue:Bool {
     get {
@@ -35,14 +35,14 @@ struct ChangingTableLocation : RawOptionSetType, BooleanType {
   init(nilLiteral: ()) { self.rawValue = 0 }
   func toRaw() -> UInt { return self.rawValue }
   static func convertFromNilLiteral() -> ChangingTableLocation { return .None}
-  static func fromRaw(raw: UInt) -> ChangingTableLocation? { return self(rawValue: raw) }
-  static func fromMask(raw: UInt) -> ChangingTableLocation { return self(rawValue: raw) }
-  static var allZeros: ChangingTableLocation { return self(rawValue: 0) }
+  static func fromRaw(raw: UInt) -> ChangingTableLocation? { return self.init(rawValue: raw) }
+  static func fromMask(raw: UInt) -> ChangingTableLocation { return self.init(rawValue: raw) }
+  static var allZeros: ChangingTableLocation { return self.init(rawValue: 0) }
 
-  static var None: ChangingTableLocation   { return self(rawValue: 0) }      //0
-  static var Mens: ChangingTableLocation   { return self(rawValue: 1 << 0) } //1
-  static var Womens: ChangingTableLocation { return self(rawValue: 1 << 1) } //2
-  static var Family: ChangingTableLocation { return self(rawValue: 1 << 2) } //4
+  static var None: ChangingTableLocation   { return self.init(rawValue: 0) }      //0
+  static var Mens: ChangingTableLocation   { return self.init(rawValue: 1 << 0) } //1
+  static var Womens: ChangingTableLocation { return self.init(rawValue: 1 << 1) } //2
+  static var Family: ChangingTableLocation { return self.init(rawValue: 1 << 2) } //4
   
   func images() -> [UIImage] {
     var images = [UIImage]()
@@ -63,7 +63,7 @@ func & (lhs: ChangingTableLocation, rhs: ChangingTableLocation) -> ChangingTable
 func ^ (lhs: ChangingTableLocation, rhs: ChangingTableLocation) -> ChangingTableLocation { return ChangingTableLocation(rawValue: lhs.rawValue ^ rhs.rawValue) }
 
 
-struct SeatingType : RawOptionSetType, BooleanType {
+struct SeatingType : RawOptionSetTypeooleanType {
   var rawValue: UInt = 0
   var boolValue:Bool {
     get {
@@ -100,7 +100,7 @@ func | (lhs: SeatingType, rhs: SeatingType) -> SeatingType { return SeatingType(
 func & (lhs: SeatingType, rhs: SeatingType) -> SeatingType { return SeatingType(rawValue: lhs.rawValue & rhs.rawValue) }
 func ^ (lhs: SeatingType, rhs: SeatingType) -> SeatingType { return SeatingType(rawValue: lhs.rawValue ^ rhs.rawValue) }
 
-class Establishment : NSObject, MKAnnotation, Equatable {
+class Establishment : NSObject, MKAnnotation {
   
   var record : CKRecord! {
     didSet {

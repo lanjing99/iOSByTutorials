@@ -309,6 +309,7 @@
 		27DA776E19672452005FFA76 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = raywenderlich;
 				TargetAttributes = {
@@ -318,6 +319,7 @@
 					};
 					27DA777519672452005FFA76 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 36NR94V75M;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -574,6 +576,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BabiFud/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.waterwood.BabiFood;
 				PRODUCT_NAME = BabiFood;
 				PROVISIONING_PROFILE = "";
 			};
@@ -589,6 +592,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BabiFud/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.waterwood.BabiFood;
 				PRODUCT_NAME = BabiFood;
 				PROVISIONING_PROFILE = "";
 			};
