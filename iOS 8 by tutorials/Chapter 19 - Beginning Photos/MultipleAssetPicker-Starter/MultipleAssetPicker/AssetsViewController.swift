@@ -66,15 +66,41 @@ class AssetsViewController: UICollectionViewController, UICollectionViewDelegate
   
   func updateSelectedItems() {
     // Select the selected items
+    if let fetchResult = assetsFetchResults {
+      for asset in selectedAssets.assets {
+          let index = fetchResult.indexOfObject(asset)
+        if index != NSNotFound {
+          let indexPath = NSIndexPath(forItem: index, inSection: 0)
+          collectionView!.selectItemAtIndexPath(indexPath, animated: false, scrollPosition: .None)
+        }
+      }
+    }else{
+      for i in 0..<selectedAssets.assets.count {
+        let indexPath = NSIndexPath(forItem: i, inSection: 0)
+        collectionView!.selectItemAtIndexPath(indexPath, animated: false, scrollPosition: .None)
+        
+      }
+    }
   }
   
   // MARK: UICollectionViewDelegate
   override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)  {
     // Update selected Assets
+    let asset = currentAssetAtIndex(indexPath.item)
+    selectedAssets.assets.append(asset)
   }
   
   override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath)  {
     // Update selected Assets
+    let assetToDelete = currentAssetAtIndex(indexPath.item)
+    selectedAssets.assets = selectedAssets.assets.filter{
+      asset in
+      asset != assetToDelete
+    }
+    
+    if assetsFetchResults == nil {
+      collectionView.deleteItemsAtIndexPaths([indexPath])
+    }
   }
   
   
@@ -90,6 +116,16 @@ class AssetsViewController: UICollectionViewController, UICollectionViewDelegate
   
   override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier(AssetCollectionViewCellReuseIdentifier, forIndexPath: indexPath) as! AssetCell
+    let reuseCount = cell.reuseCount
+    let asset = currentAssetAtIndex(indexPath.item)
+    let option = PHImageRequestOptions()
+    option.networkAccessAllowed = true
+    
+    PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: assetThumbnailSize, contentMode: .AspectFill, options: option) { (result, info) -> Void in
+      if reuseCount == cell.reuseCount {
+        cell.imageView.image = result
+      }
+    }
     
     // Populate Cell
     
@@ -115,3 +151,36 @@ class AssetsViewController: UICollectionViewController, UICollectionViewDelegate
     return CGSize(width: width,height: width)
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
