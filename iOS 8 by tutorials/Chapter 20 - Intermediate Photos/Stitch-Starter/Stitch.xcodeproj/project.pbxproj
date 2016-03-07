@@ -20,6 +20,7 @@
 		4DE0858919947622001BF631 /* CheckMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE0858819947622001BF631 /* CheckMark.swift */; };
 		4DE0858B1994762D001BF631 /* StitchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE0858A1994762D001BF631 /* StitchHelper.swift */; };
 		4DE0858D19947638001BF631 /* StitchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE0858C19947638001BF631 /* StitchesViewController.swift */; };
+		A04D15A11C8DA69E00F39B99 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A04D15A01C8DA69E00F39B99 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		4DE0858819947622001BF631 /* CheckMark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckMark.swift; sourceTree = "<group>"; };
 		4DE0858A1994762D001BF631 /* StitchHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StitchHelper.swift; sourceTree = "<group>"; };
 		4DE0858C19947638001BF631 /* StitchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StitchesViewController.swift; sourceTree = "<group>"; };
+		A04D15A01C8DA69E00F39B99 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				4DE0857E199475DC001BF631 /* main.storyboard */,
+				A04D15A01C8DA69E00F39B99 /* Launch Screen.storyboard */,
 				4D44F1971951C45E00715768 /* AppDelegate.swift */,
 				4D7A50491969F3C2001CA48C /* View Controllers */,
 				4D7A504B1969F3D3001CA48C /* Helpers & Categories */,
@@ -210,6 +213,7 @@
 				TargetAttributes = {
 					4D44F1911951C45E00715768 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 5E58DW2PMK;
 					};
 					4D44F1A31951C45E00715768 = {
 						CreatedOnToolsVersion = 6.0;
@@ -241,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A04D15A11C8DA69E00F39B99 /* Launch Screen.storyboard in Resources */,
 				4D44F19F1951C45E00715768 /* Images.xcassets in Resources */,
 				4DE0857F199475DC001BF631 /* main.storyboard in Resources */,
 			);
@@ -375,9 +380,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Stitch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.waterwood.Stitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -386,9 +392,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Stitch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.waterwood.Stitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
