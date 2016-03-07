@@ -31,10 +31,17 @@ class AssetsViewController: UICollectionViewController, UICollectionViewDelegate
   
   private var assetThumbnailSize = CGSizeZero
   
+  
+  private let imageManager: PHCachingImageManager = PHCachingImageManager()
+  private var cachingIndexes: [NSIndexPath] = []
+  private var lastCacheFrameCenter: CGFloat = 0
+  
+  
   // MARK: UIViewController
   override func viewDidLoad() {
     super.viewDidLoad()
     collectionView!.allowsMultipleSelection = true
+    resetCache()
   }
 
   override func viewWillAppear(animated: Bool)  {
@@ -47,6 +54,7 @@ class AssetsViewController: UICollectionViewController, UICollectionViewDelegate
     
     collectionView!.reloadData()
     updateSelectedItems()
+    resetCache()
   }
   
   override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -150,7 +158,88 @@ class AssetsViewController: UICollectionViewController, UICollectionViewDelegate
     let width = collectionView.bounds.size.width / CGFloat(thumbsPerRow)
     return CGSize(width: width,height: width)
   }
+  
+  
+  func resetCache(){
+    imageManager.stopCachingImagesForAllAssets()
+    cachingIndexes.removeAll(keepCapacity: true)
+    lastCacheFrameCenter = 0
+  }
+  
+  func updateCache(){
+    let currentFrameCenter = CGRectGetMidY(collectionView!.bounds)
+    if abs(currentFrameCenter - lastCacheFrameCenter) < CGRectGetHeight(collectionView!.bounds)/3 {
+      return
+    }
+    lastCacheFrameCenter = currentFrameCenter
+    
+    let numOffscreenAssetsToCache = 60
+    var visibleIndexes = collectionView!.indexPathsForVisibleItems()
+    if visibleIndexes.count == 0 {
+      return
+    }
+    visibleIndexes.sortInPlace{
+      a, b in
+      a.item < b.item
+    }
+    
+    
+    var totalItemCount = 0
+    if let fetchResults = assetsFetchResults {
+      totalItemCount = fetchResults.count
+    }else{
+      totalItemCount = selectedAssets.assets.count
+    }
+    
+    let lastItemToCache = min(totalItemCount, visibleIndexes[visibleIndexes.count - 1].item + numOffscreenAssetsToCache/2)
+    let firstItemToCache = max(0, visibleIndexes[0].item - numOffscreenAssetsToCache/2)
+    let options = PHImageRequestOptions()
+    options.networkAccessAllowed = true
+    var indexToStopCaching: [NSIndexPath] = []
+    cachingIndexes = cachingIndexes.filter {
+      index in
+      if index.item < firstItemToCache || index.item > lastItemToCache {
+        indexToStopCaching.append(index)
+        return false
+      }
+      return true
+    }
+    
+    imageManager.stopCachingImagesForAssets(assetsAtIndexPaths(indexToStopCaching), targetSize: assetThumbnailSize, contentMode: .AspectFill, options: options)
+    
+    
+    var indexesToStartCaching: [NSIndexPath] = []
+    for i in firstItemToCache..<lastItemToCache {
+      let matching = cachingIndexes.filter{
+        index in
+        index.item == i
+      }
+      if matching.count == 0 {
+        let indexPath = NSIndexPath(forItem: i, inSection: 0)
+        indexesToStartCaching.append(indexPath)
+      }
+    }
+    cachingIndexes += indexesToStartCaching
+    imageManager.startCachingImagesForAssets(assetsAtIndexPaths(indexesToStartCaching), targetSize: assetThumbnailSize, contentMode: .AspectFill, options: options)
+    
+  }
+  
+  func assetsAtIndexPaths(indexPaths:[NSIndexPath]) -> [PHAsset]{
+    var assets: [PHAsset] = []
+    for indexPath in indexPaths {
+      assets.append(currentAssetAtIndex(indexPath.item))
+    }
+    return assets
+  }
+  
+  override func scrollViewDidScroll(scrollView: UIScrollView) {
+    updateCache()
+  }
+  
 }
+
+
+
 
 
 
