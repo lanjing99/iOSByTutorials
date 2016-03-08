@@ -41,17 +41,59 @@ class StitchHelper: NSObject {
         stichPlaceHolder = assetChangeRequest.placeholderForCreatedAsset
         let assetCollectionChangeRequest = PHAssetCollectionChangeRequest(forAssetCollection: collection)
         assetCollectionChangeRequest?.addAssets([stichPlaceHolder])
-      }) { (_, _) -> Void in
+      }) { (success,  error ) -> Void in
+        let fetchResult = PHAsset.fetchAssetsWithLocalIdentifiers([stichPlaceHolder.localIdentifier], options: nil)
+        let stitchAsset = fetchResult.firstObject as! PHAsset
         
+        self.editStitchContentWith(stitchAsset, image: stitchImage, assets: assets)
     }
   }
   
   // MARK: Stitch Content
   class func editStitchContentWith(stitch: PHAsset, image: UIImage, assets: [PHAsset]) {
     
+    let stitchJPEG = UIImageJPEGRepresentation(image, 0.9)
+    let assetIDs = assets.map { asset in
+      asset.localIdentifier
+    }
+    let assetsData = NSKeyedArchiver.archivedDataWithRootObject(assetIDs)
+    stitch.requestContentEditingInputWithOptions(nil) { (contentEditingInput, _) -> Void in
+      let adjustmentData = PHAdjustmentData(formatIdentifier: StitchAdjustmentFormatIdentifier, formatVersion: "1.0", data: assetsData)
+      let contentEditingOutput = PHContentEditingOutput(contentEditingInput: contentEditingInput!)
+      // 这句话的作用是什么？并不是保存图片，而是将图片写到一个临时的路径，类似如下：
+      //"file:///private/var/mobile/Containers/Data/Application/B7DA62CA-B143-479C-8757-1DB871876AD1/tmp/RenderedContent-D081CFC7-2A15-42D4-92DF-5A8005C23EF3.JPG"
+      stitchJPEG?.writeToURL(contentEditingOutput.renderedContentURL, atomically: true)
+      contentEditingOutput.adjustmentData = adjustmentData
+      PHPhotoLibrary.sharedPhotoLibrary().performChanges({
+        let request = PHAssetChangeRequest(forAsset: stitch)
+        request.contentEditingOutput = contentEditingOutput
+        }, completionHandler: nil)
+      
+    }
   }
   
   class func loadAssetsInStitch(stitch: PHAsset, completion: [PHAsset] -> ()) {
+    let options = PHContentEditingInputRequestOptions()
+    options.canHandleAdjustmentData = { adjustmentData in
+        (adjustmentData.formatIdentifier == StitchCellReuseIdentifier) &&
+        (adjustmentData.formatVersion == "1.0")
+    }
+    
+    stitch.requestContentEditingInputWithOptions(options) { (contentEditingInput, _) -> Void in
+//      if contentEditingInput!.adjustmentData != nil {
+        let adjustmentData = contentEditingInput!.adjustmentData
+        let stichAssetsID = NSKeyedUnarchiver.unarchiveObjectWithData(adjustmentData.data) as! [String]
+        let stitchAssetsFetchResult = PHAsset.fetchAssetsWithLocalIdentifiers(stichAssetsID, options: nil)
+        var stitchAssets: [PHAsset] = []
+        stitchAssetsFetchResult.enumerateObjectsUsingBlock({ (obj, _, _) -> Void in
+          stitchAssets.append(obj as! PHAsset)
+        })
+      completion(stitchAssets)
+//        for asset in stitchAssetsFetchResult {
+//          stitchAssets.append(asset)
+//        }
+//      }
+    }
     
   }
   

@@ -68,6 +68,11 @@ class StitchDetailViewController: UIViewController, PHPhotoLibraryChangeObserver
       dest.delegate = self
       
       // Set up AssetPickerTableViewController
+      if let assets = stitchAssets {
+        dest.selectedAssets = SelectedAssets(assets: assets)
+      }else{
+        dest.selectedAssets = nil
+      }
       
     }
   }
@@ -123,6 +128,12 @@ class StitchDetailViewController: UIViewController, PHPhotoLibraryChangeObserver
   
   @IBAction func editPressed(sender:AnyObject!) {
     // Load the selected stitches then perform the segue to the picker
+    StitchHelper.loadAssetsInStitch(asset) { stichAssets in
+      self.stitchAssets = stichAssets
+      dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        self.performSegueWithIdentifier(StitchCellReuseIdentifier, sender: self)
+      })
+    }
   }
   
   // MARK: AssetPickerDelegate
