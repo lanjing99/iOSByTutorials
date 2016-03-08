@@ -60,7 +60,7 @@ class ListViewController: UITableViewController, DetailViewControllerDelegate {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
     let identifier = segue.identifier
-    let controller = segue.destinationViewController as DetailViewController
+    let controller = segue.destinationViewController as! DetailViewController
     controller.delegate = self
     if identifier == EditItemSegueIdentifier {
       controller.item = selectedItem()
@@ -92,7 +92,7 @@ class ListViewController: UITableViewController, DetailViewControllerDelegate {
   // MARK: IBActions
   
   @IBAction func unwindDetailViewController(unwindSegue: UIStoryboardSegue) {
-    endEditingInDetailViewController(unwindSegue.sourceViewController as DetailViewController)
+    endEditingInDetailViewController(unwindSegue.sourceViewController as! DetailViewController)
     if let indexPath = selectedItemIndexPath {
       tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
@@ -106,8 +106,8 @@ class ListViewController: UITableViewController, DetailViewControllerDelegate {
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifier) as UITableViewCell
-    cell.textLabel.text = items[indexPath.row]
+    let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifier) as UITableViewCell!
+    cell.textLabel!.text = items[indexPath.row]
     return cell
   }
   
@@ -144,7 +144,7 @@ class ListViewController: UITableViewController, DetailViewControllerDelegate {
       if let viewControllers = splitViewController?.viewControllers {
         for controller: AnyObject in viewControllers {
           if controller.isKindOfClass(DetailViewController.self) {
-            endEditingInDetailViewController(controller as DetailViewController)
+            endEditingInDetailViewController(controller as! DetailViewController)
             break
           }
         }
@@ -154,7 +154,7 @@ class ListViewController: UITableViewController, DetailViewControllerDelegate {
   
   // MARK: DetailViewControllerDelegate
   
-  func detailViewController(#controller: DetailViewController, didFinishWithUpdatedItem item: String) {
+  func detailViewController(controller controller: DetailViewController, didFinishWithUpdatedItem item: String) {
     // Did user edit an item, or added a new item?
     if selectedItemIndexPath != nil {
       

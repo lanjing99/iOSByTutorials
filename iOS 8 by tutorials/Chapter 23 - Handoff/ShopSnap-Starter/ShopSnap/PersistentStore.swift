@@ -32,7 +32,7 @@ class PersistentStore: NSObject {
   var storeURL: NSURL? {
     get {
       var error: NSError?
-      var URL: NSURL? = NSFileManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true, error: nil)
+      let URL: NSURL? = try! NSFileManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
       if let docURL = URL {
         let storeURL = docURL.URLByAppendingPathComponent(StoreFileName)
         return storeURL
@@ -60,7 +60,7 @@ class PersistentStore: NSObject {
       // Load previously saved items, if any.
       var unarchived: [String]?
       if let path = self.storeURL?.relativePath {
-        unarchived = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as [String]?
+        unarchived = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as! [String]?
       }
       if let savedItems = unarchived {
         self.items += savedItems
@@ -81,7 +81,7 @@ class PersistentStore: NSObject {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
       if let path = self.storeURL?.relativePath {
         let success = NSKeyedArchiver.archiveRootObject(self.items, toFile: path)
-        println("Commited \(countElements(self.items)) items: \(success)")
+        print("Commited \(self.items.count) items: \(success)")
       }
     })
   }

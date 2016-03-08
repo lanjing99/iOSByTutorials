@@ -38,10 +38,10 @@ class SplitViewController: UISplitViewController, UISplitViewControllerDelegate 
     // and detail is on the right.
     if traitCollection.horizontalSizeClass == .Regular {
       
-      let navController = viewControllers.first as UINavigationController
-      let listViewController = navController.viewControllers?.first as ListViewController
+      let navController = viewControllers.first as! UINavigationController
+      let listViewController = navController.viewControllers.first as! ListViewController
       
-      let detailViewController = viewControllers.last as DetailViewController
+      let detailViewController = viewControllers.last as! DetailViewController
       detailViewController.delegate = listViewController
     }
     
@@ -56,7 +56,7 @@ class SplitViewController: UISplitViewController, UISplitViewControllerDelegate 
     if secondaryViewController.isKindOfClass(DetailViewController.self) {
       
       // If Detail View Controller is editing something, default behavior is OK, so return NO.
-      let detailViewController = secondaryViewController as DetailViewController
+      let detailViewController = secondaryViewController as! DetailViewController
       if detailViewController.item?.isEmpty == false {
         detailViewController.startEditing()
         return false
@@ -68,7 +68,7 @@ class SplitViewController: UISplitViewController, UISplitViewControllerDelegate 
       
       // If there is modally presented view controller, pop.
       if primaryViewController.presentedViewController != nil {
-        (primaryViewController as UINavigationController).popToRootViewControllerAnimated(true)
+        (primaryViewController as! UINavigationController).popToRootViewControllerAnimated(true)
       }
     }
     
@@ -79,8 +79,8 @@ class SplitViewController: UISplitViewController, UISplitViewControllerDelegate 
   // MARK: Helper
   
   func viewControllerForViewing () -> UIViewController {
-    let navController = viewControllers.first as UINavigationController
-    let listViewController = navController.viewControllers?.first as ListViewController
+    let navController = viewControllers.first as! UINavigationController
+    let listViewController = navController.viewControllers.first as! ListViewController
     
     // If in Compact layout, cancel everything, go to the root of the navigation stack.
     if traitCollection.horizontalSizeClass == .Compact {
@@ -93,27 +93,27 @@ class SplitViewController: UISplitViewController, UISplitViewControllerDelegate 
     if traitCollection.horizontalSizeClass == .Regular {
       
       // If it is the Regular layout, find DetailViewController.
-      let detailViewController = viewControllers.last as DetailViewController
+      let detailViewController = viewControllers.last as! DetailViewController
       return detailViewController
       
     } else {
       
-      let navController = viewControllers.first as UINavigationController
+      let navController = viewControllers.first as! UINavigationController
       
       // Otherwise, is DetailViewController already active?
       var lastViewController: AnyObject? = navController.viewControllers.last
       if lastViewController is DetailViewController {
         
         // Pass it on.
-        let detailViewController = lastViewController as DetailViewController
+        let detailViewController = lastViewController as! DetailViewController
         return detailViewController
         
       } else {
         
         // Make DetailViewController active via ListViewController.
-        let listViewController = navController.viewControllers?.first as ListViewController
+        let listViewController = navController.viewControllers.first as! ListViewController
         listViewController.performSegueWithIdentifier(AddItemSegueIdentifier, sender: nil)
-        let detailViewController = navController.viewControllers.last as DetailViewController
+        let detailViewController = navController.viewControllers.last as! DetailViewController
         return detailViewController
       }
     }

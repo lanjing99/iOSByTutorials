@@ -44,7 +44,7 @@ class TraitOverrideViewController: UIViewController {
       preferredTrait = UITraitCollection(horizontalSizeClass: .Compact)
     }
     
-    let childViewController: UIViewController = childViewControllers.first as UIViewController
+    let childViewController: UIViewController = childViewControllers.first! as UIViewController
     setOverrideTraitCollection(preferredTrait, forChildViewController: childViewController)
     super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
   }

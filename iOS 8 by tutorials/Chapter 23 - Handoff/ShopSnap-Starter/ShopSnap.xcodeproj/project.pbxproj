@@ -16,6 +16,7 @@
 		6D00FC53196AC035004AAF60 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D00FC52196AC035004AAF60 /* ListViewController.swift */; };
 		6D00FC55196AC03D004AAF60 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D00FC54196AC03D004AAF60 /* DetailViewController.swift */; };
 		6DD61018196CC905003293D7 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DD61017196CC905003293D7 /* Storyboard.storyboard */; };
+		A02BD2671C8EAFB600DCFF33 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A02BD2661C8EAFB600DCFF33 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		6D00FC52196AC035004AAF60 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		6D00FC54196AC03D004AAF60 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		6DD61017196CC905003293D7 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		A02BD2661C8EAFB600DCFF33 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				6DD61017196CC905003293D7 /* Storyboard.storyboard */,
+				A02BD2661C8EAFB600DCFF33 /* Launch Screen.storyboard */,
 				5BCACAE21969DFE50050F1E5 /* AppDelegate.swift */,
 				6D00FC4F196AC005004AAF60 /* TraitOverrideViewController.swift */,
 				6D00FC4E196AC005004AAF60 /* SplitViewController.swift */,
@@ -167,11 +170,13 @@
 		5BCACAD51969DFE50050F1E5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Razeware LLC";
 				TargetAttributes = {
 					5BCACADC1969DFE50050F1E5 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 5E58DW2PMK;
 					};
 					5BCACAE91969DFE50050F1E5 = {
 						CreatedOnToolsVersion = 6.0;
@@ -202,6 +207,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A02BD2671C8EAFB600DCFF33 /* Launch Screen.storyboard in Resources */,
 				5BCACAE51969DFE50050F1E5 /* Images.xcassets in Resources */,
 				6DD61018196CC905003293D7 /* Storyboard.storyboard in Resources */,
 			);
@@ -332,11 +338,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ShopSnap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.waterwood.ShopSnap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -346,11 +352,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ShopSnap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.waterwood.ShopSnap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

@@ -23,7 +23,7 @@
 import UIKit
 
 protocol DetailViewControllerDelegate : class {
-  func detailViewController(#controller: DetailViewController, didFinishWithUpdatedItem item: String)
+  func detailViewController(controller controller: DetailViewController, didFinishWithUpdatedItem item: String)
 }
 
 class DetailViewController: UITableViewController, UITextFieldDelegate {
@@ -80,7 +80,7 @@ class DetailViewController: UITableViewController, UITextFieldDelegate {
   
   func textFieldShouldReturn(textField: UITextField!) -> Bool {
     textField.resignFirstResponder()
-    delegate?.detailViewController(controller: self, didFinishWithUpdatedItem: textField.text)
+    delegate?.detailViewController(controller: self, didFinishWithUpdatedItem: textField.text!)
     return true
   }
   
