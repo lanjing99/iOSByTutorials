@@ -119,4 +119,25 @@ class SplitViewController: UISplitViewController, UISplitViewControllerDelegate 
     }
   }
   
+  override func restoreUserActivityState(activity: NSUserActivity) {
+    let activityType = activity.activityType
+    
+    if activityType == ActivityTypeView {
+       viewControllerForViewing().restoreUserActivityState(activity)
+    }else{
+      viewControllerForEditing().restoreUserActivityState(activity)
+    }
+  
+  }
 }
+
+
+
+
+
+
+
+
+
+
+

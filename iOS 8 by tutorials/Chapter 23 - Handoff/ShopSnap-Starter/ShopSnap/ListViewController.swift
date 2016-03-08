@@ -206,8 +206,22 @@ class ListViewController: UITableViewController, DetailViewControllerDelegate {
   }
   
   override func updateUserActivityState(activity: NSUserActivity) {
+    print("updateUserActivityState")
     activity.addUserInfoEntriesFromDictionary([ActivityItemsKey: items])
     super.updateUserActivityState(activity)
+  }
+  
+  override func restoreUserActivityState(activity: NSUserActivity) {
+      if let importedItems = activity.userInfo?[ActivityItemsKey] as? NSArray {
+        for item in importedItems {
+          addItemToItemsIfUnique(item as! String)
+        }
+        PersistentStore.defaultStore().updateStoreWithItems(items)
+        PersistentStore.defaultStore().commit()
+        tableView.reloadData()
+      }
+      
+      super.restoreUserActivityState(activity)
   }
 }
 

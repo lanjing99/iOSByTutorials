@@ -49,4 +49,11 @@ class TraitOverrideViewController: UIViewController {
     super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
   }
   
+  override func restoreUserActivityState(activity: NSUserActivity) {
+    let nextViewController = childViewControllers.first
+    nextViewController?.restoreUserActivityState(activity)
+    
+    super.restoreUserActivityState(activity)
+    
+  }
 }

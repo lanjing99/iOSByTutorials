@@ -109,6 +109,13 @@ class DetailViewController: UITableViewController, UITextFieldDelegate {
     
   }
   
+  override func restoreUserActivityState(activity: NSUserActivity) {
+    if let itemToRestore = activity.userInfo?[ActivityItemKey] as? String{
+      item = itemToRestore
+      textField?.text = item
+    }
+  }
+  
 }
 
 

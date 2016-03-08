@@ -40,10 +40,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
     let userInfo = userActivity.userInfo
     print("Received a payload via handoff: \(userInfo)")
+    
+    self.window!.rootViewController!.restoreUserActivityState(userActivity)
     return true
   }
   
+  
+  func application(application: UIApplication, willContinueUserActivityWithType userActivityType: String) -> Bool {
+    //在这里判断是否支持特定的userActivityType
+    return true
+  }
+  
+  func application(application: UIApplication, didFailToContinueUserActivityWithType userActivityType: String, error: NSError) {
+    if error.code != NSUserCancelledError {
+      let message = "The connection to your other device may have been interrupted. Please try again. \(error.localizedDescription)"
+      let alertView = UIAlertView(title: "Handoff Error", message:message, delegate: nil, cancelButtonTitle: "Dismiss")
+      alertView.show()
+    }
+  }
+  
+  
+  
+  
+  
 }
+
+
+
+
+
+
+
+
+
 
 
 
