@@ -53,6 +53,9 @@ class ListViewController: UITableViewController, DetailViewControllerDelegate {
       if let unwrapped = weakSelf {
         unwrapped.items = items
         unwrapped.tableView.reloadData()
+        if items.isEmpty == false {
+          unwrapped.startUserActivity()
+        }
       }
     })
     super.viewDidLoad()
@@ -71,6 +74,7 @@ class ListViewController: UITableViewController, DetailViewControllerDelegate {
       }
       selectedItemIndexPath = nil
     }
+    stopUserActivity()
   }
   
   // MARK: Helper
@@ -97,6 +101,7 @@ class ListViewController: UITableViewController, DetailViewControllerDelegate {
       tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     selectedItemIndexPath = nil
+    startUserActivity()
   }
   
   // MARK: UITableViewDataSource
@@ -150,6 +155,11 @@ class ListViewController: UITableViewController, DetailViewControllerDelegate {
         }
       }
     }
+    
+    if items.isEmpty { stopUserActivity()
+    } else {
+      userActivity?.needsSave = true
+    }
   }
   
   // MARK: DetailViewControllerDelegate
@@ -178,6 +188,45 @@ class ListViewController: UITableViewController, DetailViewControllerDelegate {
     
     PersistentStore.defaultStore().updateStoreWithItems(items)
     PersistentStore.defaultStore().commit()
+    if !items.isEmpty {
+      startUserActivity()
+    }
   }
   
+  func startUserActivity(){
+    let activity = NSUserActivity(activityType: ActivityTypeView)
+    activity.title = "Viewing Shopping List"
+    activity.userInfo = [ActivityItemsKey: items]
+    userActivity = activity
+    userActivity?.becomeCurrent()
+  }
+  
+  func stopUserActivity(){
+    userActivity?.invalidate()
+  }
+  
+  override func updateUserActivityState(activity: NSUserActivity) {
+    activity.addUserInfoEntriesFromDictionary([ActivityItemsKey: items])
+    super.updateUserActivityState(activity)
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

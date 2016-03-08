@@ -37,4 +37,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return true
   }
   
+  func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+    let userInfo = userActivity.userInfo
+    print("Received a payload via handoff: \(userInfo)")
+    return true
+  }
+  
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

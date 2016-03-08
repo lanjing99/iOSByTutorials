@@ -37,5 +37,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>com.razeware.shopsnap.view</string>
+		<string>com.razeware.shopsnap.edit</string>
+	</array>
 </dict>
 </plist>

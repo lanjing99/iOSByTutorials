@@ -17,6 +17,7 @@
 		6D00FC55196AC03D004AAF60 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D00FC54196AC03D004AAF60 /* DetailViewController.swift */; };
 		6DD61018196CC905003293D7 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DD61017196CC905003293D7 /* Storyboard.storyboard */; };
 		A02BD2671C8EAFB600DCFF33 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A02BD2661C8EAFB600DCFF33 /* Launch Screen.storyboard */; };
+		A02BD2691C8EB09100DCFF33 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02BD2681C8EB09100DCFF33 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		6D00FC54196AC03D004AAF60 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		6DD61017196CC905003293D7 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		A02BD2661C8EAFB600DCFF33 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		A02BD2681C8EB09100DCFF33 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				6D00FC52196AC035004AAF60 /* ListViewController.swift */,
 				6D00FC54196AC03D004AAF60 /* DetailViewController.swift */,
 				5BCACAFE1969E63D0050F1E5 /* PersistentStore.swift */,
+				A02BD2681C8EB09100DCFF33 /* Constants.swift */,
 				5BCACAE41969DFE50050F1E5 /* Images.xcassets */,
 				5BCACAE01969DFE50050F1E5 /* Supporting Files */,
 			);
@@ -231,6 +234,7 @@
 				6D00FC51196AC005004AAF60 /* TraitOverrideViewController.swift in Sources */,
 				6D00FC53196AC035004AAF60 /* ListViewController.swift in Sources */,
 				5BCACAFF1969E63D0050F1E5 /* PersistentStore.swift in Sources */,
+				A02BD2691C8EB09100DCFF33 /* Constants.swift in Sources */,
 				6D00FC50196AC005004AAF60 /* SplitViewController.swift in Sources */,
 				6D00FC55196AC03D004AAF60 /* DetailViewController.swift in Sources */,
 			);

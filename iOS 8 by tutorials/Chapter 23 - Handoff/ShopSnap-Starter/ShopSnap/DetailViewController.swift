@@ -36,6 +36,8 @@ class DetailViewController: UITableViewController, UITextFieldDelegate {
       if let textField = self.textField {
         textField.text = item
       }
+      
+      userActivity?.needsSave = true
     }
   }
   
@@ -75,12 +77,19 @@ class DetailViewController: UITableViewController, UITextFieldDelegate {
   
   // MARK: UITextFieldDelegate
   
-  func textFieldDidBeginEditing(textField: UITextField!) {
+  func textFieldDidBeginEditing(textField: UITextField) {
+    let activity = NSUserActivity(activityType: ActivityTypeEdit)
+    activity.title = "Editing Shopping List Item"
+    let activityItem = textField.text!.isEmpty ? "" : textField.text!
+    activity.userInfo = [ActivityItemKey: activityItem]
+    userActivity = activity
+    userActivity?.becomeCurrent()
   }
   
-  func textFieldShouldReturn(textField: UITextField!) -> Bool {
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
     textField.resignFirstResponder()
     delegate?.detailViewController(controller: self, didFinishWithUpdatedItem: textField.text!)
+    userActivity?.invalidate()
     return true
   }
   
@@ -90,6 +99,27 @@ class DetailViewController: UITableViewController, UITextFieldDelegate {
     if let text = textField!.text  {
       item = text
     }
+    userActivity?.needsSave = true
+  }
+  
+  override func updateUserActivityState(activity: NSUserActivity) {
+    let activityListItem = textField!.text!.isEmpty ? "" : textField!.text!
+    activity.addUserInfoEntriesFromDictionary([ActivityItemKey: activityListItem])
+    super.updateUserActivityState(activity)
+    
   }
   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
