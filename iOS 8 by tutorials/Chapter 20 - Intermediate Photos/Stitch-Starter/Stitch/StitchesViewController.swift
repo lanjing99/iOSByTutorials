@@ -49,6 +49,48 @@ class StitchesViewController: UIViewController, PHPhotoLibraryChangeObserver, As
     super.viewDidLoad()
     
     // Request Permissions and Fetch Album
+    PHPhotoLibrary.requestAuthorization{
+      status in
+      dispatch_async(dispatch_get_main_queue(), {
+        switch status {
+        case .Authorized:
+          let options = PHFetchOptions()
+          options.predicate = NSPredicate(format: "title = %@", StitchesAlbumTitle)
+          let collections = PHAssetCollection.fetchAssetCollectionsWithType(.Album, subtype: .AlbumRegular, options: options)
+          if collections.count > 0 {
+            self.stitchesCollection = collections.firstObject as! PHAssetCollection
+            self.stitches = PHAsset.fetchAssetsInAssetCollection(self.stitchesCollection, options: nil)
+            self.collectionView.reloadData()
+            self.updateNoStitchView()
+          }else{
+            var assetPlaceholder: PHObjectPlaceholder?
+            PHPhotoLibrary.sharedPhotoLibrary().performChanges({
+                let changeRequest = PHAssetCollectionChangeRequest.creationRequestForAssetCollectionWithTitle(StitchesAlbumTitle)
+                assetPlaceholder = changeRequest.placeholderForCreatedAssetCollection
+              }, completionHandler: { success, error in
+                if !success {
+                  print("Failed to create album")
+                  print(error)
+                  return
+                }
+                
+                let collections = PHAssetCollection.fetchAssetCollectionsWithLocalIdentifiers([assetPlaceholder!.localIdentifier], options: nil)
+                if collections.count > 0 {
+                  self.stitchesCollection = collections.firstObject as! PHAssetCollection
+                  self.stitches = PHAsset.fetchAssetsInAssetCollection(self.stitchesCollection, options: nil)
+                }
+            })
+          }
+        
+        default:
+          self.noStitchView.text = "Please grant Stich photo access in Setting -> Privacy"
+          self.noStitchView.hidden = false
+          self.newStitchButton.enabled = false
+          self.showNoAccessAlert()
+        }
+        
+      });
+    }
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -103,6 +145,7 @@ class StitchesViewController: UIViewController, PHPhotoLibraryChangeObserver, As
     dismissViewControllerAnimated(true, completion: nil)
     
     // Create new Stitch
+    StitchHelper.createNewStitchWith(selectedAssets, inCollection: stitchesCollection)
   }
   
   // MARK: UICollectionViewDataSource
@@ -114,6 +157,17 @@ class StitchesViewController: UIViewController, PHPhotoLibraryChangeObserver, As
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier(StitchCellReuseIdentifier, forIndexPath: indexPath) as! AssetCell
     
     // Configure the Cell
+    let reuseCount = ++cell.reuseCount
+    let options = PHImageRequestOptions()
+    options.networkAccessAllowed = true
+    
+    let asset = stitches[indexPath.item] as! PHAsset
+    PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: assetThumbnailSize, contentMode: .AspectFill, options: options){
+      result, info in
+      if reuseCount == cell.reuseCount {
+        cell.imageView.image = result
+      }
+    }
     
     return cell
   }

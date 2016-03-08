@@ -34,7 +34,16 @@ class StitchHelper: NSObject {
   
   // MARK: Stitch Creation
   class func createNewStitchWith(assets: [PHAsset], inCollection collection: PHAssetCollection) {
-    
+    let stitchImage = self.createStitchImageWithAssets(assets)
+    var stichPlaceHolder: PHObjectPlaceholder!
+    PHPhotoLibrary.sharedPhotoLibrary().performChanges({
+        let assetChangeRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(stitchImage)
+        stichPlaceHolder = assetChangeRequest.placeholderForCreatedAsset
+        let assetCollectionChangeRequest = PHAssetCollectionChangeRequest(forAssetCollection: collection)
+        assetCollectionChangeRequest?.addAssets([stichPlaceHolder])
+      }) { (_, _) -> Void in
+        
+    }
   }
   
   // MARK: Stitch Content

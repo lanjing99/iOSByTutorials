@@ -53,6 +53,10 @@ class StitchDetailViewController: UIViewController, PHPhotoLibraryChangeObserver
     super.viewWillAppear(animated)
     
     displayImage()
+    editButton.enabled = asset.canPerformEditOperation(.Content)
+    favoriteButton.enabled = asset.canPerformEditOperation(.Properties)
+    deleteButton.enabled = asset.canPerformEditOperation(.Delete)
+    updateFavoriteButton()
     
     // Update the interface buttons
   }
@@ -71,23 +75,50 @@ class StitchDetailViewController: UIViewController, PHPhotoLibraryChangeObserver
   // MARK: Private
   private func displayImage() {
     // Load a high quality image to display
+    let scale = UIScreen.mainScreen().scale
+    let targetSize = CGSize(width: CGRectGetWidth(imageView.bounds) * scale, height: CGRectGetHeight(imageView.bounds) * scale)
+    let options = PHImageRequestOptions()
+    options.deliveryMode = .HighQualityFormat
+    options.networkAccessAllowed = true
+    
+    PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: targetSize, contentMode: .AspectFill, options: options) {
+      result, info in
+//      if result != nil {
+        self.imageView.image = result
+//      }
+    }
   }
   
   private func updateFavoriteButton() {
     if asset.favorite {
-      favoriteButton.title = "Unfavorite"
-    } else {
       favoriteButton.title = "Favorite"
+    } else {
+      favoriteButton.title = "Unfavorite"
     }
+    
+    
   }
   
   // MARK: Actions
   @IBAction func favoritePressed(sender:AnyObject!) {
-    
-  }
+    PHPhotoLibrary.sharedPhotoLibrary().performChanges({
+      let request = PHAssetChangeRequest(forAsset:  self.asset)
+      request.favorite = !self.asset.favorite  //为什么这个不生效
+//      request.hidden = !self.asset.hidden
+      }, completionHandler: {success, error in
+        dispatch_async(dispatch_get_main_queue(), {
+          self.updateFavoriteButton()
+        })
+        
+    })
+}
   
   @IBAction func deletePressed(sender:AnyObject!) {
-    
+    PHPhotoLibrary.sharedPhotoLibrary().performChanges({
+        PHAssetChangeRequest.deleteAssets([self.asset])
+      }, completionHandler: {success, error in
+        
+    })
   }
   
   @IBAction func editPressed(sender:AnyObject!) {
