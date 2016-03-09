@@ -16,7 +16,42 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jkN-82-nXH">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="2"/>
+                            </progressView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="360-4X-G7a">
+                                <rect key="frame" x="0.0" y="492" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem enabled="NO" image="icon_back" id="hM3-dD-Y6s">
+                                        <connections>
+                                            <action selector="goBack:" destination="BYZ-38-t0r" id="T1Q-xb-iei"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="dgy-SG-6y4"/>
+                                    <barButtonItem enabled="NO" image="icon_forward" id="TbI-GV-nRl">
+                                        <connections>
+                                            <action selector="goForward:" destination="BYZ-38-t0r" id="ZVf-sJ-Zld"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Iwh-Ee-zIr"/>
+                                    <barButtonItem image="icon_stop" id="BlJ-90-hQZ">
+                                        <connections>
+                                            <action selector="stopReload:" destination="BYZ-38-t0r" id="6gf-3B-jpg"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jkN-82-nXH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="DSL-9k-khQ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="360-4X-G7a" secondAttribute="bottom" id="P9f-Bv-S9j"/>
+                            <constraint firstAttribute="trailing" secondItem="jkN-82-nXH" secondAttribute="trailing" id="PCO-d1-uaV"/>
+                            <constraint firstAttribute="trailing" secondItem="360-4X-G7a" secondAttribute="trailing" id="aWY-ov-DIw"/>
+                            <constraint firstItem="360-4X-G7a" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lhn-nm-zIP"/>
+                            <constraint firstItem="jkN-82-nXH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="oVg-Tu-Yxw"/>
+                        </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="gFh-lZ-iVS">
@@ -44,8 +79,12 @@
                         </view>
                     </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="hM3-dD-Y6s" id="3ki-Hq-mqU"/>
                         <outlet property="barBackgroundView" destination="cKh-LM-Joe" id="P0p-UX-vBq"/>
+                        <outlet property="forwardButton" destination="TbI-GV-nRl" id="aHC-7M-zER"/>
                         <outlet property="inputURLTextfield" destination="EZE-Gq-QAZ" id="Btd-gX-i1X"/>
+                        <outlet property="progressView" destination="jkN-82-nXH" id="LNq-aZ-NQm"/>
+                        <outlet property="stopReloadButton" destination="BlJ-90-hQZ" id="Ppl-Si-ch2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -71,4 +110,9 @@
             <point key="canvasLocation" x="57" y="136"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_back" width="34" height="34"/>
+        <image name="icon_forward" width="34" height="34"/>
+        <image name="icon_stop" width="17" height="17"/>
+    </resources>
 </document>
