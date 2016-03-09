@@ -24,11 +24,28 @@
                         <view key="titleView" contentMode="scaleToFill" id="cKh-LM-Joe">
                             <rect key="frame" x="20" y="5.5" width="560" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="EZE-Gq-QAZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="560" height="33"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="URL" returnKeyType="go"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="BYZ-38-t0r" id="WwD-V2-Szg"/>
+                                    </connections>
+                                </textField>
+                            </subviews>
                             <color key="backgroundColor" red="0.52156862749999999" green="0.74901960779999999" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="EZE-Gq-QAZ" firstAttribute="leading" secondItem="cKh-LM-Joe" secondAttribute="leading" id="64N-Ga-EZH"/>
+                                <constraint firstItem="EZE-Gq-QAZ" firstAttribute="top" secondItem="cKh-LM-Joe" secondAttribute="top" id="hBm-BC-qAJ"/>
+                                <constraint firstAttribute="trailing" secondItem="EZE-Gq-QAZ" secondAttribute="trailing" id="mG3-zo-WYB"/>
+                                <constraint firstAttribute="bottom" secondItem="EZE-Gq-QAZ" secondAttribute="bottom" id="tup-yP-DCg"/>
+                            </constraints>
                         </view>
                     </navigationItem>
                     <connections>
                         <outlet property="barBackgroundView" destination="cKh-LM-Joe" id="P0p-UX-vBq"/>
+                        <outlet property="inputURLTextfield" destination="EZE-Gq-QAZ" id="Btd-gX-i1X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
