@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A02BD2891C8FCCCA00DCFF33 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A02BD2881C8FCCCA00DCFF33 /* Launch Screen.storyboard */; };
+		A02BD28B1C8FF7F200DCFF33 /* hideBio.js in Resources */ = {isa = PBXBuildFile; fileRef = A02BD28A1C8FF7F200DCFF33 /* hideBio.js */; };
 		D304261219C5E39300E85450 /* icon_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D304260E19C5E39300E85450 /* icon_back@3x.png */; };
 		D304261319C5E39300E85450 /* icon_forward@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D304260F19C5E39300E85450 /* icon_forward@3x.png */; };
 		D304261419C5E39300E85450 /* icon_refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D304261019C5E39300E85450 /* icon_refresh@3x.png */; };
@@ -33,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A02BD2881C8FCCCA00DCFF33 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		A02BD28A1C8FF7F200DCFF33 /* hideBio.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = hideBio.js; sourceTree = "<group>"; };
 		D304260E19C5E39300E85450 /* icon_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_back@3x.png"; sourceTree = "<group>"; };
 		D304260F19C5E39300E85450 /* icon_forward@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_forward@3x.png"; sourceTree = "<group>"; };
 		D304261019C5E39300E85450 /* icon_refresh@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_refresh@3x.png"; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 				D3BF1FCF196858A000F4F3EE /* AppDelegate.swift */,
 				D3BF1FD1196858A000F4F3EE /* ViewController.swift */,
 				D3BF1FD3196858A000F4F3EE /* Main.storyboard */,
+				A02BD28A1C8FF7F200DCFF33 /* hideBio.js */,
+				A02BD2881C8FCCCA00DCFF33 /* Launch Screen.storyboard */,
 				D3BF1FD6196858A000F4F3EE /* Images.xcassets */,
 				D3BF1FCD196858A000F4F3EE /* Supporting Files */,
 			);
@@ -221,7 +227,9 @@
 				D3BF1FD5196858A000F4F3EE /* Main.storyboard in Resources */,
 				D305EA09197C0C1E00A47874 /* icon_forward@2x.png in Resources */,
 				D305EA0B197C0C1E00A47874 /* icon_stop@2x.png in Resources */,
+				A02BD28B1C8FF7F200DCFF33 /* hideBio.js in Resources */,
 				D305EA0A197C0C1E00A47874 /* icon_refresh@2x.png in Resources */,
+				A02BD2891C8FCCCA00DCFF33 /* Launch Screen.storyboard in Resources */,
 				D3BF1FD7196858A000F4F3EE /* Images.xcassets in Resources */,
 				D304261219C5E39300E85450 /* icon_back@3x.png in Resources */,
 				D304261319C5E39300E85450 /* icon_forward@3x.png in Resources */,
@@ -361,7 +369,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = RWPedia_swift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -374,7 +381,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = RWPedia_swift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

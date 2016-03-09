@@ -33,7 +33,17 @@ class ViewController: UIViewController, WKNavigationDelegate {
   @IBOutlet weak var stopReloadButton: UIBarButtonItem!
   
   required init?(coder aDecoder: NSCoder) {
-    self.webView = WKWebView(frame: CGRectZero)
+//    self.webView = WKWebView(frame: CGRectZero)
+    
+    let hideBioScriptURL = NSBundle.mainBundle().pathForResource("hideBio", ofType: "js")
+    let hideBioJS = try! String(contentsOfFile: hideBioScriptURL!, encoding: NSUTF8StringEncoding)
+    let hideBioScript = WKUserScript(source: hideBioJS, injectionTime: .AtDocumentStart, forMainFrameOnly: true)
+    
+    let configuration = WKWebViewConfiguration()
+    configuration.userContentController.addUserScript(hideBioScript)
+    
+    self.webView = WKWebView(frame: CGRectZero, configuration: configuration)
+    
     super.init(coder: aDecoder)
     self.webView.navigationDelegate = self
   }
