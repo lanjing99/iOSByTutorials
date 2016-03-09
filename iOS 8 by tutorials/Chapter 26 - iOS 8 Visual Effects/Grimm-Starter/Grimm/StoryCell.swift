@@ -25,7 +25,7 @@ import UIKit
 class StoryCell: UITableViewCell, ThemeAdopting {
   
   required init(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
+    super.init(coder: aDecoder)!
   }
   
   override init(style: UITableViewCellStyle, reuseIdentifier: String!)  {
@@ -46,7 +46,7 @@ class StoryCell: UITableViewCell, ThemeAdopting {
     let label = UILabel()
     label.numberOfLines = 0
     label.opaque = true
-    label.setTranslatesAutoresizingMaskIntoConstraints(false)
+    label.translatesAutoresizingMaskIntoConstraints = false
     return label
     }()
   
@@ -54,7 +54,7 @@ class StoryCell: UITableViewCell, ThemeAdopting {
     let label = UILabel()
     label.numberOfLines = 3
     label.opaque = true
-    label.setTranslatesAutoresizingMaskIntoConstraints(false)
+    label.translatesAutoresizingMaskIntoConstraints = false
     return label
     }()
   
@@ -128,8 +128,8 @@ class StoryCell: UITableViewCell, ThemeAdopting {
       multiplier: 1,
       constant: 64))
     
-    constraints += NSLayoutConstraint.constraintsWithVisualFormat("H:|-15-[titleLabel]-15-|", options: nil, metrics: nil, views: ["titleLabel": titleLabel]) as [NSLayoutConstraint]
-    constraints += NSLayoutConstraint.constraintsWithVisualFormat("H:|-15-[previewLabel]-15-|", options: nil, metrics: nil, views: ["previewLabel": previewLabel]) as [NSLayoutConstraint]
+    constraints += NSLayoutConstraint.constraintsWithVisualFormat("H:|-15-[titleLabel]-15-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["titleLabel": titleLabel])
+    constraints += NSLayoutConstraint.constraintsWithVisualFormat("H:|-15-[previewLabel]-15-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["previewLabel": previewLabel])
     
     contentView.addConstraints(constraints)
     reloadTheme()

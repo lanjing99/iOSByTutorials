@@ -36,6 +36,7 @@ class Story {
   }
   
   class func loadStories(completion: ((Array<Story>?, NSErrorPointer) -> Void)!) {
+   
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
       var error: NSErrorPointer = nil
       let path = NSBundle.mainBundle().bundlePath
@@ -43,16 +44,25 @@ class Story {
       
       var stories = [Story]()
       
-      if let contents = manager.contentsOfDirectoryAtPath(path, error: error) {
-        error = nil
-        
+      let contents = try! manager.contentsOfDirectoryAtPath(path)
+//      let contents = try! manager.contentsOfDirectoryAtPath(path)
+//      {
+//        error = nil
+//        
         for file in contents {
           if file.hasSuffix(".grm") {
-            let filePath = path.stringByAppendingPathComponent(file as String)
-            let title = file.stringByDeletingPathExtension
+//            let filePath = path
+            var filePathURL = NSURL(string: path)
+            filePathURL = filePathURL?.URLByAppendingPathComponent(file)
+            let filePath = filePathURL?.absoluteString
+            let title = filePathURL?.lastPathComponent
             
-            if let content = NSString(contentsOfFile: filePath, encoding: NSUTF8StringEncoding, error: error) {
-              let story = Story(title: title, content: content)
+        
+            if manager.fileExistsAtPath(filePath!) == false {
+              continue
+            }
+            let content = try! String(contentsOfFile: filePath!, encoding: NSUTF8StringEncoding)
+            let story = Story(title: title ?? "", content: content)
               
               if error != nil {
                 break
@@ -60,13 +70,12 @@ class Story {
               
               stories.append(story)
               
-              error = nil
             }
-          }
-        }
+        
       }
+//      }
       
-      stories.sort({ a, b in
+      stories.sortInPlace({ a, b in
         a.title < b.title
       })
       

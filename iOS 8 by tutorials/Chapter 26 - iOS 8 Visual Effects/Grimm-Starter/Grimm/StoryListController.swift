@@ -29,7 +29,7 @@ class StoryListController: UITableViewController, ThemeAdopting {
   private var stories = [Story]()
   
   required init(coder aDecoder: NSCoder)  {
-    super.init(coder: aDecoder)
+    super.init(coder: aDecoder)!
     registerForNotifications()
   }
   
@@ -39,7 +39,7 @@ class StoryListController: UITableViewController, ThemeAdopting {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
     if segue.identifier == StoryListToStoryViewSegueIdentifier {
-      let storyViewController = segue.destinationViewController as StoryViewController
+      let storyViewController = segue.destinationViewController as! StoryViewController
       storyViewController.story = sender as? Story;
     }
   }
@@ -106,7 +106,7 @@ class StoryListController: UITableViewController, ThemeAdopting {
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell  {
-    let storyCell = tableView.dequeueReusableCellWithIdentifier("StoryCell") as StoryCell
+    let storyCell = tableView.dequeueReusableCellWithIdentifier("StoryCell") as! StoryCell
     storyCell.story = stories[indexPath.row]
     return storyCell
   }
@@ -121,7 +121,7 @@ class StoryListController: UITableViewController, ThemeAdopting {
     let theme = Theme.sharedInstance
     tableView.separatorColor = theme.separatorColor
     
-    if let indexPaths = tableView.indexPathsForVisibleRows() {
+    if let indexPaths = tableView.indexPathsForVisibleRows {
       tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .None)
     }
   }

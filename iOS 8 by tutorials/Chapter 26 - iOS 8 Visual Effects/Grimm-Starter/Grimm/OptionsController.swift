@@ -33,7 +33,7 @@ class OptionsController: UIViewController, UIScrollViewDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let optionsView = UINib(nibName: "OptionsView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as UIView
+    let optionsView = UINib(nibName: "OptionsView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as! UIView
     scrollView.scrollsToTop = false
     view.addSubview(optionsView)
     
@@ -62,7 +62,7 @@ class OptionsController: UIViewController, UIScrollViewDelegate {
     synchronizeViews(false)
   }
   
-  @IBAction func pageControlPageDidChange(AnyObject) {
+  @IBAction func pageControlPageDidChange(_: AnyObject) {
     synchronizeViews(false)
   }
   

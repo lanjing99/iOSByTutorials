@@ -31,7 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     NSNotificationCenter.defaultCenter().removeObserver(self)
   }
   
-  func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
+  
+  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("themeDidChange:"), name: ThemeDidChangeNotification, object: nil)
     return true
   }

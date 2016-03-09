@@ -25,7 +25,7 @@ import UIKit
 class ThemedNavigationController: UINavigationController, ThemeAdopting {
   
   required init(coder aDecoder: NSCoder)  {
-    super.init(coder: aDecoder)
+    super.init(coder: aDecoder)!
     NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("themeDidChange:"),
       name: ThemeDidChangeNotification, object: nil)
   }

@@ -41,7 +41,7 @@ class StoryView: UIView, ThemeAdopting {
     let label = UILabel()
     label.numberOfLines = 0
     label.opaque = true
-    label.setTranslatesAutoresizingMaskIntoConstraints(false)
+    label.translatesAutoresizingMaskIntoConstraints = false
     return label
     }()
   
@@ -49,14 +49,14 @@ class StoryView: UIView, ThemeAdopting {
     let label = UILabel()
     label.numberOfLines = 0
     label.opaque = true
-    label.setTranslatesAutoresizingMaskIntoConstraints(false)
+    label.translatesAutoresizingMaskIntoConstraints = false
     return label
     }()
   
   private var separatorView: UIView = {
     let view = UIView()
     view.opaque = true
-    view.setTranslatesAutoresizingMaskIntoConstraints(false)
+    view.translatesAutoresizingMaskIntoConstraints = false
     return view
     }()
   
@@ -132,9 +132,9 @@ class StoryView: UIView, ThemeAdopting {
       multiplier: 1,
       constant: 15))
     
-    constraints += NSLayoutConstraint.constraintsWithVisualFormat("H:|-15-[titleLabel]-15-|", options: nil, metrics: nil, views: ["titleLabel": titleLabel]) as [NSLayoutConstraint]
-    constraints += NSLayoutConstraint.constraintsWithVisualFormat("H:|-15-[separatorView]-15-|", options: nil, metrics: nil, views: ["separatorView": separatorView]) as [NSLayoutConstraint]
-    constraints += NSLayoutConstraint.constraintsWithVisualFormat("H:|-15-[contentLabel]-15-|", options: nil, metrics: nil, views: ["contentLabel": contentLabel]) as [NSLayoutConstraint]
+    constraints += NSLayoutConstraint.constraintsWithVisualFormat("H:|-15-[titleLabel]-15-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["titleLabel": titleLabel])
+    constraints += NSLayoutConstraint.constraintsWithVisualFormat("H:|-15-[separatorView]-15-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["separatorView": separatorView])
+    constraints += NSLayoutConstraint.constraintsWithVisualFormat("H:|-15-[contentLabel]-15-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["contentLabel": contentLabel])
     
     addConstraints(constraints)
     reloadTheme()

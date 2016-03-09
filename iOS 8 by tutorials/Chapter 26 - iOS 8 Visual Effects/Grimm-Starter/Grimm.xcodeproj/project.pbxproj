@@ -92,6 +92,7 @@
 		29FA64F21980A53000F1BFB5 /* The Wolf and The Seven Little Kids.grm in Resources */ = {isa = PBXBuildFile; fileRef = 29FA64B51980A53000F1BFB5 /* The Wolf and The Seven Little Kids.grm */; };
 		29FA64F31980A53000F1BFB5 /* Tom Thumb.grm in Resources */ = {isa = PBXBuildFile; fileRef = 29FA64B61980A53000F1BFB5 /* Tom Thumb.grm */; };
 		29FA64F51980A64000F1BFB5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FA64F41980A64000F1BFB5 /* Colors.swift */; };
+		A04853D21C901979001DF2BC /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A04853D11C901979001DF2BC /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -189,6 +190,7 @@
 		29FA64B51980A53000F1BFB5 /* The Wolf and The Seven Little Kids.grm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "The Wolf and The Seven Little Kids.grm"; sourceTree = "<group>"; };
 		29FA64B61980A53000F1BFB5 /* Tom Thumb.grm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Tom Thumb.grm"; sourceTree = "<group>"; };
 		29FA64F41980A64000F1BFB5 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		A04853D11C901979001DF2BC /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				29FA642D1980A3B700F1BFB5 /* Grimm.storyboard */,
+				A04853D11C901979001DF2BC /* Launch Screen.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				TargetAttributes = {
 					29FA64231980A3B700F1BFB5 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 5E58DW2PMK;
 					};
 				};
 			};
@@ -561,6 +565,7 @@
 				29FA64EE1980A53000F1BFB5 /* The Water of Life.grm in Resources */,
 				29FA64DD1980A53000F1BFB5 /* The Little Peasant.grm in Resources */,
 				29FA64E71980A53000F1BFB5 /* The Straw, The Coal, And The Bean.grm in Resources */,
+				A04853D21C901979001DF2BC /* Launch Screen.storyboard in Resources */,
 				29FA64CB1980A53000F1BFB5 /* Rumpelstiltskin.grm in Resources */,
 				29FA64D81980A53000F1BFB5 /* The Golden Bird.grm in Resources */,
 				29FA646B1980A51600F1BFB5 /* FiraSans-SemiBold.otf in Resources */,
@@ -693,9 +698,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Grimm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.waterwood.Grimm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PRODUCT_NAME)/Grimm-Bridging-Header.h";
 			};
@@ -705,9 +711,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Grimm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.waterwood.Grimm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PRODUCT_NAME)/Grimm-Bridging-Header.h";
 			};

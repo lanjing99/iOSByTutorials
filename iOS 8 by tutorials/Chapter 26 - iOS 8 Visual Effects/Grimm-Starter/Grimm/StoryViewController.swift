@@ -33,7 +33,7 @@ class StoryViewController: UIViewController, ThemeAdopting {
   var story: Story?
   
   required init(coder aDecoder: NSCoder)  {
-    super.init(coder: aDecoder)
+    super.init(coder: aDecoder)!
     NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("themeDidChange:"),
       name: ThemeDidChangeNotification, object: nil)
   }
@@ -59,7 +59,7 @@ class StoryViewController: UIViewController, ThemeAdopting {
     setOptionsHidden(true, animated: false)
   }
   
-  @IBAction func optionsButtonTapped(AnyObject) {
+  @IBAction func optionsButtonTapped(_: AnyObject) {
     setOptionsHidden(showingOptions, animated: true)
   }
   
@@ -75,7 +75,8 @@ class StoryViewController: UIViewController, ThemeAdopting {
         delay: 0,
         usingSpringWithDamping: 0.95,
         initialSpringVelocity: 1,
-        options: .AllowUserInteraction | .BeginFromCurrentState,
+        options:  .BeginFromCurrentState,
+//        options: .AllowUserInteraction | .BeginFromCurrentState,
         animations: {
           self.optionsContainerViewBottomConstraint.constant = constant
           self.view.layoutIfNeeded()
@@ -94,9 +95,7 @@ class StoryViewController: UIViewController, ThemeAdopting {
     let theme = Theme.sharedInstance
     scrollView.backgroundColor = theme.textBackgroundColor
     for viewController in childViewControllers {
-      if let controller = viewController as? UIViewController {
-        controller.view.tintColor = theme.tintColor
-      }
+        viewController.view.tintColor = theme.tintColor
     }
   }
   
