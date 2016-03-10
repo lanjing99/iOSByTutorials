@@ -36,8 +36,14 @@ extension Employee{
     attributeSet.phoneNumbers = [phone]
     attributeSet.emailAddresses = [email]
     attributeSet.keywords = skills
+    attributeSet.relatedUniqueIdentifier = objectId
     return attributeSet
     
+  }
+  
+  var searchableItem: CSSearchableItem {
+      let item = CSSearchableItem(uniqueIdentifier: objectId, domainIdentifier: Employee.domainIdentifier, attributeSet: attributeSet)
+      return item
   }
   
 }

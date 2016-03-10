@@ -22,6 +22,7 @@
 
 import UIKit
 import EmployeeKit
+import CoreSpotlight
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -42,13 +43,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
-    guard userActivity.activityType == Employee.domainIdentifier,
-      let objectID = userActivity.userInfo?["id"] as? String else{
-        return false
-  }
+//    guard userActivity.activityType == Employee.domainIdentifier,
+//      let objectID = userActivity.userInfo?["id"] as? String else{
+//        return false
+//  }
+    let objectId: String
+    if userActivity.activityType == Employee.domainIdentifier,
+      let activityObjectId = userActivity.userInfo?["id"]
+      as? String {
+      // 1
+      objectId = activityObjectId
+    } else if userActivity.activityType == CSSearchableItemActionType,
+      let activityObjectId = userActivity
+      .userInfo?[CSSearchableItemActivityIdentifier] as? String {
+      // 2
+      objectId = activityObjectId
+    } else {
+      return false
+    }
+    
     guard let nav = window?.rootViewController as? UINavigationController,
       let listVC = nav.viewControllers.first as? EmployeeListViewController,
-      let employee = EmployeeService().employeeWithObjectId(objectID) else {
+      let employee = EmployeeService().employeeWithObjectId(objectId) else {
         return false
     }
   

@@ -21,15 +21,31 @@
 */
 
 import Foundation
+import CoreSpotlight
 
 // MARK: Indexing
 extension EmployeeService {
   public func indexAllEmployees() {
-    // TODO: Implement this
+    let employees = fetchEmployees()
+    let searchableItems = employees.map { $0.searchableItem}
+    CSSearchableIndex.defaultSearchableIndex().indexSearchableItems(searchableItems) { (error) -> Void in
+      if let error = error {
+        print("Error indexing employees: \(error)")
+      }else{
+        print("Employees indexed.")
+      }
+    }
   }
   
   public func destroyEmployeeIndexing() {
     // TODO: Implement this
+    CSSearchableIndex.defaultSearchableIndex().deleteAllSearchableItemsWithCompletionHandler { error in
+      if let error = error {
+      print("Error deleting searching employee items: \(error)")
+    } else {
+      print("Employees indexing deleted.")
+      }
+    }
   }
 }
 
