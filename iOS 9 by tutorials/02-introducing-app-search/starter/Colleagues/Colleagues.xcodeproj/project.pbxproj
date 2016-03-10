@@ -51,6 +51,7 @@
 		07B46BEA1B5B1B9500B55262 /* EmployeeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B46BE91B5B1B9500B55262 /* EmployeeListViewController.swift */; };
 		07B46BEC1B5B21EC00B55262 /* EmployeeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B46BEB1B5B21EC00B55262 /* EmployeeListCell.swift */; };
 		07B46BEE1B5B2ECD00B55262 /* EmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B46BED1B5B2ECD00B55262 /* EmployeeViewController.swift */; };
+		A04853F21C922020001DF2BC /* EmployeeSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04853F11C922020001DF2BC /* EmployeeSearch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,7 @@
 		07B46BE91B5B1B9500B55262 /* EmployeeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeListViewController.swift; sourceTree = "<group>"; };
 		07B46BEB1B5B21EC00B55262 /* EmployeeListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeListCell.swift; sourceTree = "<group>"; };
 		07B46BED1B5B2ECD00B55262 /* EmployeeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeViewController.swift; sourceTree = "<group>"; };
+		A04853F11C922020001DF2BC /* EmployeeSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeSearch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				07B46B8D1B5AF7E400B55262 /* EmployeeKit.h */,
 				07B46B8F1B5AF7E400B55262 /* Info.plist */,
 				07B46BA91B5AF80500B55262 /* Employee.swift */,
+				A04853F11C922020001DF2BC /* EmployeeSearch.swift */,
 				07B46BAB1B5AF91D00B55262 /* Protocols.swift */,
 				07B46BAD1B5AFAAD00B55262 /* EmployeeService.swift */,
 				07B46BE71B5B0BB900B55262 /* FileHelper.swift */,
@@ -398,6 +401,7 @@
 				07B46BAE1B5AFAAD00B55262 /* EmployeeService.swift in Sources */,
 				07B46BAC1B5AF91D00B55262 /* Protocols.swift in Sources */,
 				07B46BE81B5B0BB900B55262 /* FileHelper.swift in Sources */,
+				A04853F21C922020001DF2BC /* EmployeeSearch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
