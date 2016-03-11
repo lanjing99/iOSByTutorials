@@ -28,11 +28,12 @@ enum SearchIndexingPreference: Int {
 
 struct Setting {
   static var searchIndexingPreference: SearchIndexingPreference {
-    let preferenceRawValue = NSUserDefaults.standardUserDefaults().integerForKey("SearchIndexingPreference")
-    if let preference = SearchIndexingPreference(rawValue: preferenceRawValue) {
-      return preference
-    } else {
-      return .Disabled
-    }
+//    let preferenceRawValue = NSUserDefaults.standardUserDefaults().integerForKey("SearchIndexingPreference")
+//    if let preference = SearchIndexingPreference(rawValue: preferenceRawValue) {
+//      return preference
+//    } else {
+//      return .Disabled
+//    }
+    return .AllRecords
   }
 }
