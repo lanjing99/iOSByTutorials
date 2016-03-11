@@ -26,6 +26,9 @@ class DoodlesViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    if  traitCollection.forceTouchCapability == .Available {
+        registerForPreviewingWithDelegate(self, sourceView: view)
+    }
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -64,3 +67,32 @@ extension DoodlesViewController {
     return cell
   }
 }
+
+extension DoodlesViewController: UIViewControllerPreviewingDelegate{
+    
+    func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indexPath = tableView.indexPathForRowAtPoint(location),
+            cell = tableView.cellForRowAtIndexPath(indexPath) as? DoodleCell else {
+                return nil
+        }
+        
+        let identifier = "DoodleDetailViewController"
+        guard let detailVC = storyboard?.instantiateViewControllerWithIdentifier(identifier) as? DoodleDetailViewController else {
+            return nil
+        }
+        detailVC.doodle = cell.doodle
+        detailVC.doodleViewController = self
+        previewingContext.sourceRect = cell.frame
+        return detailVC
+    }
+    
+    func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
+        showViewController(viewControllerToCommit, sender: self)
+    }
+}
+
+
+
+
+
+

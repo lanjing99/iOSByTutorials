@@ -25,6 +25,7 @@ import UIKit
 class DoodleDetailViewController: UIViewController {
   var doodle: Doodle?
   var shareDoodle = false
+    weak var doodleViewController: DoodlesViewController?
   
   @IBOutlet weak var imageView: UIImageView!
   
@@ -57,4 +58,34 @@ class DoodleDetailViewController: UIViewController {
       presentViewController(activityViewController, animated: true, completion: nil)
     }
   }
+    
+    override func previewActionItems() -> [UIPreviewActionItem] {
+        let shareAction = UIPreviewAction(title: "Share", style: .Default) { (previewAction, viewController) -> Void in
+            if let doodleVC = self.doodleViewController,
+                activityViewController = self.activityViewController {
+                    doodleVC.presentViewController(activityViewController, animated: true, completion: nil)
+            }
+        }
+        
+        let deleteAction = UIPreviewAction(title: "Delete", style: .Destructive) { (previewAction, viewController) -> Void in
+            guard let doodle = self.doodle else {
+                return
+            }
+            Doodle.deleteDoodle(doodle)
+            self.doodleViewController?.tableView.reloadData()
+        }
+        return [shareAction,  deleteAction]
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
