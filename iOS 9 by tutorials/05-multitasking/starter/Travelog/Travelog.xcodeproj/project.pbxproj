@@ -174,7 +174,7 @@
 				TargetAttributes = {
 					4B27FA7C1B40A7A700F356DB = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 2X468FT7VV;
+						DevelopmentTeam = 5E58DW2PMK;
 					};
 				};
 			};
@@ -345,7 +345,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Travelog/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.travelog;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ww.travelog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -359,7 +359,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Travelog/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.travelog;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ww.travelog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

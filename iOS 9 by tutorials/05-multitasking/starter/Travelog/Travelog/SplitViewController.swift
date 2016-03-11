@@ -26,7 +26,7 @@ class SplitViewController: UISplitViewController {
   
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    updateMaximumPrimaryColumnWidth()
+    updateMaximumPrimaryColumnWidthBasedOnSize(view.bounds.size)
   }
   
   override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -35,12 +35,29 @@ class SplitViewController: UISplitViewController {
   
   // MARK: Helper
   
-  func updateMaximumPrimaryColumnWidth() {
-    if UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication().statusBarOrientation) {
-      maximumPrimaryColumnWidth = 170.0
+//  func updateMaximumPrimaryColumnWidth() {
+//    if UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication().statusBarOrientation) {
+//      maximumPrimaryColumnWidth = 170.0
+//    } else {
+//      maximumPrimaryColumnWidth = UISplitViewControllerAutomaticDimension
+//    }
+//  }
+    
+    func updateMaximumPrimaryColumnWidthBasedOnSize(size: CGSize) {
+        if size.width < UIScreen.mainScreen().bounds.width
+        || size.width < size.height {
+        maximumPrimaryColumnWidth = 170.0
     } else {
-      maximumPrimaryColumnWidth = UISplitViewControllerAutomaticDimension
+        maximumPrimaryColumnWidth =
+        UISplitViewControllerAutomaticDimension
+        }
     }
-  }
   
+    override func viewWillTransitionToSize(size: CGSize,
+            withTransitionCoordinator coordinator:
+            UIViewControllerTransitionCoordinator) {
+            super.viewWillTransitionToSize(size,
+            withTransitionCoordinator: coordinator)
+            updateMaximumPrimaryColumnWidthBasedOnSize(size)
+    }
 }
