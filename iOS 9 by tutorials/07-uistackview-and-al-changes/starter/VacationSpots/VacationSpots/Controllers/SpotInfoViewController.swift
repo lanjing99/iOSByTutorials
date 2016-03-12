@@ -49,10 +49,10 @@ class SpotInfoViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    // Clear background colors from labels and buttons
-    for view in backgroundColoredViews {
-      view.backgroundColor = UIColor.clearColor()
-    }
+//    // Clear background colors from labels and buttons
+//    for view in backgroundColoredViews {
+//      view.backgroundColor = UIColor.clearColor()
+//    }
 
     // Set the kerning to 1 to increase spacing between letters
     headingLabels.forEach { $0.attributedText = NSAttributedString(string: $0.text!, attributes: [NSKernAttributeName: 1]) }

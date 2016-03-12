@@ -31,6 +31,6 @@ class VacationSpotCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
 
-    // TODO: Add layoutGuide code here to center the name and locationName labels vertically
+    
   }
 }
