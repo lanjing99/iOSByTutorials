@@ -31,6 +31,12 @@ class VacationSpotCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
 
+    let layoutGuide = UILayoutGuide()
+    contentView.addLayoutGuide(layoutGuide)
+    let topContraint = layoutGuide.topAnchor.constraintEqualToAnchor(nameLabel.topAnchor)
+    let bottomConstraint = layoutGuide.bottomAnchor.constraintEqualToAnchor(locationNameLabel.bottomAnchor)
+    let centeringConstraint = layoutGuide.centerYAnchor.constraintEqualToAnchor(contentView.centerYAnchor)
+    NSLayoutConstraint.activateConstraints([topContraint, bottomConstraint, centeringConstraint])
     
   }
 }

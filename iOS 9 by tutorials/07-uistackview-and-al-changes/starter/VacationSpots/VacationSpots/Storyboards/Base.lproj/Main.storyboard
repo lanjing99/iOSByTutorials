@@ -50,7 +50,7 @@
                                         <constraint firstItem="Lyc-hQ-8PH" firstAttribute="leading" secondItem="8RF-b2-pPx" secondAttribute="leading" constant="10" id="1A2-3r-WC9"/>
                                         <constraint firstAttribute="bottom" secondItem="Lyc-hQ-8PH" secondAttribute="bottom" constant="10" id="C1F-7i-SLy"/>
                                         <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="0Ps-IH-myb" secondAttribute="trailing" id="Ib5-yq-Jkc"/>
-                                        <constraint firstItem="0Ps-IH-myb" firstAttribute="top" secondItem="8RF-b2-pPx" secondAttribute="topMargin" constant="15" id="O25-34-Plf"/>
+                                        <constraint firstItem="0Ps-IH-myb" firstAttribute="top" secondItem="8RF-b2-pPx" secondAttribute="topMargin" constant="15" placeholder="YES" id="O25-34-Plf"/>
                                         <constraint firstItem="0Ps-IH-myb" firstAttribute="leading" secondItem="Lyc-hQ-8PH" secondAttribute="trailing" constant="10" id="Ytb-8I-FpF"/>
                                         <constraint firstItem="Lyc-hQ-8PH" firstAttribute="top" secondItem="8RF-b2-pPx" secondAttribute="top" constant="10" id="f4F-0s-4aN"/>
                                         <constraint firstItem="uSl-eS-jA6" firstAttribute="top" secondItem="0Ps-IH-myb" secondAttribute="bottom" id="mA0-hl-pel"/>
@@ -198,24 +198,24 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="b3O-Sx-4tQ">
                                                 <rect key="frame" x="20" y="236" width="560" height="30"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vi1-Tq-gH0">
-                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="30"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vi1-Tq-gH0">
+                                                        <rect key="frame" x="0.0" y="0.0" width="181.5" height="30"/>
                                                         <color key="backgroundColor" red="1" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" title="Submit Rating"/>
                                                         <connections>
                                                             <segue destination="jVC-OA-UjZ" kind="presentation" identifier="presentRatingViewController" id="SLo-S6-7ry"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPk-7c-5ID">
-                                                        <rect key="frame" x="190" y="0.0" width="181" height="30"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPk-7c-5ID">
+                                                        <rect key="frame" x="189.5" y="0.0" width="181" height="30"/>
                                                         <color key="backgroundColor" red="0.58881118880000005" green="1" blue="0.58881118880000005" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" title="View Map"/>
                                                         <connections>
                                                             <segue destination="VRq-Jg-dcB" kind="presentation" identifier="presentMapViewController" id="s0s-Ck-VQG"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k0z-xq-log">
-                                                        <rect key="frame" x="379" y="0.0" width="182" height="30"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k0z-xq-log">
+                                                        <rect key="frame" x="378.5" y="0.0" width="181.5" height="30"/>
                                                         <color key="backgroundColor" red="1" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" title="Wikipedia"/>
                                                         <connections>
