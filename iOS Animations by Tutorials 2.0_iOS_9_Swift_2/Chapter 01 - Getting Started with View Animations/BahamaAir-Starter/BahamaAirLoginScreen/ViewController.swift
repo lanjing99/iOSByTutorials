@@ -79,11 +79,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    
+    heading.center.x -= view.bounds.width
+    username.center.x -= view.bounds.width
+    password.center.x -= view.bounds.width
   }
   
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
+    
+    UIView.animateWithDuration(0.5, animations: { self.heading.center.x += self.view.bounds.width
+        })
+    UIView.animateWithDuration(0.5, delay: 0.3, options: [], animations: { self.username.center.x += self.view.bounds.width
+            }, completion: nil)
+    UIView.animateWithDuration(0.5, delay: 0.4, options: [], animations: { self.password.center.x += self.view.bounds.width
+        }, completion: nil)
     
   }
   
