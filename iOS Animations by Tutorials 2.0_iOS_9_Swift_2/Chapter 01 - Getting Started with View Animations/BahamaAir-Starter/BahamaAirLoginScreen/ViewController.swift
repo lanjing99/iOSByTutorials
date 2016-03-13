@@ -52,6 +52,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
   let label = UILabel()
   let messages = ["Connecting ...", "Authorizing ...", "Sending credentials ...", "Failed"]
   var animationContainerView: UIView?
+    var statusPosition = CGPoint.zero
   
   // MARK: view controller methods
   
@@ -80,7 +81,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //set up the animation container 
     animationContainerView = UIView(frame: view.bounds)
     animationContainerView!.frame = view.bounds
-    view.addSubview(animationContainerView!)
+//    view.addSubview(animationContainerView!)
+    
+    statusPosition = status.center
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -132,18 +135,39 @@ class ViewController: UIViewController, UITextFieldDelegate {
             completion: nil)
     
     
-    //create new view
-    let newView = UIImageView(image: UIImage(named: "banner")!)
-    newView.center = animationContainerView!.center
-    //add the new view via transition
-    UIView.transitionWithView(animationContainerView!, duration: 3.3,
-                options: [.CurveEaseOut, .TransitionFlipFromBottom], animations: {
-                self.animationContainerView!.addSubview(newView) }, completion: nil)
+//    //create new view
+//    let newView = UIImageView(image: UIImage(named: "banner")!)
+//    newView.center = animationContainerView!.center
+//    //add the new view via transition
+//    UIView.transitionWithView(animationContainerView!, duration: 3.3,
+//                options: [.CurveEaseOut, .TransitionFlipFromBottom], animations: {
+//                self.animationContainerView!.addSubview(newView) }, completion: nil)
     
     
   }
   
   // MARK: further methods
+    func showMessage(index index: Int) {
+        label.text = messages[index]
+        UIView.transitionWithView(status, duration: 0.33, options: [.CurveEaseOut, .TransitionCurlDown], animations: {
+        self.status.hidden = false }, completion: {_ in
+        //transition completion
+        delay(seconds: 2.0) {
+        if index < self.messages.count-1 {
+        self.removeMessage(index: index) } else {
+        //reset form
+        } }
+        }) }
+    
+    func removeMessage(index index: Int) {
+        UIView.animateWithDuration(0.33, delay: 0.0, options: [], animations:
+        {
+        self.status.center.x += self.view.frame.size.width
+        }, completion: {_ in
+        self.status.hidden = true
+        self.status.center = self.statusPosition
+        self.showMessage(index: index+1) })
+    }
   
   @IBAction func login() {
     view.endEditing(true)
@@ -154,7 +178,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     self.loginButton.backgroundColor = UIColor(red: 0.85, green: 0.83, blue: 0.45, alpha: 1.0)
     self.spinner.center = CGPoint(x: 40.0, y: self.loginButton.frame.size.height/2)
         self.spinner.alpha = 1.0
-        }, completion: nil)
+        }, completion:{ _ in
+        self.showMessage(index: 0)
+        })
     
   }
   
