@@ -51,6 +51,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
   let status = UIImageView(image: UIImage(named: "banner"))
   let label = UILabel()
   let messages = ["Connecting ...", "Authorizing ...", "Sending credentials ...", "Failed"]
+  var animationContainerView: UIView?
   
   // MARK: view controller methods
   
@@ -75,6 +76,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     label.textColor = UIColor(red: 0.89, green: 0.38, blue: 0.0, alpha: 1.0)
     label.textAlignment = .Center
     status.addSubview(label)
+    
+    //set up the animation container 
+    animationContainerView = UIView(frame: view.bounds)
+    animationContainerView!.frame = view.bounds
+    view.addSubview(animationContainerView!)
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -87,6 +93,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     cloud2.alpha = 0
     cloud3.alpha = 0
     cloud4.alpha = 0
+    
+    loginButton.center.y += 30.0
+    loginButton.alpha = 0.0
   }
   
   override func viewDidAppear(animated: Bool) {
@@ -117,6 +126,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.cloud4.alpha = 1
             }, completion: nil)
     
+    UIView.animateWithDuration(1.5, delay: 0.5, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.5, options: [], animations: {
+            self.loginButton.center.y -= 30.0
+            self.loginButton.alpha = 1.0 },
+            completion: nil)
+    
+    
+    //create new view
+    let newView = UIImageView(image: UIImage(named: "banner")!)
+    newView.center = animationContainerView!.center
+    //add the new view via transition
+    UIView.transitionWithView(animationContainerView!, duration: 3.3,
+                options: [.CurveEaseOut, .TransitionFlipFromBottom], animations: {
+                self.animationContainerView!.addSubview(newView) }, completion: nil)
+    
     
   }
   
@@ -124,6 +147,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
   
   @IBAction func login() {
     view.endEditing(true)
+    UIView.animateWithDuration(1.5, delay: 0.0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.0, options: [], animations: {
+    self.loginButton.bounds.size.width += 80.0 }, completion: nil)
+    UIView.animateWithDuration(0.33, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: [], animations: {
+    self.loginButton.center.y += 60.0
+    self.loginButton.backgroundColor = UIColor(red: 0.85, green: 0.83, blue: 0.45, alpha: 1.0)
+    self.spinner.center = CGPoint(x: 40.0, y: self.loginButton.frame.size.height/2)
+        self.spinner.alpha = 1.0
+        }, completion: nil)
     
   }
   
