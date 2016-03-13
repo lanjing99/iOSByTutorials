@@ -25,6 +25,7 @@ import SafariServices
 
 class SpotInfoViewController: UIViewController {
 
+    @IBOutlet weak var stackView: UIStackView!
   var vacationSpot: VacationSpot!
 
   @IBOutlet var backgroundColoredViews: [UIView]!
@@ -89,8 +90,24 @@ class SpotInfoViewController: UIViewController {
     let newButtonTitle = shouldHideWeatherInfo ? "Show" : "Hide"
     weatherHideOrShowButton.setTitle(newButtonTitle, forState: .Normal)
 
-    // TODO: Animate when animated == true
-    weatherInfoLabel.hidden = shouldHideWeatherInfo
+//     TODO: Animate when animated == true
+//    weatherInfoLabel.hidden = shouldHideWeatherInfo
+    if animated {
+//        UIView.animateWithDuration(0.3) {
+//        self.weatherInfoLabel.hidden = shouldHideWeatherInfo
+//        }
+        UIView.animateWithDuration(0.3, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 10,
+                options: [],
+                animations: {
+                    self.weatherInfoLabel.hidden = shouldHideWeatherInfo
+    }, completion: { finished in
+        UIView.animateWithDuration(0.3) {
+        self.stackView.axis = shouldHideWeatherInfo ? .Vertical : .Horizontal
+    }}
+        )
+    } else {
+        weatherInfoLabel.hidden = shouldHideWeatherInfo
+    }
   }
 
   @IBAction func wikipediaButtonTapped(sender: UIButton) {
