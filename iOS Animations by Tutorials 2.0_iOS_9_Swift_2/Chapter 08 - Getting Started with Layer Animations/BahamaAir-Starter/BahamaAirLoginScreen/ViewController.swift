@@ -149,6 +149,9 @@ class ViewController: UIViewController {
     flyRight.fromValue = -view.bounds.size.width/2
     flyRight.toValue = view.bounds.size.width/2
     flyRight.duration = 0.5
+    flyRight.fillMode = kCAFillModeBoth
+    flyRight.removedOnCompletion = false
+    
     heading.layer.addAnimation(flyRight, forKey: nil)
     username.layer.addAnimation(flyRight, forKey: nil)
     
