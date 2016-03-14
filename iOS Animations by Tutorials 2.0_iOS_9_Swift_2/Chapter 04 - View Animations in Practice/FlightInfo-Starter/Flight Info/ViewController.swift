@@ -85,7 +85,7 @@ class ViewController: UIViewController {
     func changeFlightDataTo(data: FlightData, animated:Bool = false) {
     
     // populate the UI with the next flight's data
-    summary.text = data.summary
+//    summary.text = data.summary
     flightNr.text = data.flightNr
     gateNr.text = data.gateNr
     departingFrom.text = data.departingFrom
@@ -97,9 +97,11 @@ class ViewController: UIViewController {
     if animated {
         fadeImageView(bgImageView, toImage: UIImage(named: data.weatherImageName)!, showEffects: data.showWeatherEffects)
         planeDepart()
+        switchSummary(data)
     } else {
         bgImageView.image = UIImage(named: data.weatherImageName)
         snowView.hidden = !data.showWeatherEffects
+        summary.text = data.summary
         }
     
     let direction: AnimationDirection = data.isTakingOff ? .Positive : .Negative
@@ -228,5 +230,24 @@ class ViewController: UIViewController {
                 
         }, completion: nil)
     }
+    
+    
+    func switchSummary(data: FlightData){
+                UIView.animateKeyframesWithDuration(1.5, delay: 0.0, options: [], animations: {
+                //add keyframes
+                UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: 0.5, animations: {
+                self.summary.center.y -= 50.0
+                }
+                )
+                delay(seconds: 0.75, completion: {self.summary.text = data.summary})
+                UIView.addKeyframeWithRelativeStartTime(0.5, relativeDuration: 1.0) {
+//                self.summary.text = data.summary
+                self.summary.center.y += 50.0
+                }
+                
+                
+                }, completion: nil)
+    }
   
+    
 }
