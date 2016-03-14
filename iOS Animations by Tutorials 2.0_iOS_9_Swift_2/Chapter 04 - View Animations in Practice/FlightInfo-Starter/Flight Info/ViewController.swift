@@ -105,6 +105,14 @@ class ViewController: UIViewController {
     cubeTransition(label: flightNr, text: data.flightNr, direction: direction)
     cubeTransition(label: gateNr, text: data.gateNr, direction: direction)
     
+    let offsetDeparting = CGPoint(
+            x: CGFloat(direction.rawValue * 80), y: 0.0)
+    moveLabel(departingFrom, text: data.departingFrom, offset: offsetDeparting)
+    let offsetArriving = CGPoint( x: 0.0,
+            y: CGFloat(direction.rawValue * 50))
+    moveLabel(arrivingTo, text: data.arrivingTo,
+            offset: offsetArriving)
+    
 //    //test for alpha animation
 //    UIView.animateWithDuration(1) { () -> Void in
 //        if(self.bgImageView1.alpha == 0)
@@ -164,7 +172,31 @@ class ViewController: UIViewController {
     }
     
     
-    
+    func moveLabel(label: UILabel, text: String, offset: CGPoint) {
+            let auxLabel = UILabel(frame: label.frame)
+            auxLabel.text = text
+            auxLabel.font = label.font
+            auxLabel.textAlignment = label.textAlignment
+            auxLabel.textColor = label.textColor
+            auxLabel.backgroundColor = UIColor.clearColor()
+            auxLabel.transform = CGAffineTransformMakeTranslation( offset.x, offset.y)
+            auxLabel.alpha = 0
+            view.addSubview(auxLabel)
+            
+            UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseIn, animations: {
+            label.transform = CGAffineTransformMakeTranslation( offset.x, offset.y)
+            label.alpha = 0.0 }, completion: nil)
+            
+            UIView.animateWithDuration(0.25, delay: 0.1, options: .CurveEaseIn, animations: {
+            auxLabel.transform = CGAffineTransformIdentity
+            auxLabel.alpha = 1.0
+            }, completion: {_ in //clean up
+            auxLabel.removeFromSuperview()
+            label.text = text
+            label.alpha = 1.0
+            label.transform = CGAffineTransformIdentity
+            })
+    }
     
     
   
