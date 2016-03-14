@@ -38,6 +38,7 @@ class ViewController: UIViewController {
   
   @IBOutlet var bgImageView: UIImageView!
   
+  @IBOutlet weak var bgImageView1: UIImageView!
   @IBOutlet var summaryIcon: UIImageView!
   @IBOutlet var summary: UILabel!
   
@@ -56,6 +57,7 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    bgImageView1.hidden = true
     
     //adjust ui
     summary.addSubview(summaryIcon)
@@ -68,13 +70,14 @@ class ViewController: UIViewController {
     snowClipView.addSubview(snowView)
     view.addSubview(snowClipView)
     
+    bgImageView1.alpha = 0
     //start rotating the flights
     changeFlightDataTo(londonToParis)
   }
   
   //MARK: custom methods
   
-  func changeFlightDataTo(data: FlightData) {
+    func changeFlightDataTo(data: FlightData, animated:Bool = false) {
     
     // populate the UI with the next flight's data
     summary.text = data.summary
@@ -84,13 +87,52 @@ class ViewController: UIViewController {
     arrivingTo.text = data.arrivingTo
     flightStatus.text = data.flightStatus
     bgImageView.image = UIImage(named: data.weatherImageName)
-    snowView.hidden = !data.showWeatherEffects
+//    snowView.hidden = !data.showWeatherEffects
+//    snowView.hidden = true
+    if animated {
+        fadeImageView(bgImageView, toImage: UIImage(named: data.weatherImageName)!, showEffects: data.showWeatherEffects)
+    } else {
+        bgImageView.image = UIImage(named: data.weatherImageName)
+        snowView.hidden = !data.showWeatherEffects
+        }
+    
+//    //test for alpha animation
+//    UIView.animateWithDuration(1) { () -> Void in
+//        if(self.bgImageView1.alpha == 0)
+//        {
+//            self.bgImageView.alpha = 0
+//            self.bgImageView1.alpha = 1
+//        }else{
+//            self.bgImageView.alpha = 1
+//            self.bgImageView1.alpha = 0
+//        }
+//        
+//    }
     
     // schedule next flight
     delay(seconds: 3.0) {
-      self.changeFlightDataTo(data.isTakingOff ? parisToRome : londonToParis)
+      self.changeFlightDataTo(data.isTakingOff ? parisToRome : londonToParis, animated: true)
     }
   }
   
+    func fadeImageView(imageView: UIImageView, toImage: UIImage, showEffects: Bool) {
+        UIView.transitionWithView(imageView, duration: 1.0, options: .TransitionCrossDissolve, animations: {
+        imageView.image = toImage
+        }, completion: nil)
+        
+        UIView.animateWithDuration(1.0, delay: 0.0, options: .CurveEaseOut, animations: {
+        self.snowView.alpha = showEffects ? 1.0 : 0.0
+            }, completion: nil)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
   
 }
