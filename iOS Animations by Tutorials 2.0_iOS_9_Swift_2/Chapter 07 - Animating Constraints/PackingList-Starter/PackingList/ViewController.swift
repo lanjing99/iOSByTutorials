@@ -30,6 +30,8 @@ class ViewController: UIViewController {
   @IBOutlet var buttonMenu: UIButton!
   @IBOutlet var titleLabel: UILabel!
   
+    @IBOutlet weak var menuHeightConstraint: NSLayoutConstraint!
+    
   //MARK: further class variables
   
   var slider: HorizontalItemList!
@@ -40,6 +42,23 @@ class ViewController: UIViewController {
   
   @IBAction func actionToggleMenu(sender: AnyObject) {
     
+    isMenuOpen = !isMenuOpen
+    menuHeightConstraint.constant = isMenuOpen ? 200.0 : 60.0
+    titleLabel.text = isMenuOpen ? "Select Item" : "Packing List"
+    let angle = self.isMenuOpen ? CGFloat(M_PI_4) : 0.0
+    
+    for constraint in titleLabel.superview!.constraints {
+        if constraint.firstItem as? NSObject == titleLabel &&
+        constraint.firstAttribute == .CenterX {
+        constraint.constant = isMenuOpen ? -100.0 : 0.0
+        continue
+        }
+    }
+    
+    UIView.animateWithDuration(2.0, delay: 0.2, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.0, options: .CurveEaseIn, animations: {
+        self.view.layoutIfNeeded()
+        self.buttonMenu.transform = CGAffineTransformMakeRotation(angle)
+        }, completion: nil)
   }
   
   func showItem(index: Int) {
