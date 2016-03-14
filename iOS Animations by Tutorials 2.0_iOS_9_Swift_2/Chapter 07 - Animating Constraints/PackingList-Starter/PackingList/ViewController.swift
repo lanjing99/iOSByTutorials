@@ -53,17 +53,78 @@ class ViewController: UIViewController {
         constraint.constant = isMenuOpen ? -100.0 : 0.0
         continue
         }
+        
+        if constraint.identifier == "TitleCenterY" {
+            constraint.active = false
+            //add new constraint
+            let newConstraint = NSLayoutConstraint( item: titleLabel,
+            attribute: .CenterY,
+            relatedBy: .Equal,
+            toItem: titleLabel.superview!,
+            attribute: .CenterY,
+            multiplier: isMenuOpen ? 0.67 : 1.0, constant: 5.0)
+            newConstraint.identifier = "TitleCenterY"
+            newConstraint.active = true
+            continue
+        }
+        
     }
     
     UIView.animateWithDuration(2.0, delay: 0.2, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.0, options: .CurveEaseIn, animations: {
         self.view.layoutIfNeeded()
         self.buttonMenu.transform = CGAffineTransformMakeRotation(angle)
         }, completion: nil)
+    
+    if isMenuOpen {
+                slider = HorizontalItemList(inView: view)
+                slider.didSelectItem = {index in
+                print("add \(index)")
+                self.items.append(index)
+                self.tableView.reloadData()
+                self.actionToggleMenu(self)
+                }
+                self.titleLabel.superview!.addSubview(slider)
+            } else {
+                slider.removeFromSuperview()
+    }
   }
   
   func showItem(index: Int) {
-    print("tapped item \(index)")
-    
+        print("tapped item \(index)")
+        let imageView = UIImageView(image:
+        UIImage(named: "summericons_100px_0\(index).png"))
+        imageView.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
+        imageView.layer.cornerRadius = 5.0
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(imageView)
+        
+        let conX = imageView.centerXAnchor.constraintEqualToAnchor( view.centerXAnchor)
+        let conBottom = imageView.bottomAnchor.constraintEqualToAnchor( view.bottomAnchor, constant: imageView.frame.height)
+        let conWidth = imageView.widthAnchor.constraintEqualToAnchor( view.widthAnchor,
+                    multiplier: 0.33,
+                    constant: -50.0)
+        let conHeight = imageView.heightAnchor.constraintEqualToAnchor( imageView.widthAnchor)
+        NSLayoutConstraint.activateConstraints([conX, conBottom, conWidth, conHeight])
+           
+            
+        view.layoutIfNeeded()
+        UIView.animateWithDuration(0.8, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.0, options: [], animations: {
+            conBottom.constant = -imageView.frame.size.height/2
+            conWidth.constant = 0.0
+            self.view.layoutIfNeeded()
+                }, completion: {finished in
+                    UIView.animateWithDuration(0.8, delay: 1, options: [], animations: {
+//                    conWidth.constant = 0
+//                    conHeight.constant = 0
+//                    conBottom.constant = imageView.frame.size.height/2
+                    imageView.bounds = CGRectZero
+//                    self.view.layoutIfNeeded()
+                    }, completion: { finished in
+                        imageView.removeFromSuperview()
+                
+                    })
+            })
   }
 }
 
