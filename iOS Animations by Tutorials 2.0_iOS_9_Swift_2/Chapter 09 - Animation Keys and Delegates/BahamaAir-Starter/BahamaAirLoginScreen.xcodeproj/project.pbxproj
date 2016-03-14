@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9C4319631A0C32D80085829B /* BahamaAirLoginScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BahamaAirLoginScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C4319631A0C32D80085829B /* CABahamaAirLoginScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CABahamaAirLoginScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C4319671A0C32D80085829B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C4319681A0C32D80085829B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C43196A1A0C32D80085829B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 		9C4319641A0C32D80085829B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9C4319631A0C32D80085829B /* BahamaAirLoginScreen.app */,
+				9C4319631A0C32D80085829B /* CABahamaAirLoginScreen.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,7 +89,7 @@
 			);
 			name = BahamaAirLoginScreen;
 			productName = BahamaAirLoginScreen;
-			productReference = 9C4319631A0C32D80085829B /* BahamaAirLoginScreen.app */;
+			productReference = 9C4319631A0C32D80085829B /* CABahamaAirLoginScreen.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -104,6 +104,7 @@
 				TargetAttributes = {
 					9C4319621A0C32D80085829B = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 5E58DW2PMK;
 					};
 				};
 			};
@@ -252,10 +253,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = BahamaAirLoginScreen/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.CABahamaAirLoginScreen;
+				PRODUCT_NAME = "CA$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
@@ -263,10 +265,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = BahamaAirLoginScreen/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.CABahamaAirLoginScreen;
+				PRODUCT_NAME = "CA$(TARGET_NAME)";
 			};
 			name = Release;
 		};
