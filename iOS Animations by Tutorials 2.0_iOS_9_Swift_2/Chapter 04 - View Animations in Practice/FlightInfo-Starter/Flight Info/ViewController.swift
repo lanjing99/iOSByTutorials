@@ -96,6 +96,7 @@ class ViewController: UIViewController {
 //    snowView.hidden = true
     if animated {
         fadeImageView(bgImageView, toImage: UIImage(named: data.weatherImageName)!, showEffects: data.showWeatherEffects)
+        planeDepart()
     } else {
         bgImageView.image = UIImage(named: data.weatherImageName)
         snowView.hidden = !data.showWeatherEffects
@@ -199,5 +200,33 @@ class ViewController: UIViewController {
     }
     
     
+    func planeDepart() {
+        let originalCenter = planeImage.center
+        UIView.animateKeyframesWithDuration(2.5, delay: 0.0, options: [], animations: {
+        //add keyframes
+                UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: 0.25, animations: {
+                self.planeImage.center.x += 80.0
+                self.planeImage.center.y -= 10.0 })
+                
+                UIView.addKeyframeWithRelativeStartTime(0.1, relativeDuration: 0.4) {
+                self.planeImage.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI_4/2))
+                }
+                UIView.addKeyframeWithRelativeStartTime(0.25, relativeDuration: 0.25) {
+                self.planeImage.center.x += 100.0
+                self.planeImage.center.y -= 50.0
+                self.planeImage.alpha = 0.0
+                }
+                
+                UIView.addKeyframeWithRelativeStartTime(0.51, relativeDuration: 0.01) {
+                self.planeImage.transform = CGAffineTransformIdentity
+                self.planeImage.center = CGPoint(x: 0.0, y: originalCenter.y)
+                }
+                UIView.addKeyframeWithRelativeStartTime(0.55, relativeDuration: 0.45) {
+                    self.planeImage.alpha = 1.0
+                    self.planeImage.center = originalCenter
+                }
+                
+        }, completion: nil)
+    }
   
 }
