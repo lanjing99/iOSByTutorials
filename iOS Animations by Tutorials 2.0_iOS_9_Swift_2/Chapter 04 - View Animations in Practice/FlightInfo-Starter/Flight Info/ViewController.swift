@@ -34,6 +34,11 @@ func delay(seconds seconds: Double, completion:()->()) {
   }
 }
 
+enum AnimationDirection: Int {
+    case Positive = 1
+    case Negative = -1
+}
+
 class ViewController: UIViewController {
   
   @IBOutlet var bgImageView: UIImageView!
@@ -96,6 +101,10 @@ class ViewController: UIViewController {
         snowView.hidden = !data.showWeatherEffects
         }
     
+    let direction: AnimationDirection = data.isTakingOff ? .Positive : .Negative
+    cubeTransition(label: flightNr, text: data.flightNr, direction: direction)
+    cubeTransition(label: gateNr, text: data.gateNr, direction: direction)
+    
 //    //test for alpha animation
 //    UIView.animateWithDuration(1) { () -> Void in
 //        if(self.bgImageView1.alpha == 0)
@@ -109,6 +118,7 @@ class ViewController: UIViewController {
 //        
 //    }
     
+    
     // schedule next flight
     delay(seconds: 3.0) {
       self.changeFlightDataTo(data.isTakingOff ? parisToRome : londonToParis, animated: true)
@@ -116,11 +126,11 @@ class ViewController: UIViewController {
   }
   
     func fadeImageView(imageView: UIImageView, toImage: UIImage, showEffects: Bool) {
-        UIView.transitionWithView(imageView, duration: 1.0, options: .TransitionCrossDissolve, animations: {
+        UIView.transitionWithView(imageView, duration: 3.0, options: .TransitionCrossDissolve, animations: {
         imageView.image = toImage
         }, completion: nil)
         
-        UIView.animateWithDuration(1.0, delay: 0.0, options: .CurveEaseOut, animations: {
+        UIView.animateWithDuration(3.0, delay: 0.0, options: .CurveEaseOut, animations: {
         self.snowView.alpha = showEffects ? 1.0 : 0.0
             }, completion: nil)
     }
@@ -128,7 +138,30 @@ class ViewController: UIViewController {
     
     
     
-    
+    func cubeTransition(label label: UILabel, text: String, direction: AnimationDirection) {
+        let auxLabel = UILabel(frame: label.frame)
+        auxLabel.text = text
+        auxLabel.font = label.font
+        auxLabel.textAlignment = label.textAlignment
+        auxLabel.textColor = label.textColor
+        auxLabel.backgroundColor = label.backgroundColor
+        
+        let auxLabelOffset = CGFloat(direction.rawValue) * label.frame.size.height/2.0
+        auxLabel.transform = CGAffineTransformConcat( CGAffineTransformMakeScale(1.0, 0.1), CGAffineTransformMakeTranslation(0.0, auxLabelOffset))
+        label.superview!.addSubview(auxLabel)
+            
+        UIView.animateWithDuration(2.5, delay: 0.0, options: .CurveEaseOut, animations: {
+            auxLabel.transform = CGAffineTransformIdentity
+            label.transform = CGAffineTransformConcat(
+            CGAffineTransformMakeScale(1.0, 0.1),
+            CGAffineTransformMakeTranslation(0.0, -auxLabelOffset))
+        },
+        completion: {_ in
+            label.text = auxLabel.text
+            label.transform = CGAffineTransformIdentity
+            auxLabel.removeFromSuperview()
+        })
+    }
     
     
     
