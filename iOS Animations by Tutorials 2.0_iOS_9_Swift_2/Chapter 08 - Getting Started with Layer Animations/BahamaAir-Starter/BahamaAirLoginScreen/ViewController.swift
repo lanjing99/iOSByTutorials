@@ -149,14 +149,17 @@ class ViewController: UIViewController {
     flyRight.fromValue = -view.bounds.size.width/2
     flyRight.toValue = view.bounds.size.width/2
     flyRight.duration = 0.5
-    flyRight.fillMode = kCAFillModeBoth
-    flyRight.removedOnCompletion = false
+//    flyRight.fillMode = kCAFillModeBoth
+//    flyRight.removedOnCompletion = false
     
     heading.layer.addAnimation(flyRight, forKey: nil)
     username.layer.addAnimation(flyRight, forKey: nil)
     
     flyRight.beginTime =  CACurrentMediaTime() + 0.3
     password.layer.addAnimation(flyRight, forKey: nil)
+    
+    username.layer.position.x = view.bounds.size.width/2
+    password.layer.position.x = view.bounds.size.width/2
   }
   
   // MARK: further methods
