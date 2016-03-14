@@ -84,63 +84,76 @@ class ViewController: UIViewController {
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     
-    heading.center.x  -= view.bounds.width
-    username.center.x -= view.bounds.width
-    password.center.x -= view.bounds.width
-
-    cloud1.alpha = 0.0
-    cloud2.alpha = 0.0
-    cloud3.alpha = 0.0
-    cloud4.alpha = 0.0
+    username.layer.position.x -= view.bounds.width
+    password.layer.position.x -= view.bounds.width
     
-    loginButton.center.y += 30.0
-    loginButton.alpha = 0.0
+//    heading.center.x  -= view.bounds.width
+//    username.center.x -= view.bounds.width
+//    password.center.x -= view.bounds.width
+//
+//    cloud1.alpha = 0.0
+//    cloud2.alpha = 0.0
+//    cloud3.alpha = 0.0
+//    cloud4.alpha = 0.0
+//    
+//    loginButton.center.y += 30.0
+//    loginButton.alpha = 0.0
   }
   
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
     
-    UIView.animateWithDuration(0.5, animations: {
-      self.heading.center.x += self.view.bounds.width
-    })
-
-    UIView.animateWithDuration(0.5, delay: 0.3, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: [], animations: {
-      self.username.center.x += self.view.bounds.width
-    }, completion: nil)
-
-    UIView.animateWithDuration(0.5, delay: 0.4, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: [], animations: {
-      self.password.center.x += self.view.bounds.width
-    }, completion: nil)
-
-    UIView.animateWithDuration(0.5, delay: 0.5, options: [], animations: {
-      self.cloud1.alpha = 1.0
-    }, completion: nil)
+//    UIView.animateWithDuration(0.5, animations: {
+//      self.heading.center.x += self.view.bounds.width
+//    })
+//
+//    UIView.animateWithDuration(0.5, delay: 0.3, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: [], animations: {
+//      self.username.center.x += self.view.bounds.width
+//    }, completion: nil)
+//
+//    UIView.animateWithDuration(0.5, delay: 0.4, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.0, options: [], animations: {
+//      self.password.center.x += self.view.bounds.width
+//    }, completion: nil)
+//
+//    UIView.animateWithDuration(0.5, delay: 0.5, options: [], animations: {
+//      self.cloud1.alpha = 1.0
+//    }, completion: nil)
+//    
+//    UIView.animateWithDuration(0.5, delay: 0.5, options: [], animations: {
+//      self.cloud1.alpha = 1.0
+//    }, completion: nil)
+//    
+//    UIView.animateWithDuration(0.5, delay: 0.7, options: [], animations: {
+//      self.cloud2.alpha = 1.0
+//    }, completion: nil)
+//    
+//    UIView.animateWithDuration(0.5, delay: 0.9, options: [], animations: {
+//      self.cloud3.alpha = 1.0
+//    }, completion: nil)
+//    
+//    UIView.animateWithDuration(0.5, delay: 1.1, options: [], animations: {
+//      self.cloud4.alpha = 1.0
+//    }, completion: nil)
+//    
+//    UIView.animateWithDuration(0.5, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: [], animations: {
+//        self.loginButton.center.y -= 30.0
+//        self.loginButton.alpha = 1.0
+//    }, completion: nil)
+//
+//    animateCloud(cloud1)
+//    animateCloud(cloud2)
+//    animateCloud(cloud3)
+//    animateCloud(cloud4)
     
-    UIView.animateWithDuration(0.5, delay: 0.5, options: [], animations: {
-      self.cloud1.alpha = 1.0
-    }, completion: nil)
+    let flyRight = CABasicAnimation(keyPath: "position.x")
+    flyRight.fromValue = -view.bounds.size.width/2
+    flyRight.toValue = view.bounds.size.width/2
+    flyRight.duration = 0.5
+    heading.layer.addAnimation(flyRight, forKey: nil)
+    username.layer.addAnimation(flyRight, forKey: nil)
     
-    UIView.animateWithDuration(0.5, delay: 0.7, options: [], animations: {
-      self.cloud2.alpha = 1.0
-    }, completion: nil)
-    
-    UIView.animateWithDuration(0.5, delay: 0.9, options: [], animations: {
-      self.cloud3.alpha = 1.0
-    }, completion: nil)
-    
-    UIView.animateWithDuration(0.5, delay: 1.1, options: [], animations: {
-      self.cloud4.alpha = 1.0
-    }, completion: nil)
-    
-    UIView.animateWithDuration(0.5, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: [], animations: {
-        self.loginButton.center.y -= 30.0
-        self.loginButton.alpha = 1.0
-    }, completion: nil)
-
-    animateCloud(cloud1)
-    animateCloud(cloud2)
-    animateCloud(cloud3)
-    animateCloud(cloud4)
+    flyRight.beginTime =  CACurrentMediaTime() + 0.3
+    password.layer.addAnimation(flyRight, forKey: nil)
   }
   
   // MARK: further methods
