@@ -153,8 +153,8 @@ class ViewController: UIViewController {
     groupAnimation.duration = 0.5
     groupAnimation.fillMode = kCAFillModeBackwards
     groupAnimation.timingFunction = CAMediaTimingFunction( name: kCAMediaTimingFunctionEaseIn)
-    groupAnimation.repeatCount = 2.5
-    groupAnimation.speed = 0.5
+//    groupAnimation.repeatCount = 2.5
+//    groupAnimation.speed = 0.5
 //    groupAnimation.autoreverses = true
         
     let scaleDown = CABasicAnimation(keyPath: "transform.scale")
@@ -319,12 +319,19 @@ class ViewController: UIViewController {
                 let layer = anim.valueForKey("layer") as? CALayer
                 anim.setValue(nil, forKey: "layer")
                 
-                let pulse = CABasicAnimation(keyPath: "transform.scale")
+//                let pulse = CABasicAnimation(keyPath: "transform.scale")
+//                pulse.fromValue = 1.25
+//                pulse.toValue = 1.0
+//                pulse.duration = 0.25
+//                layer?.addAnimation(pulse, forKey: nil)
+        
+                let pulse = CASpringAnimation(keyPath: "transform.scale")
+                pulse.damping = 7.5
                 pulse.fromValue = 1.25
                 pulse.toValue = 1.0
-                pulse.duration = 0.25
+                pulse.duration = pulse.settlingDuration
                 layer?.addAnimation(pulse, forKey: nil)
-                
+        
 
             }else if name == "cloud" {
                 guard let layer = anim.valueForKey("layer") as? CALayer else {
