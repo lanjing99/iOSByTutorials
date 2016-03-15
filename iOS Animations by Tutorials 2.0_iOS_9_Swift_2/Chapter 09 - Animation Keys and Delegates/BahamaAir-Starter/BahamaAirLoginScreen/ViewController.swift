@@ -44,6 +44,8 @@ class ViewController: UIViewController {
   @IBOutlet var cloud2: UIImageView!
   @IBOutlet var cloud3: UIImageView!
   @IBOutlet var cloud4: UIImageView!
+
+  let info = UILabel()
   
   // MARK: further UI
   
@@ -58,6 +60,15 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    
+    info.frame = CGRect(x: 0.0, y: loginButton.center.y + 60.0, width: view.frame.size.width, height: 30)
+    info.backgroundColor = UIColor.clearColor()
+    info.font = UIFont(name: "HelveticaNeue", size: 12.0)
+    info.textAlignment = .Center
+    info.textColor = UIColor.whiteColor()
+    info.text = "Tap on a field and enter username and password"
+    view.insertSubview(info, belowSubview: loginButton)
     
     //set up the UI
     loginButton.layer.cornerRadius = 8.0
@@ -137,10 +148,22 @@ class ViewController: UIViewController {
         self.loginButton.alpha = 1.0
     }, completion: nil)
 
-    animateCloud(cloud1)
-    animateCloud(cloud2)
-    animateCloud(cloud3)
-    animateCloud(cloud4)
+    animateCloud(cloud1.layer)
+    animateCloud(cloud2.layer)
+    animateCloud(cloud3.layer)
+    animateCloud(cloud4.layer)
+        
+    let flyLeft = CABasicAnimation(keyPath: "position.x")
+    flyLeft.fromValue = info.layer.position.x + view.frame.size.width
+    flyLeft.toValue = info.layer.position.x
+    flyLeft.duration = 5.0
+    info.layer.addAnimation(flyLeft, forKey: "infoappear")
+        
+    let fadeLabelIn = CABasicAnimation(keyPath: "opacity")
+    fadeLabelIn.fromValue = 0.2
+    fadeLabelIn.toValue = 1.0
+    fadeLabelIn.duration = 4.5
+    info.layer.addAnimation(fadeLabelIn, forKey: "fadein")
   }
   
   // MARK: further methods
@@ -215,16 +238,34 @@ class ViewController: UIViewController {
       })
   }
   
-  func animateCloud(cloud: UIImageView) {
-    let cloudSpeed = 60.0 / view.frame.size.width
-    let duration = (view.frame.size.width - cloud.frame.origin.x) * cloudSpeed
-    UIView.animateWithDuration(NSTimeInterval(duration), delay: 0.0, options: .CurveLinear, animations: {
-      cloud.frame.origin.x = self.view.frame.size.width
-    }, completion: {_ in
-      cloud.frame.origin.x = -cloud.frame.size.width
-      self.animateCloud(cloud)
-    })
-  }
+//  func animateCloud(cloud: UIImageView) {
+//    let cloudSpeed = 60.0 / view.frame.size.width
+//    let duration = (view.frame.size.width - cloud.frame.origin.x) * cloudSpeed
+//    UIView.animateWithDuration(NSTimeInterval(duration), delay: 0.0, options: .CurveLinear, animations: {
+//      cloud.frame.origin.x = self.view.frame.size.width
+//    }, completion: {_ in
+//      cloud.frame.origin.x = -cloud.frame.size.width
+//      self.animateCloud(cloud)
+//    })
+//  }
+    
+    func animateCloud(layer: CALayer){
+    layer.backgroundColor = UIColor.blackColor().CGColor
+    //1
+    let cloudSpeed = 20.0 / Double(view.layer.frame.size.width)
+    let duration: NSTimeInterval = Double(view.layer.frame.size.width - layer.frame.origin.x) * cloudSpeed
+    //2
+    let cloudMove = CABasicAnimation(keyPath: "position.x")
+    cloudMove.duration = duration
+    cloudMove.fromValue = layer.position.x
+    cloudMove.toValue = self.view.bounds.size.width + layer.bounds.width/2
+    cloudMove.delegate = self
+    cloudMove.setValue("cloud", forKey: "name")
+    cloudMove.setValue(layer, forKey: "layer")
+    layer.addAnimation(cloudMove, forKey: "cloudMove")
+
+    layer.position.x = self.view.bounds.size.width + layer.bounds.width/2
+    }
   
   func tintBackgroundColor(layer layer: CALayer, toColor: UIColor) {
     
@@ -260,14 +301,29 @@ class ViewController: UIViewController {
                 pulse.duration = 0.25
                 layer?.addAnimation(pulse, forKey: nil)
                 
+
+            }else if name == "cloud" {
+                guard let layer = anim.valueForKey("layer") as? CALayer else {
+                    return
+                }
+                layer.position.x = -layer.bounds.width/2
+//                delay(seconds: <#T##Double#>, completion: <#T##() -> ()#>)
+                animateCloud(layer)
+        
             }
         }
+    
     }
 }
 
 
 
-
+extension ViewController: UITextFieldDelegate {
+        func textFieldDidBeginEditing(textField: UITextField) {
+            print(info.layer.animationKeys())
+            info.layer.removeAnimationForKey("infoappear")
+        }
+}
 
 
 
