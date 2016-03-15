@@ -95,14 +95,35 @@ class AvatarView: UIView {
             self.center = bouncePoint
             }, completion: {_ in
                 //complete bounce to
-                UIView.animateWithDuration(self.animationDuration, delay: self.animationDuration, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: [], animations: {
-                self.center = originalCenter
-                }, completion: {_ in
-                    delay(seconds: 0.1) {
-                        self.bounceOffPoint(bouncePoint, morphSize: morphSize)
-                    }
-            })
         })
+        
+        
+        UIView.animateWithDuration(self.animationDuration, delay: self.animationDuration, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: [], animations: {
+                    self.center = originalCenter
+                    }, completion: {_ in
+            delay(seconds: 0.1) {
+            self.bounceOffPoint(bouncePoint, morphSize: morphSize)
+            }
+        })
+        
+        delay(seconds: self.animationDuration/2, completion: {
+                        
+                        let morphedFrame = (originalCenter.x > bouncePoint.x) ?
+                CGRect(x: 0.0, y: self.bounds.height - morphSize.height, width: morphSize.width, height: morphSize.height):
+                CGRect(x: self.bounds.width - morphSize.width, y: self.bounds.height - morphSize.height, width: morphSize.width, height: morphSize.height)
+                        
+                        let morphAnimation = CABasicAnimation(keyPath: "path")
+                        morphAnimation.duration = self.animationDuration/2
+                        morphAnimation.toValue = UIBezierPath(ovalInRect: morphedFrame).CGPath
+                        morphAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+                        morphAnimation.autoreverses = true
+                        self.circleLayer.addAnimation(morphAnimation, forKey: nil)
+                        self.maskLayer.addAnimation(morphAnimation, forKey: nil)
+                        self.photoLayer.addAnimation(morphAnimation, forKey: nil)
+//                        self.layer.addAnimation(morphAnimation, forKey: nil)
+                
+                        })
+       
     }
   
 }
