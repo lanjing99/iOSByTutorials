@@ -350,10 +350,36 @@ class ViewController: UIViewController {
 
 
 extension ViewController: UITextFieldDelegate {
-        func textFieldDidBeginEditing(textField: UITextField) {
-            print(info.layer.animationKeys())
-            info.layer.removeAnimationForKey("infoappear")
+    func textFieldDidBeginEditing(textField: UITextField) {
+        print(info.layer.animationKeys())
+        info.layer.removeAnimationForKey("infoappear")
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        guard textField.text?.characters.count < 5 else {
+            return
         }
+        
+        let jump = CASpringAnimation(keyPath: "position.y")
+        jump.fromValue = textField.layer.position.y + 1.0
+        jump.toValue = textField.layer.position.y
+        jump.duration = jump.settlingDuration
+        jump.initialVelocity = 100.0
+        jump.mass = 10.0
+        jump.stiffness = 1500.0
+        jump.damping = 50
+        textField.layer.addAnimation(jump, forKey: nil)
+                    
+                    textField.layer.borderColor = UIColor.clearColor().CGColor
+                    textField.layer.borderWidth = 3
+                    let flash = CASpringAnimation(keyPath: "borderColor")
+                    flash.damping = 7.0
+                    flash.stiffness = 200.0
+                    flash.fromValue = UIColor(red: 0.96, green: 0.27, blue: 0.0, alpha: 1).CGColor
+                    flash.duration = flash.settlingDuration
+                    textField.layer.addAnimation(flash, forKey: nil)
+    }
+    
 }
 
 
