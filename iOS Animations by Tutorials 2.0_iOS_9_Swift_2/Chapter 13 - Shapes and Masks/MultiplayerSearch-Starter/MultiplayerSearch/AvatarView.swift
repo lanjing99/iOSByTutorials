@@ -95,6 +95,14 @@ class AvatarView: UIView {
             self.center = bouncePoint
             }, completion: {_ in
                 //complete bounce to
+            let morphAnimation = CABasicAnimation(keyPath: "path")
+            morphAnimation.duration = self.animationDuration
+            morphAnimation.toValue = UIBezierPath(ovalInRect: self.bounds).CGPath
+            morphAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+            morphAnimation.autoreverses = false
+            self.circleLayer.addAnimation(morphAnimation, forKey: nil)
+            self.maskLayer.addAnimation(morphAnimation, forKey: nil)
+            self.photoLayer.addAnimation(morphAnimation, forKey: nil)
         })
         
         
@@ -116,7 +124,7 @@ class AvatarView: UIView {
                         morphAnimation.duration = self.animationDuration/2
                         morphAnimation.toValue = UIBezierPath(ovalInRect: morphedFrame).CGPath
                         morphAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-                        morphAnimation.autoreverses = true
+                        morphAnimation.autoreverses = false
                         self.circleLayer.addAnimation(morphAnimation, forKey: nil)
                         self.maskLayer.addAnimation(morphAnimation, forKey: nil)
                         self.photoLayer.addAnimation(morphAnimation, forKey: nil)
