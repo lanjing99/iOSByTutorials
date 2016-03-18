@@ -29,6 +29,9 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    let swipe = UISwipeGestureRecognizer(target: self, action: "didSlide")
+    swipe.direction = .Right
+    slideView.addGestureRecognizer(swipe)
     
   }
   
