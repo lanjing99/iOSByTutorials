@@ -56,7 +56,7 @@ class RefreshView: UIView, UIScrollViewDelegate {
     ovalShapeLayer.strokeColor = UIColor.whiteColor().CGColor
     ovalShapeLayer.fillColor = UIColor.clearColor().CGColor
     ovalShapeLayer.lineWidth = 4.0
-    ovalShapeLayer.lineDashPattern = [5, 3]
+    ovalShapeLayer.lineDashPattern = [2, 3]
     let refreshRadius = frame.size.height/2 * 0.8
     ovalShapeLayer.path = UIBezierPath(ovalInRect: CGRect( x: frame.size.width/2 - refreshRadius,
         y: frame.size.height/2 - refreshRadius,
@@ -105,6 +105,20 @@ class RefreshView: UIView, UIScrollViewDelegate {
       newInsets.top += self.frame.size.height
       self.scrollView!.contentInset = newInsets
     })
+        
+    let strokeStartAnimation = CABasicAnimation( keyPath: "strokeStart")
+    strokeStartAnimation.fromValue = -0.5
+    strokeStartAnimation.toValue = 1.0
+        
+    let strokeEndAnimation = CABasicAnimation(keyPath: "strokeEnd")
+    strokeEndAnimation.fromValue = 0.0
+    strokeEndAnimation.toValue = 1.0
+
+    let strokeAnimationGroup = CAAnimationGroup()
+    strokeAnimationGroup.duration = 1.5
+    strokeAnimationGroup.repeatDuration = 5.0
+    strokeAnimationGroup.animations = [strokeStartAnimation, strokeEndAnimation]
+    ovalShapeLayer.addAnimation(strokeAnimationGroup, forKey: nil)
     
   }
   
