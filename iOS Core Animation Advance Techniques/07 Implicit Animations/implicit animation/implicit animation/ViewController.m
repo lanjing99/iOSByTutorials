@@ -33,10 +33,14 @@
 
 - (IBAction)buttonTouched:(UIButton *)sender {
     
+    [CATransaction begin];
+    [CATransaction setAnimationDuration:2.0];
     //randomize the layer background color
     CGFloat red = arc4random() / (CGFloat)INT_MAX;
     CGFloat green = arc4random() / (CGFloat)INT_MAX;
     CGFloat blue = arc4random() / (CGFloat)INT_MAX; self.colorLayer.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0].CGColor;
+    
+    [CATransaction commit];
 }
 
 @end
